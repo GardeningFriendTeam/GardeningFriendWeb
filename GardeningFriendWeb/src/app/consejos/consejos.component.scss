@@ -1,0 +1,96 @@
+section {
+    display: grid;
+    gap: 10px;
+    /*background-color: #96E8BC;*/
+    grid-auto-rows: 30rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+    background-image: url("../../assets/fondos/wooden-background-4.jpg");
+}
+
+/*CARDS*/
+.card {
+    height: 93% !important;
+    width: 90%;
+    margin: 30px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    transition: all 400ms ease-out;
+    cursor: default;
+    justify-self: center;
+    align-self: center;
+}
+
+.cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+
+}
+
+.title-cards {
+    width: 100%;
+    max-width: 1080px;
+    margin: auto;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    color: #7a7a7a;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+
+.card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.card .contenido-card {
+    padding: 15px;
+    text-align: center;
+
+}
+
+.card .contenido-card h3 {
+    margin-bottom: 15px;
+    color: #7a7a7a;
+    font-family: secundaria2;
+}
+
+.card .contenido-card p {
+    line-height: 1.8;
+    color: #6a6a6a;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card .contenido-card a {
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: black;
+    border: 1px solid var(--verde3);
+    border-radius: 4px;
+    transition: all 400ms ease;
+    margin-bottom: 5px;
+}
+
+.card .contenido-card a:hover {
+    background: var(--verde3B);
+    color: #fff;
+}
+
+nav li a:hover {
+    color: white;
+}
+
+nav #consejos a {
+    text-decoration: underline;
+}

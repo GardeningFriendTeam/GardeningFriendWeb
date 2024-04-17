@@ -1,0 +1,19 @@
+<section>
+    <div id="introduccion">
+        <h2>"Bienvenido a Gardening Friend"</h2>
+        <p>
+            Aquí podrás encontrar toda la información necesaria para empezar tu
+            huerto casero.
+        </p>
+    </div>
+
+    <article *ngFor="let seccion of secciones" class={{seccion.class}}>
+        <img src={{seccion.imagen}} alt="icono-cultivos">
+        <h3>
+            <a routerLink={{seccion.link}}> {{seccion.titulo}}  </a>
+        </h3>
+        <p>
+            {{seccion.descripcion}}
+        </p>
+    </article>
+</section>

@@ -1,0 +1,17 @@
+<section>
+    <div class="cards" *ngFor="let consejo of consejos; let i index">
+        <div class="card">
+            <figure>
+                <img src="{{consejo.image}}" alt="img_consejo">
+            </figure>
+            <div class="contenido-card">
+                <h3>{{consejo.titulo}}</h3>
+                <p>{{consejo.subtitulo}}</p>
+                <div class="d-grid gap-2">
+                    <a class="btn btn-outline-success" href="{{consejo.link}}" role="button">Ir al artículo</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

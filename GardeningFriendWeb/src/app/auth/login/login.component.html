@@ -1,0 +1,46 @@
+<body>
+    <form [formGroup]="loginForm">
+        <div class="form">
+            <img src="../../assets/logos/isologo.png" />
+            <h1>Iniciar sesión</h1>
+            <div class="grupo">
+                <input formControlName="email" [(ngModel)]="user.email" type="email" name="" id="email" required class="form-control"
+                    [ngClass]="{ 'is-valid': email.valid, 'is-invalid': email.invalid && (email.dirty || email.touched) }" /><span
+                    class="barra"></span>
+                <label for="">Email</label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                    <div *ngIf="email.errors?.['required']">
+                        El email es requerido.
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        El email debe tener un formato válido.
+                    </div>
+
+                </div>
+            </div>
+            <div class="grupo">
+                <input formControlName="password" [(ngModel)]="user.password" type="password" name="" id="password" required class="form-control"
+                    [ngClass]="{ 'is-valid': password.valid, 'is-invalid': password.invalid && (password.dirty || password.touched) }" /><span
+                    class="barra"></span>
+                <label for="">Password</label>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                    <div *ngIf="password.errors?.['required']">
+                        El password es requerido.
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        La contraseña debe tener al menos 8 caracteres.
+                    </div>
+
+                </div>
+            </div>
+            <p id="mensaje_login"></p>
+            <button type="submit">Ingresar</button>
+            <div class="cuenta">
+                <p>¿No tienes cuenta?</p>
+                <a routerLink="/registro">Registrarse</a>
+            </div>
+        </div>
+    </form>
+</body>
