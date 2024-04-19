@@ -1,0 +1,24 @@
+<section>
+        <div id="ai_div">
+            
+            <div id="title_div">
+                <img src="../../assets/iconos/icons8-robot-100.png" alt="robot_icon" id="robot_icon">
+                <h3> ASISTENTE IA </h3>
+            </div>
+    
+            
+            <div id="question_div">
+                <label for="input_ia">Ingresa tu consulta: </label>
+                <input type="text" id="input_ia" [(ngModel)]="prompt">
+                <img src="../../assets/iconos/icons8-ok-48.png" alt="icon_ok" id="icon_ok" (click)="onUserInput()">
+            </div>
+    
+            <p style="margin: 25px;">Respuesta de la IA (puede demorar unos segundos):</p>
+    
+            <div id="response_div" *ngFor="let results of questions">
+                <span>{{results.result}}</span>
+            </div>
+    
+        </div>
+    
+</section>
