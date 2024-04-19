@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const GEMINI_PRO_ENDPOINT = 'https://language.googleapis.com/v1beta1/projects/';
 const PROJECT_ID = 'artmaster-c3e26';
 // TODO: hide this property! (ideally it shoudn't be visible!)
-const API_KEY = 'AIzaSyACRZhR_TnmticRhpOolXD00TVILiXhh_8';
+//const API_KEY = 'AIzaSyACRZhR_TnmticRhpOolXD00TVILiXhh_8';
 
 
 @Injectable({

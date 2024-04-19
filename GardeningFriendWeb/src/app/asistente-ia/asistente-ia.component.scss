@@ -9,6 +9,7 @@ section{
     background-repeat: repeat;
     background-position: center;
     background-size: 100% 100%;
+    font-family: secundaria4;
 
     header{
         display: flex;
@@ -20,7 +21,7 @@ section{
         width: 100%;
         overflow: hidden;
         background-color: rgb(2, 146, 89);
-
+        
         #logo{
             height: 100px;
         }
@@ -46,6 +47,13 @@ section{
             justify-content: center;
             align-items: center;
             margin: 25px;
+
+            h3{
+                font-size: 1.7rem;
+                margin-top: 15px;
+                font-family: secundaria2;
+                color: darkgreen;
+            }
         }
 
         #question_div{
@@ -62,6 +70,12 @@ section{
                 margin-left: 10px;
                 cursor: pointer;
             }
+
+            #icon_ok:hover{
+                border: 2px solid darkgreen;
+                border-radius: 100%;
+                transition: 500ms;
+            }
         }
 
         #response_div{
@@ -69,8 +83,18 @@ section{
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            min-height: 300px;
-            margin: 15px;
+            min-height: 200px;
+            margin-right: 20px;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border: 2px solid lightgrey;
+            border-radius: 15px;
+            padding: 10px;
+
+            span{
+                line-height: 1.3rem;
+            }
         }
     }
 }
