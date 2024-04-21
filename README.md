@@ -4,14 +4,14 @@
 
 ## <img width="30" height="30" src="https://img.icons8.com/external-beshi-flat-kerismaker/48/external-Programmer-web-development-beshi-flat-kerismaker.png" alt="external-Programmer-web-development-beshi-flat-kerismaker"/> Integrantes del equipo:
 Nombre completo y cuenta de GitHub:
-- Maximiliano Nicolás Nastrai [(maxtheprogrammer98)](https://github.com/maxtheprogrammer98)
-- Braian Maximiliano Oviedo [(BraianOviedo)](https://github.com/BraianOviedo)
-- Angelica Soledad Quiroz [(SoledadQuiroz)](https://github.com/SoledadQuiroz)
-- Cristian Valles [(Valles1710)](https://github.com/valles1710)
-- Mariquena Allosa [(mariquenaallosa)](https://github.com/mariquenaallosa)
-- Tamara Sorsaburu [(TamiSorsaburu)](https://github.com/TamiSorsaburu)
-- Evana Daniela Sabatella [(EvanaSabatella1989)](https://github.com/EvanaSabatella1989)
-- Margarita Bravo [(Margarita-Bravo)](https://github.com/Margarita-Bravo)
+1. Maximiliano Nicolás Nastrai [(maxtheprogrammer98)](https://github.com/maxtheprogrammer98)
+2. Braian Maximiliano Oviedo [(BraianOviedo)](https://github.com/BraianOviedo)
+3. Angelica Soledad Quiroz [(SoledadQuiroz)](https://github.com/SoledadQuiroz)
+4. Cristian Valles [(Valles1710)](https://github.com/valles1710)
+5. Mariquena Allosa [(mariquenaallosa)](https://github.com/mariquenaallosa)
+6. Tamara Sorsaburu [(TamiSorsaburu)](https://github.com/TamiSorsaburu)
+7. Evana Daniela Sabatella [(EvanaSabatella1989)](https://github.com/EvanaSabatella1989)
+8. Margarita Bravo [(Margarita-Bravo)](https://github.com/Margarita-Bravo)
 
 ## <img width="35" height="35" src="https://img.icons8.com/3d-fluency/94/document.png" alt="document"/> Documentación:
 Estos archivos también estan en la carpeta "documentacion" en la rama main.
