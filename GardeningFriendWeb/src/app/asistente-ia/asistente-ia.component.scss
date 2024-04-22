@@ -3,13 +3,16 @@ section{
     display: grid;
     grid-column: 100%;
     grid-row: 20% 80%;
-    height: 100% !important;
+    min-height: 80vh !important;
     width: 100% !important;
-    background-image: url(../../assets/fondos/wooden-background-4.jpg);
-    background-repeat: repeat;
+    background-image: url(../../assets/fondos/ai_background2.gif);
+    background-repeat: no-repeat;
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     font-family: secundaria4;
+    align-items: start;
+    //justify-content: center;
+    background-blend-mode: darken;
 
     header{
         display: flex;
@@ -35,11 +38,13 @@ section{
         grid-row: 2/3;
         grid-column: 1/2;
         border-radius: 10px !important;
-        margin: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
         overflow-y:visible;
         background: white;
         box-shadow: 9px 9px 5px -2px rgba(0,0,0,0.22);
-        min-height: 400px;
+        min-height: 80%;
+        background: rgba(255, 255, 255, 0.75);
 
         #title_div{
             display: flex;
@@ -52,30 +57,58 @@ section{
                 font-size: 1.7rem;
                 margin-top: 15px;
                 font-family: secundaria2;
-                color: darkgreen;
+                color: darkslategrey;
+            }
+
+            img{
+                width: 90px;
             }
         }
 
         #question_div{
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            align-content: center;
             margin-bottom: 30px;
 
             label{
                 margin-right: 20px;
             }
 
-            #icon_ok{
-                height: 30px;
-                margin-left: 10px;
-                cursor: pointer;
+            #input_div{
+                #input_ia{
+                    width:900px;
+                    height: 30px;
+                    border-radius: 10px;
+                    border: 2px solid rgb(1, 1, 101);
+                    font-family: secundaria4;
+                    font-size: 1.1rem;
+                }
+                #ok_btn{
+                    width: 40px;
+                    height: 40px;
+                    margin-left: 10px;
+                    background: rgb(1, 1, 101);
+                    color: white;
+                    font-family: secundaria4;
+                    border: none;
+                    border-radius: 100%;
+                }
+                #ok_btn:hover{
+                    border: 5px solid rgb(2, 84, 207);
+                    transition: 500ms;
+                    cursor: pointer;
+                }
             }
 
-            #icon_ok:hover{
-                border: 2px solid darkgreen;
-                border-radius: 100%;
-                transition: 500ms;
-            }
+        }
+
+        #wait_response{
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: bolder;
+            color: darkslategrey;
         }
 
         #response_div{
@@ -88,11 +121,12 @@ section{
             margin-left: 20px;
             margin-bottom: 15px;
             font-size: 1.1rem;
-            border: 2px solid lightgrey;
             border-radius: 15px;
             padding: 10px;
+            background: white;
+            border: 2px solid rgb(1, 1, 101);
 
-            span{
+            p{
                 line-height: 1.3rem;
             }
         }
