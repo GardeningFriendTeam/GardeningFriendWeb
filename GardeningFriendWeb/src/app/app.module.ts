@@ -19,6 +19,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
 import { MiCuentaComponent } from './auth/mi-cuenta/mi-cuenta.component';
 import { FavoritosComponent } from './enciclopedia/favoritos/favoritos.component';
 import { AsistenteIAComponent } from './asistente-ia/asistente-ia.component';
+import { SanitizeTextPipePipe } from './asistente-ia/sanitize-text-pipe.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     RegistroComponent,
     MiCuentaComponent,
     FavoritosComponent,
-    AsistenteIAComponent
+    AsistenteIAComponent,
+    SanitizeTextPipePipe
   ],
   imports: [
     BrowserModule,

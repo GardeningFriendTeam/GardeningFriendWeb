@@ -16,10 +16,10 @@
             </div>
 
 
-            <p style="margin: 25px;" id="wait_response">Respuesta de la IA (puede demorar unos segundos):</p>
+            <p id="wait_response">Respuesta de la IA (puede demorar unos segundos):</p>
     
             <div id="response_div" *ngFor="let results of questions">
-                <span>{{results.result}}</span>
+                <div><p>{{results.result | sanitizeTextPipe}}</p></div>
             </div>
     
         </div>
