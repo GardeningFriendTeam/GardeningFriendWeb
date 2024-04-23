@@ -1,0 +1,25 @@
+<nav [ngClass]="{'nav_mov_abierto' : toggleEffect, 'nav_mov_cerrado' : !toggleEffect}">
+    <li id="menu" (click)="desplegarMenu()">{{ toggleEffect ? 'Cerrar menu ↑' : 'Abrir Menu ↓' }}</li>
+    <li id="inicio" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/home">INICIO</a>
+    </li>
+    <li id="cultivos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/cultivos">CULTIVOS</a>
+    </li>
+    <li id="consejos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/consejo"> CONSEJOS</a>
+    </li>
+    <li id="ventas" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/tienda">TIENDA</a>
+    </li>
+    <li id="favoritos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/favoritos">FAVORITOS</a>
+    </li>
+    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/micuenta">MI CUENTA</a>
+    </li>
+    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/dashboard">DASHBOARD</a>
+    </li>
+</nav>
+<router-outlet></router-outlet>

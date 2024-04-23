@@ -1,0 +1,66 @@
+<!-- cover para los modales -->
+<div class="cover" [class.active]="activeCover"></div>
+
+<!-- section donde se muestran los cultivos -->
+<section *ngIf="cultivos.length > 0; else elseCultivos">
+    <!-- div de filtros por búsqueda y categoría -->
+    <div class="container-filter">
+        <form [formGroup]="filterForm" class="filtro">
+            <label>Categoría: </label>
+            <select formControlName="tipo">
+            <option *ngFor="let tipo of tipos" [value]="tipo">{{tipo}}</option>
+            </select>
+        </form>
+        <div class="searchName">
+            <input type="text" [(ngModel)]="searchName" placeholder="Tomate" >
+        </div>
+    </div>
+    
+    <!-- Alerta de sembrado de cultivos o agregados a favoritos -->
+    <div class="alertSembrar" [class.active]="activeAlert">
+        <p>{{ alertText }}</p>
+        <button (click)="showAlert()">Vale!</button>
+    </div>
+    
+    <!-- div con directiva ngFor que muestra los cultivo que se obtienen de una api rest -->
+    <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id}}">
+        <span class="info" (click)="showInfo(cultivo)">i</span>
+        <div class="imagen_wrapper">
+            <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
+        </div>
+        <div class="title">
+            <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
+        </div>
+        <div class="category">
+            <p> <u>Categoría:</u> {{cultivo.tipo}} </p>
+        </div>
+        <div class="botones">
+            <button (click)="addToFavorito(cultivo)" type="button" class="favoritos"> A FAVORITOS ★</button>
+        </div>
+    </div>
+
+</section>
+
+<!-- info de cada cultivo -->
+<div class="container-info" *ngIf="activeInfo">
+    <span class="close" (click)="toggleInfo()">Close</span>
+    <div *ngFor="let cultivo of infoCultivos" class="info-cultivo">
+        <img [src]="cultivo.imagen">
+        <p>Nombre del cultivo: <b>{{cultivo.nombre}}</b></p>
+        <p>Tipo de cultivo: <b>{{cultivo.tipo}}</b></p>
+        <p>El cultivo germina en <b>{{cultivo.germina}} días</b></p>
+        <p>El cultivo se puede cosechar en <b>{{cultivo.cosecha | convertDaysTo}}</b></p>
+        <p>Temporada para sembrar <b>{{cultivo.temporada}}</b></p>
+        <p>Temperatura máxima: <b>{{cultivo.temperaturaMax}}°C</b></p>
+        <p>Temperatura minima: <b>{{cultivo.temperaturaMin}}°C</b></p>
+        <p>Riego: <b>{{cultivo.riego}}</b></p>
+        <p>cantidad de luz solar: <b>{{cultivo.luz}}</b></p>
+        <p>Profundidad del sembrado: <b>{{cultivo.profundidadSembrado}} centímetros</b></p>
+        <p>Espacio entre cada planta: <b>{{cultivo.espacioPlantas}} centímetros</b></p>
+    </div>
+</div>
+
+<!-- El ng-template se mostrara cuando no haya cultivos -->
+<ng-template #elseCultivos>
+    <p style="font-size: 24px; font-weight: bold; color: darkgreen; text-align: center; margin: 100px 0; font-family: secundaria1;">No hay ningún cultivo para sembrar.</p>
+</ng-template>

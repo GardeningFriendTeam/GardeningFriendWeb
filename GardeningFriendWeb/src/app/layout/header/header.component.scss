@@ -1,0 +1,104 @@
+/*------------------------------ HEADER ---------------------------------*/
+header {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 100%;
+    grid-template-rows: 75% 25%;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    /* Improve maintainability with variables for background images */
+    $fondo-izq: url("../../../assets/fondos/fondo-izq-movil.png");
+    $fondo-der: url("../../../assets/fondos/fondo-der-movil.png");
+    background-image: $fondo-izq, $fondo-der;
+    background-position: left, right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 130px;
+    
+    & #logo_contenedor {
+        display: flex;
+        grid-column: 1 / span 2;  // Use span for multi-column elements
+        grid-row: 1 / 3;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        font-family: secundaria3;
+        
+        & img {
+            width: 240px;
+        }
+    }
+    
+    & #opciones {
+        display: flex;
+        grid-column: 1 / span 2;  // Use span for multi-column elements
+        grid-row: 2 / 3;
+        height: 100%;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: flex-start;
+
+        & li {
+            list-style: none;
+            font-family: secundaria4;
+            background: var(--verde3B);
+            border-radius: 5px;
+            padding: 3px;
+
+            & a {
+                color: white;
+                text-decoration: none;
+            }
+        
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        
+        & #cuenta_boton {
+            list-style-image: url("../../../assets/iconos/icono-user-mini.png");
+            list-style-position: outside;
+            margin-left: 5px;
+            margin-right: 10px;
+            text-align: center;
+        }
+        
+        & #cerrar_sesion {
+            margin: 5px; // Combine margins for cleaner style
+        }
+    }
+}
+
+/*------------------------------ MEDIA QUERIES ---------------------------------*/
+/* Media queries can be organized into separate files for better maintainability */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    header {
+        background-image: url("../../../assets/fondos/fondo-izq.png"), url("../../../assets/fondos/fondo-der.png");  // Update image paths for larger screens
+        background-position: left, right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+            & img {
+                width: 280px;
+            }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    header {
+        background-image: url("../../../assets/fondos/fondo-izq.png"), url("../../../assets/fondos/fondo-der.png");  // Update image paths for larger screens
+        max-height: 125px !important; // Use !important cautiously
+        
+        & img {
+            width: 280px;
+        }
+    }
+
+}
