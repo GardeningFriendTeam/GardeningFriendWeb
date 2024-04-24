@@ -73,14 +73,28 @@ section{
             justify-content: center;
             align-content: center;
             margin-bottom: 30px;
+            width: 100% !important;
 
-            label{
-                margin-right: 20px;
+            .wrapper{
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                margin: 10px;
+
+                p{
+                    font-size: 1.1rem;
+                    font-weight: bolder;
+                    color: darkslategrey;
+                }
             }
 
             #input_div{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+
                 #input_ia{
-                    width:900px;
+                    width: 80%;
                     height: 30px;
                     border-radius: 10px;
                     border: 2px solid rgb(1, 1, 101);
@@ -106,9 +120,30 @@ section{
 
         }
 
+        #image_feedback_div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+
+            p{
+                margin-bottom: 10px;
+                font-size: 1.1rem;
+                color: darkslategrey;
+                font-weight: bold;
+            }
+
+            #image_preview{
+                height: 80px;
+                width: 80px;
+                border-radius: 100%;
+                margin: 15px;
+            }
+        }
+
         #wait_response{
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             font-weight: bolder;
             color: darkslategrey;
         }

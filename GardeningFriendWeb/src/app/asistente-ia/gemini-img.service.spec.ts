@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GeminiService } from './gemini.service';
+import { GeminiImgService } from './gemini-img.service';
 
-describe('GeminiService', () => {
-  let service: GeminiService;
+describe('GeminiImgService', () => {
+  let service: GeminiImgService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GeminiService);
+    service = TestBed.inject(GeminiImgService);
   });
 
   it('should be created', () => {
