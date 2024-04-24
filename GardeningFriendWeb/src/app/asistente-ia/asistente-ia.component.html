@@ -28,8 +28,12 @@
                 <!-- <img [src]="imagePreview" *ngIf="imagePreview" alt="Selected Image" id="image_preview"> -->
             </div>
 
-
-            <p id="wait_response">Respuesta de la IA (puede demorar unos segundos):</p>
+            <div id="wait_response">
+                <p>Respuesta de la IA (puede demorar unos segundos):</p>
+                <button id="text_to_speech">
+                    <img src="../../assets/iconos/icons8-voice-50.png" alt="text_to_speech_icon" id="text_to_speech_icon" (click)="textToSpeech()">
+                </button>
+            </div>
     
             <div id="response_div">
                 <!-- process the response once the async request is finished -->

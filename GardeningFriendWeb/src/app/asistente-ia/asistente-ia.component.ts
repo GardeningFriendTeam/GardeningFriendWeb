@@ -27,6 +27,8 @@ export class AsistenteIAComponent {
   questions : Array<{ input: string; result: string}> = [];
   // preview url image
   imageSelected : any;
+  // text-to-speak functionality
+  synth = window.speechSynthesis;
 
    // constructor neeedted for async request
   constructor(private googleGeminiPro : GeminiService, private geminiProVision : GeminiImgService){
@@ -115,6 +117,14 @@ export class AsistenteIAComponent {
     this.questions.push({ input: this.prompt, result: ''})
     // executing function that displays response in a gradual like way
     this.write(result,0)
+  }
+
+
+  textToSpeech(){
+    // text to read
+    const utternance = new SpeechSynthesisUtterance(this.questions[0].result)
+    // reading function on
+    this.synth.speak(utternance)
   }
 
 }

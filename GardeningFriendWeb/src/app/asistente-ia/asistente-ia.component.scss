@@ -142,10 +142,25 @@ section{
         }
 
         #wait_response{
+            display: flex;
             font-size: 1.1rem;
             margin-bottom: 10px;
             font-weight: bolder;
             color: darkslategrey;
+
+            button{
+                background: rgb(0, 0, 48);
+                border-radius: 100%;
+                height: 30px;
+                width: 30px;
+                margin-left: 10px;
+                cursor: pointer;
+                border: none;
+                img{
+                    width: 20px;
+                    height: 20px;
+                }
+            }
         }
 
         #response_div{
