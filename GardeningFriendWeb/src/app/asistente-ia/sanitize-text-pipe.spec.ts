@@ -1,4 +1,4 @@
-import { SanitizeTextPipePipe } from './sanitize-text-pipe.pipe';
+import { SanitizeTextPipePipe } from './sanitize-text-pipe';
 
 describe('SanitizeTextPipePipe', () => {
   it('create an instance', () => {

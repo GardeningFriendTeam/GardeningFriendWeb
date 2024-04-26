@@ -165,6 +165,10 @@ section{
                     height: 20px;
                 }
             }
+
+            p{
+                font-weight: bold;
+            }
         }
 
         #response_div{
@@ -186,6 +190,10 @@ section{
             p{
                 line-height: 1.3rem;
             }
+
+            // #response_result{
+            //     white-space: pre-line;
+            // }
         }
     }
 }

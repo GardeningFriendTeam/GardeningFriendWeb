@@ -44,9 +44,9 @@
     
             <div id="response_div">
                 <!-- process the response once the async request is finished -->
-                <p>La respuesta se mostrara aquí</p>
+                <p id="response_title">La respuesta se mostrara aquí</p>
                 <div *ngFor="let results of questions">
-                    <p>{{results.result | sanitizeTextPipe}}</p>
+                    <p id="response_result">{{results.result | sanitizeTextPipe}}</p>
                 </div>
             </div>
     
