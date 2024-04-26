@@ -62,8 +62,12 @@ section{
                 color: darkslategrey;
             }
 
-            img{
+            #robot_icon{
                 width: 90px;
+                cursor: pointer;
+            }
+            #dialog_ia{
+                width: 250px;
             }
         }
 

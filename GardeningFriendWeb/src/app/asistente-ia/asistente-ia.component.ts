@@ -29,8 +29,10 @@ export class AsistenteIAComponent {
   imageSelected : any;
   // text-to-speak functionality
   synth = window.speechSynthesis;
+  // flag dialog info
+  flagDialog = false;
 
-   // constructor neeedted for async request
+   // constructor (it's needed in order to initialize the services)
   constructor(private googleGeminiPro : GeminiService, private geminiProVision : GeminiImgService){
     // initializing services needed to interact with gemini LLM
     this.googleGeminiPro.initialize(this.apiKey)
@@ -114,17 +116,23 @@ export class AsistenteIAComponent {
     // response request
     const result = await this.geminiProVision.getImgFeedback(data)
     // updading input field
-    this.questions.push({ input: this.prompt, result: ''})
+    this.questions.push({ input: this.prompt, result: ''});
     // executing function that displays response in a gradual like way
-    this.write(result,0)
+    this.write(result,0);
   }
 
 
   textToSpeech(){
     // text to read
-    const utternance = new SpeechSynthesisUtterance(this.questions[0].result)
+    const utternance = new SpeechSynthesisUtterance(this.questions[0].result);
     // reading function on
-    this.synth.speak(utternance)
+    this.synth.speak(utternance);
+  }
+
+
+  showDialogIA(){
+    // switches flags state to display or hide dialog image
+    this.flagDialog = !this.flagDialog;
   }
 
 }

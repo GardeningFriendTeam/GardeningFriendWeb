@@ -2,7 +2,14 @@
         <div id="ai_div">
             
             <div id="title_div">
-                <img src="../../assets/iconos/icons8-chatbot.gif" alt="robot_icon" id="robot_icon">
+                <!-- animated icons -->
+                <div id="icons_wrapper">
+                    <!-- main one -->
+                    <img src="../../assets/iconos/icons8-chatbot.gif" alt="robot_icon" id="robot_icon" (click)="showDialogIA()">
+                    <!-- displayed when the main one is hovered -->
+                    <img src="../../assets/iconos/dialog-IA.png" alt="dialog_ia" id="dialog_ia" *ngIf="flagDialog">
+                </div>
+                <!-- title -->
                 <h3> ASISTENTE IA </h3>
             </div>
     
