@@ -20,6 +20,9 @@ import { MiCuentaComponent } from './auth/mi-cuenta/mi-cuenta.component';
 import { FavoritosComponent } from './enciclopedia/favoritos/favoritos.component';
 import { AsistenteIAComponent } from './asistente-ia/asistente-ia.component';
 import { SanitizeTextPipePipe } from './asistente-ia/sanitize-text-pipe';
+import { CarritoComponent } from './shop/carrito/carrito.component';
+import { LayoutTiendaComponent } from './shop/layout-tienda/layout-tienda.component';
+import { ProductosComponent } from './shop/productos/productos.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -32,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'micuenta', component: MiCuentaComponent },
   // agregando seccion IA
   { path: 'asistente-ia', component: AsistenteIAComponent},
-  // { path: 'dashboard', component: DashboardComponent },
+  { path: 'tienda', component: LayoutTiendaComponent },
   { path: '**', component: HomeComponent },
 ];
 
@@ -52,7 +55,10 @@ const appRoutes: Routes = [
     MiCuentaComponent,
     FavoritosComponent,
     AsistenteIAComponent,
-    SanitizeTextPipePipe
+    SanitizeTextPipePipe,
+    CarritoComponent,
+    LayoutTiendaComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,

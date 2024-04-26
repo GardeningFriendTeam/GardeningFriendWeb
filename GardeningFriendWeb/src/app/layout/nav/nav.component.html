@@ -9,9 +9,6 @@
     <li id="consejos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/consejo"> CONSEJOS</a>
     </li>
-    <li id="ventas" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
-        <a routerLink="/tienda">TIENDA</a>
-    </li>
     <li id="favoritos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/favoritos">FAVORITOS</a>
     </li>
@@ -23,6 +20,9 @@
     </li>
     <li id="asistenteIA" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/asistente-ia"> ASISTENTE IA </a>
+    </li>
+    <li id="tienda" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/tienda"> TIENDA </a>
     </li>
 </nav>
 <router-outlet></router-outlet>
