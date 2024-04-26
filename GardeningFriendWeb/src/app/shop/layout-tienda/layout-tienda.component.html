@@ -1,5 +1,5 @@
 <div id="carrito_wrapper">
-    <img src="../../../assets/icono-ventas.png" id="icono_carrito" alt="icono_carrito" (click)="abrirCarrito()">
+    <img src="../../../assets/iconos/icono-ventas.png" id="icono_carrito" alt="icono_carrito" (click)="abrirCarrito()">
 </div>
 
 <div id="grid_principal" [ngClass]="getScreenSize()">
@@ -36,11 +36,11 @@
                 <!-- botones de compra y detalles-->
                 <div class="boton_wrapper">
                     <button type="button" class="boton_producto" (click)="comprarProducto($event)" id="btn_compra">
-                        <img src="../../../assets/imagenes-tienda/shopping-icon-20px.png" alt="icon">
+                        <img src="../../../assets/iconos/shopping-icon-20px.png" alt="icon">
                         Comprar
                     </button>
                     <button type="button" class="boton_producto" (click)="verDetalles($event)"> 
-                        <img src="../../../assets/imagenes-tienda/info-icon-20px.png" alt="icon" id="btn_detalles">
+                        <img src="../../../assets/iconos/info-icon-20px.png" alt="icon" id="btn_detalles">
                         Detalles
                     </button>
                 </div>
@@ -51,7 +51,7 @@
             <div class="cuadro_compra">
                 <!-- cerrar -->
                 <div class="barra_cerrar">
-                    <img src="../../../assets/icono-cerrar.png" alt="cerrar" (click)="cerrarModalCompra()">
+                    <img src="../../../assets/iconos/invalid-icon.png" alt="cerrar" (click)="cerrarModalCompra()">
                 </div>
                 <!-- logo -->
                 <div class="logo_producto">
@@ -97,11 +97,11 @@
             <div class="cuadro_compra" id="formas_pago_form">
                 <!-- cerrar -->
                 <div class="barra_cerrar">
-                    <img src="../../../assets/icono-cerrar.png" alt="cerrar" (click)="cerrarMetodosPago()">
+                    <img src="../../../assets/iconos/invalid-icon.png" alt="cerrar" (click)="cerrarMetodosPago()">
                 </div>
                 <!-- logo -->
                 <div class="logo_producto">
-                    <img src="../../../assets/isologo.png" alt="logo-pagina" class="isologo_modales">
+                    <img src="../../../assets/logos/isologo.png" alt="logo-pagina" class="isologo_modales">
                 </div>
                 <!-- formulario (formas de pago)-->
                 <form class="formulario" [formGroup]="cajaValidacion" (ngSubmit)="onSubmit()">
@@ -128,13 +128,13 @@
                             <label for="codigo"> <b>Introduce el código de seguridad de la tarjeta:</b> </label> <br>
                             <img [src]="cambiarIconoSrc(cajaValidacion.controls['InputCodSegTarjeta'], codigoSeguridadRegex)" class="icono_validacion">
                             <input type="number" name="codigo" formControlName="InputCodSegTarjeta">
-                            <img src="../../../assets/imagenes-tienda/card-sample.png" class="icono_tarjeta" (click)="modalCodigo()"> <br>
+                            <img src="../../../assets/iconos/card-sample.png" class="icono_tarjeta" (click)="modalCodigo()"> <br>
                             <p class="mensaje_error" *ngIf="mostrarError(cajaValidacion.controls['InputCodSegTarjeta'])">solo debe contener 3 numeros!</p>
                             <!-- fecha expiración -->
                             <label for="expiracion"><b>Selecciona la fecha de expiración:</b></label> <br>
                             <img [src]="cambiarIconoSrc(cajaValidacion.controls['InputExpTarjeta'], expiracionRegex)" class="icono_validacion">
                             <input type="month" name="expiracion" formControlName="InputExpTarjeta">
-                            <img src="../../../assets/imagenes-tienda/card-sample.png" class="icono_tarjeta" (click)="modalExpiracion()"> <br> 
+                            <img src="../../../assets/iconos/card-sample.png" class="icono_tarjeta" (click)="modalExpiracion()"> <br> 
                             <hr>
                         </div>
                         <!-- transferencia -->
@@ -160,13 +160,13 @@
                             <label for="codigo_billetera"> <b>Introduce el código de seguridad de la tarjeta:</b> </label> <br>
                             <img [src]="cambiarIconoSrc(cajaValidacion.controls['InputCodSegBilletera'], codigoSeguridadRegex)" class="icono_validacion">
                             <input type="number" name="codigo_billetera" formControlName="InputCodSegBilletera">
-                            <img src="../../../assets/imagenes-tienda/card-sample.png" class="icono_tarjeta" (click)="modalCodigo()"> <br>
+                            <img src="../../../assets/iconos/card-sample.png" class="icono_tarjeta" (click)="modalCodigo()"> <br>
                             <p class="mensaje_error" *ngIf="mostrarError(cajaValidacion.controls['InputCodSegBilletera'])">solo debe contener 3 numeros!</p>
                             <!-- fecha expiración -->
                             <label for="expiracion_billetera"><b>Selecciona la fecha de expiración:</b></label> <br>
                             <img [src]="cambiarIconoSrc(cajaValidacion.controls['InputExpBilletera'], expiracionRegex)" class="icono_validacion">
                             <input type="month" name="expiracion_billetera" formControlName="InputExpBilletera">
-                            <img src="../../../assets/imagenes-tienda/card-sample.png" class="icono_tarjeta" (click)="modalExpiracion()"> <br> 
+                            <img src="../../../assets/iconos/card-sample.png" class="icono_tarjeta" (click)="modalExpiracion()"> <br> 
                             <hr>
                         </div>
 
@@ -215,7 +215,7 @@
 
                         <!-- mensaje error -->
                         <div id="error_formulario" *ngIf="noHayMedioPago || errorInputs">
-                            <img src="../../../assets/imagenes-tienda/error-icon.gif" alt="error">
+                            <img src="../../../assets/iconos/error-icon.gif" alt="error">
                             <p> Hay errores y/o campos incompletos en el formulario, revisa tus datos!</p> <br>
                         </div>
                     </div>
@@ -230,30 +230,30 @@
         <div class="lightbox" *ngIf="mostrarEjemploCodigo" [ngClass]="getScreenSize()">
             <div class="modal_ejemplo">
                 <div class="barra_cerrar_modal">
-                    <img src="../../../assets/icono-cerrar.png" id="cerrar_modal_1" (click)="modalCodigo()">
+                    <img src="../../../assets/iconos/invalid-icon.png" id="cerrar_modal_1" (click)="modalCodigo()">
                 </div>
-                <img src="../../../assets/imagenes-tienda/image-card-sample-1.png" alt="ejemplo">
+                <img src="../../../assets/iconos/image-card-sample-1.png" alt="ejemplo">
             </div>
         </div>
         <!-- ejemplo modal (fecha expiracion)-->
         <div class="lightbox" *ngIf="mostrarEjemploExpiracion" [ngClass]="getScreenSize()">
             <div class="modal_ejemplo">
                 <div class="barra_cerrar_modal">
-                    <img src="../../../assets/icono-cerrar.png" id="cerrar_modal_1" (click)="modalExpiracion()">
+                    <img src="../../../assets/iconos/invalid-icon.png" id="cerrar_modal_1" (click)="modalExpiracion()">
                 </div>
-                <img src="../../../assets/imagenes-tienda/image-card-sample-2.png" alt="ejemplo">
+                <img src="../../../assets/iconos/image-card-sample-2.png" alt="ejemplo">
             </div>
         </div>
         <!-- modal - compra realizada con exito! -->
         <div class="lightbox" *ngIf="compraRealizada" [ngClass]="getScreenSize()">
             <div class="finalizar_compra">
                 <div class="cerrar_modal_final">
-                    <img src="../../../assets/icono-cerrar.png" alt="cerrar" (click)="cerrarValidarCompra()">
+                    <img src="../../../assets/iconos/invalid-icon.png" alt="cerrar" (click)="cerrarValidarCompra()">
                 </div>
                 <div class="contenido_modal_final">
-                    <img src="../../../assets/imagenes-tienda/delivery-icon.gif" alt="delivery">
+                    <img src="../../../assets/iconos/delivery-icon.gif" alt="delivery">
                     <div class="titulo">
-                        <img src="../../../assets/imagenes-tienda/done-icon.png" id="done_icon" alt="done">
+                        <img src="../../../assets/iconos/done-icon.png" id="done_icon" alt="done">
                         <h3 *ngIf="!pagoTransferencia">Compra realizada con exito</h3>
                         <h3 *ngIf="pagoTransferencia">Se esta validando tu transferencia</h3>
                     </div>
