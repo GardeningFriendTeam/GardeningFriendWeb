@@ -19,12 +19,12 @@ export class FavoritosComponent {
 
 
   get cultivosToFavorito(): Cultivo[] {
-    return this.cultivosService.cultivoFavorito;
+    return this.cultivosService.getFavorites();
   }
 
-  removeFavorito(index:number){
+  removeFavorito(index: number) {
     this.cultivosService.cultivoFavorito.splice(index, 1);
-    this.alertText = 'El Cultivo se elimino de Favoritos';
+    this.alertText = 'El Cultivo se eliminó de Favoritos';
     this.activeCover = !this.activeCover;
     this.activeAlert = !this.activeAlert;
   }
