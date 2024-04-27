@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GeminiTextService } from './gemini-text.service';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GeminiImgService } from './gemini-img.service';
+import { SanitizeTextPipe } from './sanitize-text.pipe';
 
 @Component({
   selector: 'app-asistente-ia',
