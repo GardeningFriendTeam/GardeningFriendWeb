@@ -1,0 +1,9 @@
+# Ignora la carpeta node_modules y .angular
+GardeningFriendWeb/.angular/
+GardeningFriendWeb/node_modules/
+
+# Ignora los archivos relacionados a API keys
+.env
+
+# Ignora GardeningFriendWeb por ahora
+GardeningFriendWeb
