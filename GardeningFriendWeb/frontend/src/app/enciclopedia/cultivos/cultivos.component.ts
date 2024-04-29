@@ -33,7 +33,7 @@ export class CultivosComponent {
       espacioPlantas: 24,
     },
     { 
-      id: 1,
+      id: 2,
       nombre: "Cebolla",
       imagen: "./assets/cultivos/cebolla.png",
       tipo: "Vegetal",
@@ -48,7 +48,7 @@ export class CultivosComponent {
       espacioPlantas: 24,
     },
     { 
-      id: 2,
+      id: 3,
       nombre: "Ajo",
       imagen: "./assets/cultivos/ajo.png",
       tipo: "Vegetal",
@@ -63,7 +63,7 @@ export class CultivosComponent {
       espacioPlantas: 24,
     },
     { 
-      id: 3,
+      id: 4,
       nombre: "Lechuga",
       imagen: "./assets/cultivos/lechuga.png",
       tipo: "Vegetal",
@@ -78,7 +78,7 @@ export class CultivosComponent {
       espacioPlantas: 24,
     },
     { 
-      id: 4,
+      id: 5,
       nombre: "Albahaca",
       imagen: "./assets/cultivos/albahaca.png",
       tipo: "Aromática",
@@ -136,19 +136,18 @@ export class CultivosComponent {
   }
 
   //Comprueba si el cultivo esta en favoritos y si no lo agrega
-  addToFavorito(cultivo:Cultivo){
-    if(!this.cultivosService.readyInFavoritos.includes(cultivo)){
-      this.cultivosService.cultivoFavorito.push(cultivo);
-      this.cultivosService.readyInFavoritos.push(cultivo);
+  addToFavorito(cultivo: Cultivo) {
+    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id === cultivo.id);
+    if (!alreadyInFavorites) {
+      this.cultivosService.addToFavorites(cultivo);
       this.alertText = 'El Cultivo fue agregado en Favoritos';
-      this.activeAlert = !this.activeAlert;
-      this.activeCover = !this.activeCover;
-    }else{
+    } else {
       this.alertText = 'El Cultivo ya se encuentra en Favoritos';
-      this.activeAlert = !this.activeAlert;
-      this.activeCover = !this.activeCover;
     }
+    this.activeAlert = !this.activeAlert;
+    this.activeCover = !this.activeCover;
   }
+
 
   // muestra la información agregando el cultivo a infoCultivo
   showInfo(info:Cultivo){

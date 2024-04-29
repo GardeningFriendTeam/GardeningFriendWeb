@@ -1,0 +1,24 @@
+<div class="carrito_wrapper">
+    <!-- barra titulo -->
+    <div class="barra_desc">
+        <h4>Lista productos seleccionados</h4>
+    </div>
+    <!-- listado productos -->
+    <div class="productos_wrapper">
+        <figure class="productos" *ngFor="let producto of seleccion">
+            <div class="imagen_wrapper">
+                <img [src]="producto.images">
+            </div>
+            <div class="detalles_wrapper">
+                <h5>{{producto.name}}</h5>
+                <p>Cantidad: <b>{{producto.cantidad}}</b></p>
+                <p>Precio Total: <b>${{producto.precioTotal}}</b></p>
+            </div>
+        </figure>
+    </div>
+    <!-- botones (terminar compra & cerrar) -->
+    <div class="botones_wrapper">
+        <button type="button" (click)="enviarTotales()">Terminar compra</button>
+        <button type="button" (click)="cerrarCarrito()">Cerrar</button>
+    </div>
+</div>

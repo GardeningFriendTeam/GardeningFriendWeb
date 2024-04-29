@@ -15,7 +15,7 @@ Nombre completo y cuenta de GitHub:
 
 ## <img width="35" height="35" src="https://img.icons8.com/3d-fluency/94/document.png" alt="document"/> Documentación:
 Estos archivos también estan en la carpeta "documentacion" en la rama main.
-- [Link para acceder a documentacion](https://drive.google.com/drive/folders/1DxSF07uzM_Idy4KXO7mesutbPMTGNNzI)
+- [Link para acceder a documentacion](https://drive.google.com/drive/folders/1ElyiwkHhA8MS8Jq264oKIw7NhO5fg4vk?usp=drive_link)
 
 ## <img width="35" height="35" src="https://img.icons8.com/fluency/48/info.png" alt="info"/> Información del proyecto:
 

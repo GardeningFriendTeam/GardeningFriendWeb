@@ -1,0 +1,54 @@
+<section>
+    <div id="ai_div">
+        
+        <div id="title_div">
+            <!-- animated icons -->
+            <div id="icons_wrapper">
+                <!-- main one -->
+                <img src="../../assets/iconos/icons8-chatbot.gif" alt="robot_icon" id="robot_icon" (click)="showDialogIA()">
+                <!-- displayed when the main one is hovered -->
+                <img src="../../assets/iconos/dialog-IA.png" alt="dialog_ia" id="dialog_ia" *ngIf="flagDialog">
+            </div>
+            <!-- title -->
+            <h3> ASISTENTE IA </h3>
+        </div>
+
+        
+        <div id="question_div">  
+            <!-- general questions - text input -->              
+            <div class="wrapper">
+                <p for="input_ia">Ingresa tu consulta: </p>
+            </div>
+            <!-- button that triggers the request -->
+            <div id="input_div">
+                <input type="text" id="input_ia" [(ngModel)]="prompt">
+                <input type="button" (click)="onUserInput()" value="OK" id="ok_btn">
+            </div>
+        </div>
+
+        <div id="image_feedback_div">
+            <!-- description -->
+            <p>preguntale a la IA que opina de tu cultivo!</p>
+            <!-- enables the user to select image -->
+            <input type="file" (change)="getFile($event)" id="select_img_btn">
+            <!-- displays the selected image -->
+            <!-- <img [src]="imagePreview" *ngIf="imagePreview" alt="Selected Image" id="image_preview"> -->
+        </div>
+
+        <div id="wait_response">
+            <p>Respuesta de la IA (puede demorar unos segundos):</p>
+            <button id="text_to_speech">
+                <img src="../../assets/iconos/icons8-voice-50.png" alt="text_to_speech_icon" id="text_to_speech_icon" (click)="textToSpeech()">
+            </button>
+        </div>
+
+        <div id="response_div">
+            <!-- process the response once the async request is finished -->
+            <p id="response_title">La respuesta se mostrara aquí</p>
+            <div *ngFor="let results of questions">
+                <p id="response_result">{{results.result}}</p>
+            </div>
+        </div>
+
+    </div>
+</section>

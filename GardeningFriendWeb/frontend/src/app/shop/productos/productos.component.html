@@ -1,0 +1,27 @@
+<div class="modal_detalles">
+    <!-- titulo -->
+    <div class="titulo_wrapper">
+        <h4>Detalles de Producto</h4>
+    </div>
+    <!-- descripcion -->
+    <div class="descripcion_detalles">
+        <div id="logo_wrapper">
+            <img [src]="this.prodSeleccionado.images" alt="isologo">
+        </div>
+        <ul>
+            <!-- se cargan los datos desde la API -->
+            <li>Nombre: <b>{{this.prodSeleccionado.name}}</b> </li>
+            <li>Categoría: <b>{{this.prodSeleccionado.categoria}}</b> </li>
+            <li>Peso: <b> {{this.prodSeleccionado.peso}} </b> </li>
+            <li>Dimensión: <b>{{this.prodSeleccionado.dimensiones}}</b> </li>
+            <li>Stock: <b> {{this.prodSeleccionado.stock}} </b> </li>
+        </ul>
+    </div>
+    <!-- boton cerrar -->
+    <div class="btn_wrapper">
+        <button type="button" (click)="cerrarModal()">
+            cerrar
+        </button>
+    </div>
+</div>
+

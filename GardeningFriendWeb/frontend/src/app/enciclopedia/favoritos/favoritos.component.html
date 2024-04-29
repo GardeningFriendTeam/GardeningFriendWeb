@@ -1,39 +1,39 @@
 <div class="cover" [class.active]="activeCover"></div>
 
 <div class="container">
-<h1 class="my-garden">Mi Jardín</h1>
+    <h1 class="my-garden">Mi Jardín</h1>
 
-<h2 class="titulo-h2">Favoritos</h2>
-<hr class="linea">
+    <h2 class="titulo-h2">Favoritos</h2>
+    <hr class="linea">
 
-<div class="alertSembrar" [class.active]="activeAlert">
-    <p>{{ alertText }}</p>
-    <button (click)="showAlert()">Vale!</button>
-</div>
-<section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">
-
-    
-    <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id}}">
-        <span class="info" (click)="showInfo(favorito)">i</span>
-        <div class="imagen_wrapper">
-            <img [src]="favorito.imagen" alt="icono">
-        </div>
-        <div class="title">
-            <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
-        </div>
-        <div class="category">
-            <p> <u>Categoría:</u> {{favorito.tipo}}</p>
-        </div>
-        <div class="botones">
-            <button (click)="removeFavorito(i)" type="button" class="favoritos">FAVORITOS X</button>
-        </div>
+    <div class="alertFavorite" [class.active]="activeAlert">
+        <p>{{ alertText }}</p>
+        <button (click)="showAlert()">Vale!</button>
     </div>
+    <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">
 
-</section>
+        
+        <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id}}">
+            <div class="imagen_wrapper">
+                <img [src]="favorito.imagen" alt="icono">
+            </div>
+            <div class="title">
+                <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
+            </div>
+            <div class="category">
+                <p> <u>Categoría:</u> {{favorito.tipo}}</p>
+            </div>
+            <div class="botones">
+                <button (click)="showInfo(favorito)" type="button" class="moreInfo">MAS INFO</button>
+                <button (click)="removeFavorito(i)" type="button" class="favoritos">FAVORITOS X</button>
+            </div>
+        </div>
 
-<ng-template #elseFavorite>
-    <p style="font-size: 24px; font-weight: bold; color: antiquewhite; text-align: center; margin: 100px 0; font-family: secundaria1;">No hay ningún cultivo agregado a favoritos.</p>
-</ng-template>
+    </section>
+
+    <ng-template #elseFavorite>
+        <p style="font-size: 24px; font-weight: bold; color: antiquewhite; text-align: center; margin: 100px 0; font-family: secundaria1;">No hay ningún cultivo agregado a favoritos.</p>
+    </ng-template>
 
 </div>
 

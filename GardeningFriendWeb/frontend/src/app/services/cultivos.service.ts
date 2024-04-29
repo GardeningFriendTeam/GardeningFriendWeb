@@ -12,7 +12,17 @@ export class CultivosService {
   
   cultivoFavorito: Cultivo[] = [];
 
-  readyInFavoritos: Cultivo[] = [];
+  addToFavorites(cultivo: Cultivo) {
+    if (!this.cultivoFavorito.includes(cultivo)) {
+      this.cultivoFavorito.push(cultivo);
+      return true; // Indica que se agrego
+    }
+    return false; // Indica que el cultivo ya esta en favoritos
+  }
+
+  getFavorites() {
+    return this.cultivoFavorito;
+  }
 
   constructor(private http:HttpClient) { }
 

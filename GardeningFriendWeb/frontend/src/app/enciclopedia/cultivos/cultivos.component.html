@@ -17,14 +17,13 @@
     </div>
     
     <!-- Alerta de sembrado de cultivos o agregados a favoritos -->
-    <div class="alertSembrar" [class.active]="activeAlert">
+    <div class="alertFavorite" [class.active]="activeAlert">
         <p>{{ alertText }}</p>
         <button (click)="showAlert()">Vale!</button>
     </div>
     
     <!-- div con directiva ngFor que muestra los cultivo que se obtienen de una api rest -->
     <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id}}">
-        <span class="info" (click)="showInfo(cultivo)">i</span>
         <div class="imagen_wrapper">
             <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
         </div>
@@ -35,6 +34,7 @@
             <p> <u>Categoría:</u> {{cultivo.tipo}} </p>
         </div>
         <div class="botones">
+            <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
             <button (click)="addToFavorito(cultivo)" type="button" class="favoritos"> A FAVORITOS ★</button>
         </div>
     </div>

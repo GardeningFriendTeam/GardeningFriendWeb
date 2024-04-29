@@ -1,33 +1,30 @@
-export interface registroModel {
+export interface singupModel {
     email: string;
-    username: string;
-    name: string;
-    confirmPassword: string;
+    nombre: string;
+    confirm_password: string;
     password: string;
-    birth_date: string;
-}
-
-export interface AuthResData {
+  }
+  
+  export interface AuthResData {
     user_id?: string;
-    email?: string;
+    email: string;
     nombre?: string;
-    nombreusuario?: string,
-    token?:string;
-    is_admin?:boolean;
-}
-
-export interface loginModel {
+    token?: string;
+    is_admin?: boolean;
+  }
+  
+  export interface loginModel {
     email: string;
     password: string;
-}
-
-export class User {
+  }
+  
+  export class User {
     constructor(
-        public id?: string,
-        public email?: string,
-        public nombre?: string,
-        public nombreusuario?: string,
-        public token?: string,
-        public is_admin?: boolean
+      public id?: string,
+      public email?: string,
+      public nombre?: string,
+      public token?: string,
+      public is_admin?: boolean
     ) {}
-}
+  }
+  

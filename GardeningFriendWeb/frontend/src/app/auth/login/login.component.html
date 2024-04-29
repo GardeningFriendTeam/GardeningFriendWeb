@@ -1,35 +1,35 @@
 <body>
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <form [formGroup]="loginForm">
         <div class="form">
             <img src="../../assets/logos/isologo.png" />
             <h1>Iniciar sesión</h1>
             <div class="grupo">
-                <input formControlName="email" class="form-control"
-                [ngClass]="{ 'is-valid': loginForm.get('email')?.valid, 'is-invalid': loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) }" /><span
+                <input formControlName="email" [(ngModel)]="user.email" type="email" name="" id="email" required class="form-control"
+                    [ngClass]="{ 'is-valid': email.valid, 'is-invalid': email.invalid && (email.dirty || email.touched) }" /><span
                     class="barra"></span>
-                <label for="email">Email</label>
-                <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="alert alert-danger" class="alert alert-danger">
+                <label for="">Email</label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
 
-                    <div *ngIf="loginForm.get('email')?.errors?.['required']">
+                    <div *ngIf="email.errors?.['required']">
                         El email es requerido.
                     </div>
-                    <div *ngIf="loginForm.get('email')?.errors?.['email']">
+                    <div *ngIf="email.errors?.['email']">
                         El email debe tener un formato válido.
                     </div>
 
                 </div>
             </div>
             <div class="grupo">
-                <input formControlName="password" class="form-control"
-                [ngClass]="{ 'is-valid': loginForm.get('password')?.valid, 'is-invalid': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) }" /><span
+                <input formControlName="password" [(ngModel)]="user.password" type="password" name="" id="password" required class="form-control"
+                    [ngClass]="{ 'is-valid': password.valid, 'is-invalid': password.invalid && (password.dirty || password.touched) }" /><span
                     class="barra"></span>
-                <label for="password">Password</label>
-                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="alert alert-danger">
+                <label for="">Password</label>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
 
-                    <div *ngIf="loginForm.get('password')?.errors?.['required']">
+                    <div *ngIf="password.errors?.['required']">
                         El password es requerido.
                     </div>
-                    <div *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                    <div *ngIf="password.errors?.['minlength']">
                         La contraseña debe tener al menos 8 caracteres.
                     </div>
 
