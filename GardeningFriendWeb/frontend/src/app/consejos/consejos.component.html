@@ -1,6 +1,21 @@
-<section>
-    <div class="cards" *ngFor="let consejo of consejos; let i index">
-        <div class="card">
+<section class="section-container">
+    <div class="filtro">
+        <div class="title-cards">
+            <h2>Consejos</h2>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filtrar por Categoría
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li *ngFor="let categoria of obtenerCategorias()">
+                        <a class="dropdown-item" (click)="filtrarPorCategoria(categoria)">{{categoria}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="cards">
+        <div class="card" *ngFor="let consejo of consejosFiltrados; let i=index">
             <figure>
                 <img src="{{consejo.image}}" alt="img_consejo">
             </figure>
@@ -10,7 +25,6 @@
                 <div class="d-grid gap-2">
                     <a class="btn btn-outline-success" href="{{consejo.link}}" role="button">Ir al artículo</a>
                 </div>
-
             </div>
         </div>
     </div>
