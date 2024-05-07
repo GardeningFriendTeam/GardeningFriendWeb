@@ -1,110 +1,62 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {jwtDecode} from 'jwt-decode';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthResData, User, loginModel } from '../models/auth.model';
+import { catchError, map } from 'rxjs/operators';
+import { AuthResData, loginModel } from '../models/auth.model';
+import { Observable, throwError } from 'rxjs';
 
+const loginUrl = 'http://localhost:8000/api/login/';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<User | null>(null);
+  constructor(private http: HttpClient) { }
 
-  constructor(
-    private http: HttpClient,
-    private router: Router 
-  ) { }
+  login(credenciales: loginModel): Observable<AuthResData> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
 
-  login(account: loginModel) {
-    return this.http
-    .post<AuthResData>('http://localhost:8000/api/v1/account/login', account)
-    .pipe(
-      catchError((error: HttpErrorResponse) => this.handleError(error)),
-      tap((res) => {
-        this.handleAuth(res);
-      })
-    );
-  }
-
-  autologin() {
-    const userData: AuthResData = JSON.parse(
-      localStorage.getItem('user') || ''
-    );
-
-    if(!userData){
-      return;
-    }
-
-    const loadedUser = new User(
-      userData.user_id ?? '',
-      userData.email ?? '',
-      userData.nombre ?? '',
-      userData.token ?? '',
-      userData.is_admin ?? false
-    );
-
-    this.user.next(loadedUser);
-    return;
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    console.log(error);
-    let errorMessage = 'An unknown error occurred';
-    if (!error.error) {
-      return throwError(() => errorMessage);
-    }
-    if (error.error.non_field_errors) {
-      errorMessage = error.error.non_field_errors[0];
-    }
-    if (error.error.email) {
-      errorMessage = error.error.email[0];
-    }
-    if (error.error.username) {
-      errorMessage = error.error.username[0];
-    }
-    return throwError(() => errorMessage);
-  }
-
-  private handleAuth(res: AuthResData) {
-    const user = new User(
-      res.user_id ?? '',
-      res.email ?? '',
-      res.nombre ?? '',
-      res.token ?? '',
-      res.is_admin ?? false
-    );
-    this.user.next(user);
-    localStorage.setItem('user', JSON.stringify(user));
-  }
-
-  getUserId(): string {
-    const userData: User | null = JSON.parse(
-      localStorage.getItem('user') || '{}'
-    );
-
-    if (userData && userData.id) {
-      return userData.id;
-    }
-
-    return '';
-  }
-
-  isLoggedIn(): boolean {
-    return this.user.value !== null;
-  }
-
-  isAdmin(): boolean {
-    const userData: User | null = JSON.parse(
-      localStorage.getItem('user') || '{}'
-    );
-
-    return (userData && userData?.is_admin) ?? false;
+    return this.http.post<AuthResData>(loginUrl, credenciales, httpOptions)
+      .pipe(
+        map(response => {
+          if (response.token) {
+            localStorage.setItem('access_token', response.token);
+            return response;
+          } else {
+            throw new Error('Credenciales de inicio de sesión inválidas');
+          }
+        }),
+        catchError(this.handleError)
+      );
   }
 
   logout() {
-    this.user.next(null);
-    localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('access_token');
   }
 
+  private handleError(error: any) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = 'Se produjo un error: ' + error.error.message;
+    } else {
+      errorMessage = `El backend devolvió el código ${error.status}: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+
+  isTokenValid(token: string): boolean {
+    try {
+      const decodedToken: any = jwtDecode(token); 
+      if (!decodedToken || !decodedToken.exp) {
+        return false; 
+      }
+      const expirationDate: Date = new Date(decodedToken.exp * 1000); 
+      return expirationDate.valueOf() > Date.now(); 
+    } catch (error) {
+      console.error("Error al decodificar el token:", error);
+      return false; 
+    }
+  }
 }

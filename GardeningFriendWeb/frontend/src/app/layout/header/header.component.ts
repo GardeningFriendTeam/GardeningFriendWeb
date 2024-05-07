@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -6,13 +7,13 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements  OnInit {
   isAuthenticated: boolean = false;
 
-  constructor(private authService: AuthService) {
-    this.authService.user.subscribe(user => {
-      this.isAuthenticated = !!user;
-    });
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
   }
 
   logout() {

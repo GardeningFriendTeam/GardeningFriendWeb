@@ -1,54 +1,40 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../user.model';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { AuthResData, loginModel } from 'src/app/models/auth.model';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  user: User = {
-    id: 0,
-    username: '',
-    name: '',
-    email: '',
-    birth_date: '',
-    password: ''
-  };
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
+  user: loginModel = { email: '', password: '' };
+  errorMessage: string = '';
 
-  loginForm = this.formBuilder.group({
-    email: ["", [Validators.required, Validators.email]],
-    password: ["", [Validators.required, Validators.minLength(8)]],
-  })
-
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+    this.loginForm = this.formBuilder.group({ // Inicializa loginForm utilizando FormBuilder
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+   }
 
   ngOnInit(): void { }
 
-  get email() {
-    return this.loginForm.controls.email;
+  onSubmit() {
+    this.authService.login(this.user)
+      .subscribe(
+        (response) => {
+          // Iniciar sesión en la aplicación o navegar a la página protegida
+          console.log('Inicio de sesión exitoso!');
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.errorMessage = error.message;
+        }
+      );
   }
-  get password() {
-    return this.loginForm.controls.password;
-  }
-
-  // onSubmit(event: Event, usuario: User) : void{
-  //   if (this.loginForm.valid) {
-  //     console.log("Llamar al servicio de login");
-  //     event.preventDefault;
-  //     this.authService.login(this.user)
-  //     .subscribe(
-  //       data => {
-  //         console.log("DATA"+ JSON.stringify( data));   
-  //         this.router.navigate(['/home']);
-  //       }
-  //     );
-      
-  //   }
-  //   else {
-  //     this.loginForm.markAllAsTouched();
-  //   }
-  // }
 }
