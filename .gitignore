@@ -2,6 +2,6 @@
 GardeningFriendWeb/.angular/
 GardeningFriendWeb/node_modules/
 
-# Ignora los archivos relacionados a API keys
+# Ignora los archivos relacionados a API key
 
 # Ignora GardeningFriendWeb por ahora
