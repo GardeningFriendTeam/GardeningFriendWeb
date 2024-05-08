@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1', include('perfil.urls')),
     path('crear-usuario/', views.CreateUserView.as_view(), name='crear_usuario'),
+    path('cultivos/', include('cultivos.urls')),
 ]
