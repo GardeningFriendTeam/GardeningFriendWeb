@@ -1,6 +1,23 @@
-<section>
-    <div class="cards" *ngFor="let consejo of consejos; let i index">
-        <div class="card">
+<section class="section-container">
+    <div class="filtro">
+        <div class="title-cards">
+            <div class="dropdown">
+                <h2 class="custom-title">Filtrar por Categoría</h2>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li *ngFor="let categoria of obtenerCategorias()">
+                        <a class="dropdown-item" (click)="filtrarPorCategoria(categoria)">{{categoria}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a href="https://www.argentina.gob.ar/sites/default/files/planifica_tu_huerta.pdf" target="_blank">
+            <button>
+                <span>Planificador</span>
+            </button>
+        </a>
+    </div>
+    <div class="cards">
+        <div class="card" *ngFor="let consejo of consejosFiltrados; let i=index">
             <figure>
                 <img src="{{consejo.image}}" alt="img_consejo">
             </figure>
@@ -10,8 +27,8 @@
                 <div class="d-grid gap-2">
                     <a class="btn btn-outline-success" href="{{consejo.link}}" role="button">Ir al artículo</a>
                 </div>
-
             </div>
         </div>
     </div>
+
 </section>

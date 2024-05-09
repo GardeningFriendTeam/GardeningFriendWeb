@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'usuario',
     'rest_framework',
     'corsheaders',
-    'account',
+    'cultivos',
 ]
 
 MIDDLEWARE = [
