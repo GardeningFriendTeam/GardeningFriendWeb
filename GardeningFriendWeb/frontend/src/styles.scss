@@ -93,6 +93,18 @@ ol { padding-left: 1.4em; list-style: decimal; }
 ul { padding-left: 1.4em; list-style:square; }
 q:before, q:after { content:''; }
 
+/* Scroll Personalizado */
+
+body::-webkit-scrollbar {
+	width: 10px;
+	background: var(--verde3B);
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgba(255,255,255, .2);
+	border-radius: 10px;
+	border-right: 2px solid var(--verde3);
+}
 
    /* ------------------ ANIMACIONES PARA MODALES ------------------- */
 @keyframes rotate-vertical-center{

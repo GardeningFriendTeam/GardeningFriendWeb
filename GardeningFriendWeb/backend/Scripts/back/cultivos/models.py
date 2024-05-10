@@ -4,8 +4,9 @@ from django.db import models
 class Cultivo(models.Model):
     id_cultivo = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=45)
+    categoria = models.CharField(max_length=45)
     usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    descripcion = models.CharField(max_length=255)
+    descripcion = models.TextField()
     imagen = models.CharField(max_length=255)
     region = models.CharField(max_length=45)
     estacion_de_siembra = models.CharField(max_length=45)
