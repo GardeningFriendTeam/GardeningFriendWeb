@@ -6,6 +6,7 @@ class CultivoAdmin(admin.ModelAdmin):
     list =(
         'nombre', 
         'usuario', 
+        'categoria', 
         'imagen', 
         'descripcion', 
         'region', 
