@@ -33,11 +33,6 @@
             border-radius: 20px;
             transition: .3s all ease-in-out;
             
-            &:hover{
-                transform: translateX(2px);
-                transform: translateY(6px);
-                box-shadow: 8px 8px 8px 0px rgba(0,0,0,0.75);
-            }
             
             & .imagen_wrapper{
                 background-color: #368d36b0;
