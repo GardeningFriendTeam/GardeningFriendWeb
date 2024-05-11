@@ -20,13 +20,13 @@
         border-radius: 20px;
         margin:0;
         & .card {
-            height: 100%;
+            height: auto;
             max-width: 750px;
             margin: 5px auto;
             display: flex;
             flex-direction: column;
             border-radius: 20px 0px 0px 20px;
-            transition: .3s all ease-in-out;
+            margin:0;
             
             & .card_txt {
                 font-family: secundaria1;
@@ -38,16 +38,19 @@
             
             & .mockup{
                 margin: 0 auto;
-                width: 70%;
+                width: 80%;
                 text-align: center;
                 border-radius: 20px 20px 0px 0px;
                 margin-top: 4em;
             }
 
+            & .link {
+                text-align: center;
+            }
+
             & .playstore{
+                width: 45%;
                 padding-top: 1em;
-                margin: 0 auto;
-                width: 40%;
                 margin-top: 0;
                 margin-bottom: 0;
             }
@@ -59,6 +62,7 @@
                 text-align: center;
                 margin: 0 auto;
                 margin-top: 4em;
+                margin-bottom: 2em;
             }
             
             
@@ -67,12 +71,7 @@
             background-color: #368d36b0;
             margin-left:0;
          }
-         & .card:nth-child(2) {
-            padding-top: 20em;
-            & .card_txt {
 
-            }
-         }
     }
     
 }
@@ -81,41 +80,40 @@
 
 /*MEDIAS QUERY*/
 
-
-@media only screen and (max-height: 575.98px) and (orientation: landscape){
-    .container section{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        justify-content: space-around;
-    }
-}
-
-@media only screen and (min-width: 768px){
-    .container section{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        justify-content: space-around;
-    }
-}
-
-
-@media only screen and (min-width: 992px){
-    .container section{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        justify-content: space-around;
-    }
-}
-
-
-@media only screen and (min-width: 1400px){
-    .container section{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        justify-content: space-around;
+@media only screen and (max-width: 992px){
+    section.contact{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        align-items: baseline;
+        align-items: center;
+        background-color: #fff;
+        padding : 0;
+        & .card {
+            margin: 0 auto;
+            border-radius: 10px;
+            display: none;
+            
+            & .card_txt {
+                font-family: secundaria1;
+                font-weight: bold;
+                font-size: 0.4em;
+                text-align: center;
+                line-height: 1em;
+            }
+            
+            & .mockup{
+              display: none;
+            }
+            
+            
+        }
+        & .card:first-child {
+           display: none;
+        }
+        & .text-card {
+            padding: 1em;
+        }
+         
     }
 }
