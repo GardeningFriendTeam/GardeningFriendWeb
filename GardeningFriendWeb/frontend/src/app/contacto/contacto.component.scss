@@ -1,94 +1,65 @@
 .container{
     width: 100%;
-    max-width: 1980px;
+    max-width: 1920px;
     padding-bottom: 100px;
     padding-top: 50px;
     background-image: url('../../assets/fondos/wooden-background-4.jpg');
     background-position: center;
-    /* background-repeat: repeat-y; */
     background-size: cover;
-    
-    & .titulo-h2{
-        font-size: 32px;
-        font-weight: 400;
-        color: antiquewhite;
-        margin: 100px 5px 10px;
-        /* text-shadow: 2px 3px 2px darkgreen; */
-        font-family: secundaria3;
-    }
+    display: flex;
 
-
-    & section{
+    & section.contact{
         display: flex;
-        justify-content: center;
+        justify-content:space-around;
+        align-items: center;
         background-color: #fff;
-        max-width: 80% ;
+        max-width: 100% ;
+        width: 90%;
+        height: 80vh;
         margin: 0 auto;
         border-radius: 20px;
-        & .tarjeta {
-            max-width: 300px;
+        & .card {
+            margin:4em;
+            height: 100%;
+            max-width: 600px;
             margin: 30px auto;
             display: flex;
             flex-direction: column;
             border-radius: 20px;
             transition: .3s all ease-in-out;
             
+            & .card_txt {
+                font-family: secundaria1;
+                font-weight: bold;
+                font-size: 2em;
+            }
             
-            & .imagen_wrapper{
-                background-color: #368d36b0;
-                /* background-color: rgba(255, 255, 255, 0.226); */
-                padding: 10px 0;
-                width: 100%;
+            & .mockup{
+                margin: 0 auto;
+                width: 70%;
+                text-align: center;
+                border-radius: 20px 20px 0px 0p
+            }
+
+            & .playstore{
+                margin: 0 auto;
+                width: 80%;
                 text-align: center;
                 border-radius: 20px 20px 0px 0px;
-                
-                & img{
-                    width: 50%;
-                }
             }
-            
-            & .title{
-                background-color: #185218ba;
-                /* background-color: rgba(29, 89, 55, 0.374); */
-                text-align: center;
-                
-                & .titulos{
-                    color: antiquewhite;
-                    font-size: 32px;
-                    padding: 20px 0;
-                    font-family: var(--secundaria1);
-                }
-            }
-            
-            
-            
-            & .botones{
-                background-color: rgb(255, 255, 255);
-                border-radius: 0px 0px 20px 20px;
+            & .qr{
+                background-color: #368d36b0;
+                padding: 10px;
+                border-radius: 20px;
                 width: 100%;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                padding: 20px 0;
-                
-                & button{
-                    border: transparent;
-                    font-family: var(--secundaria3);
-                    border-radius: 20px;
-                    padding: 8px 8px;
-                    color: white;
-                    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
-                    transition: .3s all ease-in-out;
-                    cursor: pointer;
-                    
-                    &:hover{
-                        transform: translateX(5px);
-                        transform: translateY(5px);
-                        box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-                    }
-                }
+                text-align: center;
             }
+            
+            
         }
+         & .card:first-child {
+            background-color: #368d36b0;
+         }
     }
     
 }
