@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'perfil',
     'usuario',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'cultivos',
     'Aplicacion_web',
@@ -134,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Buenos_aires'
 
 USE_I18N = True
 
@@ -152,4 +153,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }

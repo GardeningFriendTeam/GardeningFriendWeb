@@ -27,7 +27,7 @@ class Pedido(models.Model):
     idpedido=models.IntegerField(primary_key=True)
     producto=models.CharField(max_length=45, verbose_name='Pedido')
     nombre=models.CharField(max_length=45, verbose_name='Nombre')
-    descripcion=models.Charfield(max_length=45, verbose_name='Descripción')
+    descripcion=models.CharField(max_length=45, verbose_name='Descripción')
     imagen=models.CharField(max_length=45)
     fecha=models.DateTimeField
     direccion_envio=models.CharField(max_length=45)
