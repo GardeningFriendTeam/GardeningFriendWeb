@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_gardeningfriend',
+        'NAME': 'gardeningfriend',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',  
