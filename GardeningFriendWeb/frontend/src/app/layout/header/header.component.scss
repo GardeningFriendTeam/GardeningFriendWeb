@@ -39,8 +39,8 @@ header {
         grid-row: 2 / 3;
         height: 80%;
         width: 80%;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: flex-end;
+        align-items: flex-end;
 
         & li {
             list-style: none;
