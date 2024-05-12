@@ -13,15 +13,15 @@
     <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">
 
         
-        <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id}}">
+        <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id_cultivo}}">
             <div class="imagen_wrapper">
                 <img [src]="favorito.imagen" alt="icono">
             </div>
             <div class="title">
-                <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
+                <h5 id="titulo_{{favorito.id_cultivo}}" class="titulos"> {{favorito.nombre}} </h5>
             </div>
             <div class="category">
-                <p> <u>Categoría:</u> {{favorito.tipo}}</p>
+                <p> <u>Categoría:</u> {{favorito.categoria}}</p>
             </div>
             <div class="botones">
                 <button (click)="showInfo(favorito)" type="button" class="moreInfo">MAS INFO</button>
@@ -39,20 +39,17 @@
 
 
 <!-- info de cada cultivo -->
+
+<!-- info de cada cultivo -->
 <div class="container-info" *ngIf="activeInfo">
     <span class="close" (click)="toggleInfo()">Close</span>
     <div *ngFor="let cultivo of infoCultivos" class="info-cultivo">
         <img [src]="cultivo.imagen">
         <p>Nombre del cultivo: <b>{{cultivo.nombre}}</b></p>
-        <p>Tipo de cultivo: <b>{{cultivo.tipo}}</b></p>
-        <p>El cultivo germina en <b>{{cultivo.germina}} días</b></p>
-        <p>El cultivo se puede cosechar en <b>{{cultivo.cosecha | convertDaysTo}}</b></p>
-        <p>Temporada para sembrar <b>{{cultivo.temporada}}</b></p>
-        <p>Temperatura máxima: <b>{{cultivo.temperaturaMax}}°C</b></p>
-        <p>Temperatura minima: <b>{{cultivo.temperaturaMin}}°C</b></p>
-        <p>Riego: <b>{{cultivo.riego}}</b></p>
-        <p>cantidad de luz solar: <b>{{cultivo.luz}}</b></p>
-        <p>Profundidad del sembrado: <b>{{cultivo.profundidadSembrado}} centímetros</b></p>
-        <p>Espacio entre cada planta: <b>{{cultivo.espacioPlantas}} centímetros</b></p>
+        <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
+        <p>Descripcion: <b>{{cultivo.descripcion}}</b></p>
+        <p>Region: <b>{{cultivo.region}}</b></p>
+        <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
+        <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}</b></p>
     </div>
 </div>

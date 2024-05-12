@@ -23,15 +23,15 @@
     </div>
     
     <!-- div con directiva ngFor que muestra los cultivo que se obtienen de una api rest -->
-    <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id}}">
+    <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id_cultivo}}">
         <div class="imagen_wrapper">
             <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
         </div>
         <div class="title">
-            <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
+            <h5 id="titulo_{{cultivo.id_cultivo}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
         </div>
         <div class="category">
-            <p> <u>Categoría:</u> {{cultivo.tipo}} </p>
+            <p> <u>Categoría:</u> {{cultivo.categoria}} </p>
         </div>
         <div class="botones">
             <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
@@ -45,18 +45,20 @@
 <div class="container-info" *ngIf="activeInfo">
     <span class="close" (click)="toggleInfo()">Close</span>
     <div *ngFor="let cultivo of infoCultivos" class="info-cultivo">
-        <img [src]="cultivo.imagen">
-        <p>Nombre del cultivo: <b>{{cultivo.nombre}}</b></p>
-        <p>Tipo de cultivo: <b>{{cultivo.tipo}}</b></p>
-        <p>El cultivo germina en <b>{{cultivo.germina}} días</b></p>
-        <p>El cultivo se puede cosechar en <b>{{cultivo.cosecha | convertDaysTo}}</b></p>
-        <p>Temporada para sembrar <b>{{cultivo.temporada}}</b></p>
-        <p>Temperatura máxima: <b>{{cultivo.temperaturaMax}}°C</b></p>
-        <p>Temperatura minima: <b>{{cultivo.temperaturaMin}}°C</b></p>
-        <p>Riego: <b>{{cultivo.riego}}</b></p>
-        <p>cantidad de luz solar: <b>{{cultivo.luz}}</b></p>
-        <p>Profundidad del sembrado: <b>{{cultivo.profundidadSembrado}} centímetros</b></p>
-        <p>Espacio entre cada planta: <b>{{cultivo.espacioPlantas}} centímetros</b></p>
+        <div class="info-header">
+            <img [src]="cultivo.imagen">
+            <p>{{cultivo.nombre}}</p>
+        </div>
+        <div class="info-descripcion">
+            <h6>Información:</h6>
+            <p>{{cultivo.descripcion}}</p>
+        </div>
+        <div class="info-others">
+            <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
+            <p>Region: <b>{{cultivo.region}}</b></p>
+            <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
+            <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}°C</b></p>
+        </div>
     </div>
 </div>
 

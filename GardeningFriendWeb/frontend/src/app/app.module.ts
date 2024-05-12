@@ -23,6 +23,7 @@ import { AsistenteIaComponent } from './asistente-ia/asistente-ia.component';
 import { CarritoComponent } from './shop/carrito/carrito.component';
 import { LayoutTiendaComponent } from './shop/layout-tienda/layout-tienda.component';
 import { ProductosComponent } from './shop/productos/productos.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -35,8 +36,10 @@ const appRoutes: Routes = [
   { path: 'micuenta', component: MiCuentaComponent },
   { path: 'asistenteIA', component: AsistenteIaComponent },
   { path: 'tienda', component: LayoutTiendaComponent },
+  { path: 'contacto', component: ContactoComponent },
   // { path: 'dashboard', component: DashboardComponent },
   { path: '**', component: HomeComponent }
+  
 ];
 
 @NgModule({
@@ -57,7 +60,8 @@ const appRoutes: Routes = [
     SanitizeTextPipe,
     CarritoComponent,
     LayoutTiendaComponent,
-    ProductosComponent
+    ProductosComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

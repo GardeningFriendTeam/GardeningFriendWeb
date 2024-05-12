@@ -37,20 +37,20 @@ header {
         display: flex;
         grid-column: 1 / span 2;  // Use span for multi-column elements
         grid-row: 2 / 3;
-        height: 100%;
-        width: 100%;
-        justify-content: flex-end;
+        height: 80%;
+        width: 80%;
+        justify-content: flex-start;
         align-items: flex-start;
 
         & li {
             list-style: none;
             font-family: secundaria4;
             background: var(--verde3B);
-            border-radius: 5px;
-            padding: 3px;
+            border-radius: 15px;
+            padding: 1px;
 
             & a {
-                color: white;
+                color: black;
                 text-decoration: none;
             }
         
@@ -63,12 +63,12 @@ header {
             list-style-image: url("../../../assets/iconos/icono-user-mini.png");
             list-style-position: outside;
             margin-left: 5px;
-            margin-right: 10px;
+            margin-right: 20px;
             text-align: center;
         }
         
         & #cerrar_sesion {
-            margin: 5px; // Combine margins for cleaner style
+            margin: 0px; // Combine margins for cleaner style
         }
     }
 }
