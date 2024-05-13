@@ -1,15 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl,FormControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { User } from '../user.model';
-// import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/authService';
 
 @Component({
-  selector: 'app-registro',
+  selector: 'app-register',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
+export class RegistroComponent {
+  username: string = '';
+  email: string = '';
+  password: string = '';
+
+  constructor(private authService: AuthService) {}
+
+  register() {
+    this.authService.register(this.username, this.email, this.password)
+      .subscribe(
+        response => {
+          console.log(response);
+          // Manejar la respuesta exitosa, por ejemplo, redirigir al usuario a otra página
+        },
+        error => {
+          console.error(error);
+          // Manejar el error, por ejemplo, mostrar un mensaje de error al usuario
+        }
+      );
+  }
+}
+// import { Component, OnInit } from '@angular/core';
+// import { AbstractControl,FormControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+// import { Router } from '@angular/router';
+// import { User } from '../user.model';
+// // import { Component } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+
+// @Component({
+//   selector: 'app-registro',
+//   templateUrl: './registro.component.html',
+//   styleUrls: ['./registro.component.scss']
+// })
 // export class RegistroComponent implements OnInit{
 //   userForm!: FormGroup;
 //   user: User = {
@@ -114,25 +143,51 @@ import { HttpClient } from '@angular/common/http';
 //   }
 // }
 
-export class RegistroComponent {
-  user = {
-    nombre: '',
-    email: '',
-    password: '',
-    confirm_password: ''
-  };
+// export class RegistroComponent {
+//   user = {
+//     nombre: '',
+//     email: '',
+//     password: '',
+//     confirm_password: ''
+//   };
 
-  constructor(private http: HttpClient) {}
+//   constructor(private http: HttpClient) {}
 
-  onSubmit() {
-    this.user.confirm_password = '';
-    this.http.post('http://localhost:8000/crear-usuario/', this.user).subscribe(
-      response => {
-        console.log('Usuario creado exitosamente', response);
-      },
-      error => {
-        console.error('Error al crear el usuario', error);
-      }
-    );
-  }
-}
+//   onSubmit() {
+//     this.user.confirm_password = '';
+//     this.http.post('http://localhost:8000/crear-usuario/', this.user).subscribe(
+//       response => {
+//         console.log('Usuario creado exitosamente', response);
+//       },
+//       error => {
+//         console.error('Error al crear el usuario', error);
+//       }
+//     );
+//   }
+// }
+
+// export class RegistroComponent {
+//   username: string = '';
+//   email: string = '';
+//   password: string = '';
+
+//   constructor(private http: HttpClient) {}
+
+//   registerUser() {
+//     this.http.post<any>('http://localhost:8000/register/', {
+//       username: this.username,
+//       email: this.email,
+//       password: this.password
+//     }).subscribe(
+//       response => {
+//         // Handle successful registration
+//         console.log(response);
+//         // Optionally, you can navigate to another page upon successful registration
+//       },
+//       error => {
+//         // Handle registration error
+//         console.error(error);
+//       }
+//     );
+//   }
+// }

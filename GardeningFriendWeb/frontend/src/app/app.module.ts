@@ -23,6 +23,7 @@ import { AsistenteIaComponent } from './asistente-ia/asistente-ia.component';
 import { CarritoComponent } from './shop/carrito/carrito.component';
 import { LayoutTiendaComponent } from './shop/layout-tienda/layout-tienda.component';
 import { ProductosComponent } from './shop/productos/productos.component';
+import { HttpClientXsrfModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -65,7 +66,11 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'csrftoken', // El nombre de la cookie que Django usa para el token CSRF
+      headerName: 'X-CSRFToken', // El nombre del encabezado que se enviará con el token CSRF
+    }),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

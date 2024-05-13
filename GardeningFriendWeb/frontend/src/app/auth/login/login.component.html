@@ -1,5 +1,5 @@
 <body>
-    <form [formGroup]="loginForm">
+    <!-- <form [formGroup]="loginForm">
         <div class="form">
             <img src="../../assets/logos/isologo.png" />
             <h1>Iniciar sesión</h1>
@@ -42,5 +42,34 @@
                 <a routerLink="/registro">Registrarse</a>
             </div>
         </div>
-    </form>
+    </form> -->
+    <h1>Iniciar sesión</h1>
+
+    <form (ngSubmit)="login()">
+        <div>
+          <label for="username">Nombre de usuario:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="username" required>
+        </div>
+        <div>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        </div>
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+    <!-- <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Iniciar sesión</button>
+    </form> -->
+    <!-- <form (submit)="login()">
+        <input type="email" placeholder="Email del usuario" [(ngModel)]="email" name="email" required>
+        <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+        <button type="submit">Iniciar sesión</button>
+    </form> -->
 </body>
