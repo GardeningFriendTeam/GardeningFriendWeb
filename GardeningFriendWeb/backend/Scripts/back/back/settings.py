@@ -55,10 +55,27 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # No se recomienda para producción
+# CORS_ALLOW_ALL_ORIGINS = True  # No se recomienda para producción
 # CORS_ALLOWED_ORIGINS=[
 #     'http://localhost',
 # ]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+]
+
+# CORDS
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+]
+
+CSRF_COOKIE_NAME = 'csrftoken'
 
 ROOT_URLCONF = 'back.urls'
 
@@ -147,3 +164,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://localhost:4200']
