@@ -44,12 +44,19 @@
 <div class="container-info" *ngIf="activeInfo">
     <span class="close" (click)="toggleInfo()">Close</span>
     <div *ngFor="let cultivo of infoCultivos" class="info-cultivo">
-        <img [src]="cultivo.imagen">
-        <p>Nombre del cultivo: <b>{{cultivo.nombre}}</b></p>
-        <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
-        <p>Descripcion: <b>{{cultivo.descripcion}}</b></p>
-        <p>Region: <b>{{cultivo.region}}</b></p>
-        <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
-        <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}</b></p>
+        <div class="info-header">
+            <img [src]="cultivo.imagen">
+            <p>{{cultivo.nombre}}</p>
+        </div>
+        <div class="info-descripcion">
+            <h6>Información:</h6>
+            <p>{{cultivo.descripcion}}</p>
+        </div>
+        <div class="info-others">
+            <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
+            <p>Region: <b>{{cultivo.region}}</b></p>
+            <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
+            <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}°C</b></p>
+        </div>
     </div>
 </div>
