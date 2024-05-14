@@ -1,22 +1,6 @@
-# from django.shortcuts import render
-# from rest_framework import generics
-# from .models import CustomUser
-# from .serializer import CustomUserSerializer
-
-# class CreateUserView(generics.CreateAPIView):
-#     queryset = CustomUser.objects.all()
-#     serializer_class = CustomUserSerializer
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
-from .models import CustomUser
-from .serializer import CustomUserSerializer
-# from django.contrib.auth import authenticate, login
-from django.contrib.auth import authenticate
-from rest_framework_simplejwt.views import TokenObtainPairView
-import json
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
@@ -39,35 +23,21 @@ def register_user(request):
     else:
         return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-#Aquí estan los cambios para que el usuario sea guardado en la tabla customuser:
 
-    # # Agregar la contraseña encriptada a los datos del usuario
-    #     user_data = {
-    #         'username': username,
-    #         'email': email,
-    #         'password': hashed_password,
-    #     }
-        
-    #     # Crear el usuario en la base de datos
-    #     user_serializer = CustomUserSerializer(data=user_data)
-    #     if user_serializer.is_valid():
-    #         user_serializer.save()
-    #         return Response({'message': 'User registered successfully'}, status=status.HTTP_201_CREATED)
-    #     else:
-    #         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # else:
-    #     return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+@api_view(['POST'])
+def login(request):
+    if request.method == 'POST':
+        username = request.data.get('username')
+        password = request.data.get('password')
 
-   
-# Create your views here.
+        try:
+            user = User.objects.get(username=username)
+            if check_password(password, user.password):
+                return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+    else:
+        return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
-
-class LoginView(APIView):
-    def post(self, request, *args, **kwargs):
-        user = authenticate(email=request.data.get('email'), password=request.data.get('password'))
-        if user is not None:
-            login(request, user)  # Opcional: Iniciar sesión al usuario en la sesión de solicitud
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key})
-        else:
-            return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
