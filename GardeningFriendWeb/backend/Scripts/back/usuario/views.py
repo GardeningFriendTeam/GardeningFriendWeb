@@ -33,7 +33,13 @@ def login(request):
         try:
             user = User.objects.get(username=username)
             if check_password(password, user.password):
-                return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+                is_admin = user.is_staff or user.is_superuser
+                return Response({
+                    "username": user.username,
+                    "user.id":user.id,
+                    "email": user.email,
+                    "is_admin":is_admin,
+                }, status=status.HTTP_200_OK)
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         except User.DoesNotExist:
