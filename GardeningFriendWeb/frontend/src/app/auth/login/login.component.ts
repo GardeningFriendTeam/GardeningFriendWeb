@@ -1,39 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthResData, loginModel } from 'src/app/models/auth.model';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  user: loginModel = { email: '', password: '' };
-  errorMessage: string = '';
+export class LoginComponent {
+  username: string = '';
+  password: string = '';
 
-  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
-    this.loginForm = this.formBuilder.group({ // Inicializa loginForm utilizando FormBuilder
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-   }
+  constructor(private authService: AuthService, private router:Router) {}
 
-  ngOnInit(): void { }
-
-  onSubmit() {
-    this.authService.login(this.user)
+  login() {
+    this.authService.login(this.username, this.password)
       .subscribe(
         (response) => {
-          // Iniciar sesión en la aplicación o navegar a la página protegida
-          console.log('Inicio de sesión exitoso!');
+          console.log(response);
           this.router.navigate(['/']);
+          console.log(this.username);
         },
         (error) => {
-          this.errorMessage = error.message;
+          console.error(error);
         }
       );
   }
