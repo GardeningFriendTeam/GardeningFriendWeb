@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../user.model';
 // import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/authService';
+import { AuthService } from '../../services/auth.service';
 
 
 // @Component({

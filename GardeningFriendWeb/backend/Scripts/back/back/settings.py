@@ -63,6 +63,23 @@ CORS_ALLOW_ALL_ORIGINS = True  # No se recomienda para producción
 #     'http://localhost',
 # ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:4200',
+]
+
+# CORDS
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:4200',
+    'http://127.0.0.1:4200',
+]
+
+CSRF_COOKIE_NAME = 'csrftoken'
+
 ROOT_URLCONF = 'back.urls'
 
 TEMPLATES = [
@@ -82,21 +99,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'back.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'perfil',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',  
-#         'PORT': '3306',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -153,3 +155,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://localhost:4200']
