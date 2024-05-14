@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_gardeningfriend',
+        'NAME': 'gardeningfriend',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',  
@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Buenos_aires'
 
 USE_I18N = True
 

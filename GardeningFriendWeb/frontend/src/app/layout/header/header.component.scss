@@ -37,10 +37,10 @@ header {
         display: flex;
         grid-column: 1 / span 2;  // Use span for multi-column elements
         grid-row: 2 / 3;
-        height: 80%;
-        width: 80%;
-        justify-content: flex-start;
-        align-items: flex-start;
+        height: 100%;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: flex-end;
 
         & li {
             list-style: none;
@@ -68,7 +68,7 @@ header {
         }
         
         & #cerrar_sesion {
-            margin: 0px; // Combine margins for cleaner style
+            margin: 5px; // Combine margins for cleaner style
         }
     }
 }
