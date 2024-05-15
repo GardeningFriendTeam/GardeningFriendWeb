@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,7 +14,7 @@ export class NavComponent implements OnInit{
   isAdmin: boolean = false;
   private userSub!: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.userSub = this.authService.userSubject.subscribe((userSubject) => {
@@ -28,5 +29,13 @@ export class NavComponent implements OnInit{
  // funcion para cambiar el estado de la v. flag
   desplegarMenu() {
     this.toggleEffect = !this.toggleEffect;
+  }
+
+  goToAdministrarCultivos() {
+    this.router.navigate(['/administrar-cultivo'])
+  }
+
+  goToAdministrarUsuarios(){
+    this.router.navigate(['/administrar-usuario'])
   }
 }

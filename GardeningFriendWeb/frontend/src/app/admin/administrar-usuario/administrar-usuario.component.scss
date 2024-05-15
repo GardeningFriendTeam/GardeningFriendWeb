@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+    max-width: 1980px;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    background-image: url('../../../assets/fondos/wooden-background-4.jpg');
+    background-position: center;
+    /* background-repeat: repeat-y; */
+    background-size: cover;
+}
+
+.modificar {
+  font-size: 18px;
+  background-color: rgba(8,108,56,1);
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8px;
+  border-color: rgba(8,108,56,1);
+}

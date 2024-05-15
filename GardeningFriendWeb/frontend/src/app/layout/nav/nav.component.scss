@@ -49,6 +49,11 @@ nav {
             cursor: pointer;
         }
     }
+
+    & .dropdown-item {
+        background: var(--verde3);
+    }
+
 }
 
 /*------------------------------ MEDIA QUERIES ---------------------------------*/
