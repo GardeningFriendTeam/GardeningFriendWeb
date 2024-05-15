@@ -193,6 +193,7 @@
     
 }
 
+
 .container-info{
     position: fixed;
     top: 0;
@@ -204,10 +205,11 @@
     height: 70vh;
     margin: auto;
     background-color: white;
-    border: 4px solid #6e9d10;
+    // border: 4px solid #6e9d10;
     border-radius: 20px;
     z-index: 100;
     overflow-x: none;
+    overflow-y: auto;
     
     & .close{
         position: relative;
@@ -231,25 +233,57 @@
     & .info-cultivo{
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
+        margin: 20px;
         
-        & img{
+        & .info-header{
             width: 100px;
-            margin: 10px auto 20px;
+            margin: 10px auto 20px;            
+
+            & img{
+                width: 100px;
+                margin: 10px auto 20px;
+            }
+
+            & p {
+                font-size: 32px;
+                color: #6e9d10;
+                text-align: center;
+            }
         }
-        
-        & p{
-            padding: 6px 10px;
-            border-bottom: 1px solid #486a03;
+
+        & .info-descripcion{
+            width: 100%;
+            margin: 10px auto 20px;            
+
+            & h6 {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            & p {
+                border:#6e9d10 1px solid;
+                border-radius: 20px;
+                padding: 8px;
+            }
         }
-        
-        & b{
-            color: #6e9d10;
+
+        & .info-others {
+            width: 100%;
+            margin: 10px auto 20px; 
+
+            & p {
+                font-weight: bold;
+                padding-bottom: 8px;
+
+                & b {
+                    color: #6e9d10;
+                }
+            }
         }
+            
     }
     
 }
-
 
 /*MEDIAS QUERY*/
 

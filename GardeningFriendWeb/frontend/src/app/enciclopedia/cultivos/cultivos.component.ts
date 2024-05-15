@@ -17,81 +17,18 @@ export class CultivosComponent {
   alertText:string = '';
   
   cultivos: Cultivo[] = [
-    { 
-      id: 1,
-      nombre: "Tomate",
-      imagen: "./assets/cultivos/tomate.png",
-      tipo: "Frutal",
-      germina: 14,
-      cosecha: 123,
-      temporada: "Otoño",
-      temperaturaMax: 25,
-      temperaturaMin: 12,
-      riego: "Regular o cada 3 días",
-      luz: "Bastante Luz",
-      profundidadSembrado: 2,
-      espacioPlantas: 24,
-    },
-    { 
-      id: 2,
-      nombre: "Cebolla",
-      imagen: "./assets/cultivos/cebolla.png",
-      tipo: "Vegetal",
-      germina: 14,
-      cosecha: 123,
-      temporada: "Otoño",
-      temperaturaMax: 25,
-      temperaturaMin: 12,
-      riego: "Regular o cada 3 días",
-      luz: "Bastante Luz",
-      profundidadSembrado: 2,
-      espacioPlantas: 24,
-    },
-    { 
-      id: 3,
-      nombre: "Ajo",
-      imagen: "./assets/cultivos/ajo.png",
-      tipo: "Vegetal",
-      germina: 14,
-      cosecha: 123,
-      temporada: "Otoño",
-      temperaturaMax: 25,
-      temperaturaMin: 12,
-      riego: "Regular o cada 3 días",
-      luz: "Bastante Luz",
-      profundidadSembrado: 2,
-      espacioPlantas: 24,
-    },
-    { 
-      id: 4,
-      nombre: "Lechuga",
-      imagen: "./assets/cultivos/lechuga.png",
-      tipo: "Vegetal",
-      germina: 14,
-      cosecha: 123,
-      temporada: "Otoño",
-      temperaturaMax: 25,
-      temperaturaMin: 12,
-      riego: "Regular o cada 3 días",
-      luz: "Bastante Luz",
-      profundidadSembrado: 2,
-      espacioPlantas: 24,
-    },
-    { 
-      id: 5,
-      nombre: "Albahaca",
-      imagen: "./assets/cultivos/albahaca.png",
-      tipo: "Aromática",
-      germina: 14,
-      cosecha: 123,
-      temporada: "Otoño",
-      temperaturaMax: 25,
-      temperaturaMin: 12,
-      riego: "Regular o cada 3 días",
-      luz: "Bastante Luz",
-      profundidadSembrado: 2,
-      espacioPlantas: 24,
-    },
+    // {
+    //   id_cultivo: 1,
+    //   nombre: "Tomate",
+    //   categoria: "frutal",
+    //   descripcion: "un tomate rojo",
+    //   imagen: "./assets/cultivos/tomate.png",
+    //   region: "norte",
+    //   estacion_de_siembra: "primavera",
+    //   temperatura_recomendada: 25.0,
+    //   favorito: true,
+    //   usuario: 1
+    // }
   ];
 
   infoCultivos: Cultivo[] = [];
@@ -125,7 +62,7 @@ export class CultivosComponent {
       return this.cultivos;
     } else {
       //Si no mostrara el tipo de cultivo que se haya seleccionado
-      return this.cultivos.filter(cultivo => cultivo.tipo === tipo);
+      return this.cultivos.filter(cultivo => cultivo.categoria === tipo);
     }
   }
 
@@ -137,7 +74,7 @@ export class CultivosComponent {
 
   //Comprueba si el cultivo esta en favoritos y si no lo agrega
   addToFavorito(cultivo: Cultivo) {
-    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id === cultivo.id);
+    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id_cultivo === cultivo.id_cultivo);
     if (!alreadyInFavorites) {
       this.cultivosService.addToFavorites(cultivo);
       this.alertText = 'El Cultivo fue agregado en Favoritos';

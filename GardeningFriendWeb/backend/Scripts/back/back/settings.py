@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'usuario',
     'rest_framework',
     'corsheaders',
+    'cultivos',
+    'Aplicacion_web',
+    'coreapi',
 ]
 
 MIDDLEWARE = [
@@ -97,21 +100,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'back.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'perfil',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',  
-#         'PORT': '3306',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -148,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Buenos_aires'
 
 USE_I18N = True
 
@@ -164,5 +152,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
 
 CSRF_TRUSTED_ORIGINS = ['https://localhost:4200']

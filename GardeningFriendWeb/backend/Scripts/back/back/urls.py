@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from usuario.views import register_user, login
 from usuario import views
 from usuario.views import register_user
 # from usuario.views import login_view
@@ -24,10 +25,9 @@ from usuario.views import login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1', include('perfil.urls')),
-    # path('crear-usuario/', views.CreateUserView.as_view(), name='crear_usuario'),
-    # path('login/', views.LoginView.as_view(), name='login'),
-
     path('register/', register_user, name='register'),
-    # path('login/', login_view, name='login'),
     path('login/', login, name='login'),
+    path('cultivos/', include('cultivos.urls')),
+    path('Aplicacion_web/', include('Aplicacion_web.urls')),
 ]
+

@@ -1,126 +1,21 @@
 <body>
-    <main>
-        <!-- logo del sitio -->
-        <picture>
-            <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
-            <h1>Registro</h1>
-        </picture>
-        <!-- formulario de registro  -->
-        <!-- <form [formGroup]="userForm">
-            <div>
-                <input type="text" formControlName="username" [(ngModel)]="user.username" class="form-control" required>
-                <label for="username">Usuario</label>
-                <div *ngIf="userForm.controls['username'].invalid && userForm.controls['username'].touched"
-                    class="alert alert-danger">
-                    <div *ngIf="userForm.controls['username'].errors?.['required']">
-                        Usuario es requerido.
-                    </div>
-                    <div *ngIf="userForm.controls['username'].errors?.['minlength']">
-                        Usuario debe tener al menos 4 caracteres.
-                    </div>
-                </div>
-            </div>
-            <div>
-                <input type="text" formControlName="name" [(ngModel)]="user.name" class="form-control" required>
-                <label for="name">Nombre</label>
-                <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched"
-                    class="alert alert-danger">
-                    Nombre es requerido.
-                </div>
-            </div>
-            <div>
-                <input type="email" formControlName="email" [(ngModel)]="user.email" class="form-control" required>
-                <label for="email">Correo electrónico</label>
-                <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched"
-                    class="alert alert-danger">
-                    Correo electrónico es requerido y debe ser válido.
-                </div>
-            </div>
-            <div>
-                <input type="date" formControlName="birth_date" [(ngModel)]="user.birth_date" class="form-control" required>
-                <label for="birth_date">Fecha de nacimiento</label>
-                <div *ngIf="userForm.controls['birth_date'].invalid && userForm.controls['birth_date'].touched"
-                    class="alert alert-danger">
-                    Fecha de nacimiento es requerida.
-                </div>
-            </div>
-            <div>
-                <input type="password" formControlName="password" [(ngModel)]="user.password" class="form-control" required>
-                <label for="password">Contraseña</label>
-                <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched"
-                    class="alert alert-danger">
-                    <div *ngIf="userForm.controls['password'].errors?.['required']">
-                        Contraseña es requerida.
-                    </div>
-                    <div *ngIf="userForm.controls['password'].errors?.['minlength']">
-                        Contraseña debe tener al menos 8 caracteres.
-                    </div>
-                </div>
-            </div>
-            <div>
-                <input type="password" formControlName="confirmPassword" class="form-control" required>
-                <label for="confirmPassword">Repetir contraseña</label>
-                <div *ngIf="userForm.controls['confirmPassword'].invalid && userForm.controls['confirmPassword'].touched"
-                    class="alert alert-danger">
-                    Repetir contraseña es requerida.
-                </div>
-                <div *ngIf="userForm.get('confirmPassword')?.hasError('passwordMismatch') && userForm.get('confirmPassword')?.touched"
-                    class="alert alert-danger">
-                    Las contraseñas no coinciden.
-                </div>
-                <div *ngIf="userForm.controls['confirmPassword'].value === userForm.controls['password'].value && userForm.controls['confirmPassword'].touched"
-                    class="alert alert-success">
-                    Las contraseñas coinciden.
-                </div>
-            </div>
-
-            <button type="submit" [disabled]="userForm.invalid">Registrarme</button>
-        </form> -->
-
-        <!-- <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
-            <div class="form-group">
-              <label>Nombre</label>
-              <input type="text" class="form-control" [(ngModel)]="user.nombre" name="nombre" required>
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" [(ngModel)]="user.email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label>Contraseña</label>
-              <input type="password" class="form-control" [(ngModel)]="user.password" name="password" required>
-            </div>
-            <div class="form-group">
-              <label>Confirmar contraseña</label>
-              <input type="password" class="form-control" [(ngModel)]="user.confirm_password" name="confirm_password" required>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!registroForm.valid || user.password !== user.confirm_password">Registrarse</button>
-          </form> -->
-
-          <form (ngSubmit)="register()">
-            <input type="text" placeholder="Nombre" [(ngModel)]="username" name="name" required>
-            <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
-            <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
-            <button type="submit">Registrarse</button>
-        </form>
-          
-        <!-- <form (ngSubmit)="register()">
-            <div>
-              <label for="username">Nombre de usuario:</label>
-              <input type="text" id="username" name="username" [(ngModel)]="username" required>
-            </div>
-            <div>
-              <label for="email">Correo electrónico:</label>
-              <input type="email" id="email" name="email" [(ngModel)]="email" required>
-            </div>
-            <div>
-              <label for="password">Contraseña:</label>
-              <input type="password" id="password" name="password" [(ngModel)]="password" required>
-            </div>
-            <button type="submit">Registrarse</button>
-          </form> -->
-          
+  <main>
+      <!-- logo del sitio -->
+      <picture>
+          <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
+          <h1>Registro</h1>
+      </picture>
+      
+        <form (ngSubmit)="register()">
+          <input type="text" placeholder="Nombre" [(ngModel)]="username" name="name" required>
+          <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+          <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+          <button type="submit">Registrarse</button>
+      </form>
         
-    </main>
-    
+        
+        
+      
+  </main>
+  
 </body>
