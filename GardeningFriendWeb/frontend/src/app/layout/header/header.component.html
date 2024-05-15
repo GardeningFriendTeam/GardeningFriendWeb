@@ -2,8 +2,8 @@
     <div id="logo_contenedor"><img src="../../../assets/logos/logo-version-1.png" alt="logo" /></div>
     <div id="opciones">
         <!--<li id="admin" *ngIf="isAdmin"><a  role="button" cursor="pointer">Admin</a></li> -->
-        <li id="login_boton" *ngIf="!isAuthenticated"><a routerLink="/Login"> Login </a> </li>
+        <li id="login_boton" *ngIf="!isAuthenticated"><a routerLink="/login"> Login </a> </li>
         <li id="cerrar_sesion" *ngIf="isAuthenticated"><a href="#" cursor="pointer" role="button" (click)="logout()"> Cerrar Sesión </a> </li>
-        <li id="cuenta_boton" *ngIf="!isAuthenticated"><a routerLink="/Registrarse"> Registrarse </a> </li>
+        <li id="cuenta_boton" *ngIf="!isAuthenticated"><a routerLink="/registro"> Registrarse </a> </li>
     </div>
 </header>
