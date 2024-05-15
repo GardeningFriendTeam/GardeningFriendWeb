@@ -18,17 +18,26 @@
     <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/micuenta">MI CUENTA</a>
     </li>
-    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
-        <a routerLink="/dashboard">DASHBOARD</a>
-    </li>
+    <!--<li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+        <a routerLink="/dashboard">DASHBOARD</a> 
+    </li> -->
     <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/asistenteIA">ASISTENTE IA</a>
     </li>
     <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/contacto">CONTACTO</a>
     </li>
-    <li id="dashboard" *ngIf="isAdmin" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
-        <a routerLink="/contacto">ADMIN</a>
+    <li id="dashboard" *ngIf="isAdmin" class="nav_item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false" cursor="pointer">ADMIN</a>
+        <ul class="dropdown-menu">
+            <li>
+                <a routerLink="/administrarCultivos">Administrar Cultivos</a>
+            </li>
+            <hr class="dropdown-divider">
+            <li>
+                <a routerLink="/administrarUsuarios">Administrar Usuarios</a>
+            </li>
+        </ul>
     </li>
 </nav>
 <router-outlet></router-outlet>

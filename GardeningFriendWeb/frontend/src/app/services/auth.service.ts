@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { User } from '../models/auth.model';
+import { User } from '../auth/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class AuthService {
       localStorage.getItem('user') || '{}'
     );
 
-    return (userData && userData?.is_admin) ?? false;
+    return (userData && userData?.isAdmin) ?? false;
   }
 
   logout(): void {
@@ -52,5 +52,9 @@ export class AuthService {
     this.userSubject.next(null);
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}users/`);
   }
 }
