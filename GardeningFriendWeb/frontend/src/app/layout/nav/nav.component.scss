@@ -54,6 +54,11 @@ nav {
         background: var(--verde3);
     }
 
+    & .dropdown-menu {
+        position: relative; /* Ajusta según sea necesario */
+        background-color: var(--verde3); /* Ajusta el color de fondo si es necesario */
+    }
+
 }
 
 /*------------------------------ MEDIA QUERIES ---------------------------------*/
