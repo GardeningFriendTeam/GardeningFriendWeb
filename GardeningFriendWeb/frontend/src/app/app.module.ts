@@ -25,6 +25,8 @@ import { LayoutTiendaComponent } from './shop/layout-tienda/layout-tienda.compon
 import { ProductosComponent } from './shop/productos/productos.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { HttpClientXsrfModule } from '@angular/common/http';
+import { AdministrarUsuarioComponent } from './admin/administrar-usuario/administrar-usuario.component';
+import { AdministrarCultivoComponent } from './admin/administrar-cultivo/administrar-cultivo.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -39,6 +41,8 @@ const appRoutes: Routes = [
   { path: 'tienda', component: LayoutTiendaComponent },
   { path: 'contacto', component: ContactoComponent },
   // { path: 'dashboard', component: DashboardComponent },
+  { path: 'administrarCultivos', component: AdministrarCultivoComponent},
+  { path: 'administrarUsuarios', component: AdministrarUsuarioComponent},
   { path: '**', component: HomeComponent }
   
 ];
