@@ -40,17 +40,17 @@ header {
         height: 100%;
         width: 100%;
         justify-content: flex-end;
-        align-items: flex-end;
+        align-items: flex-start;
 
         & li {
             list-style: none;
             font-family: secundaria4;
             background: var(--verde3B);
-            border-radius: 15px;
-            padding: 1px;
+            border-radius: 5px;
+            padding: 3px;
 
             & a {
-                color: black;
+                color: white;
                 text-decoration: none;
             }
         
