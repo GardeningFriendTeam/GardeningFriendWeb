@@ -13,6 +13,7 @@ export class NavComponent implements OnInit{
   toggleEffect = false;
   isAdmin: boolean = false;
   private userSub!: Subscription;
+  adminMenuOpen= false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -29,6 +30,10 @@ export class NavComponent implements OnInit{
  // funcion para cambiar el estado de la v. flag
   desplegarMenu() {
     this.toggleEffect = !this.toggleEffect;
+  }
+
+  toggleAdminMenu() {
+    this.adminMenuOpen = !this.adminMenuOpen;
   }
 
   goToAdministrarCultivos() {
