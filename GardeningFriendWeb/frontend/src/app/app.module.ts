@@ -66,7 +66,9 @@ const appRoutes: Routes = [
     CarritoComponent,
     LayoutTiendaComponent,
     ProductosComponent,
-    ContactoComponent
+    ContactoComponent,
+    AdministrarCultivoComponent,
+    AdministrarUsuarioComponent
   ],
   imports: [
     BrowserModule,
