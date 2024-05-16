@@ -27,16 +27,11 @@
     <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/contacto">CONTACTO</a>
     </li>
-    <li id="dashboard" *ngIf="isAdmin" class="nav_item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  aria-expanded="false" cursor="pointer">ADMIN</a>
-        <ul class="dropdown-menu">
-            <li>
-                <a routerLink="/administrarCultivos">Administrar Cultivos</a>
-            </li>
-            <hr class="dropdown-divider">
-            <li>
-                <a routerLink="/administrarUsuarios">Administrar Usuarios</a>
-            </li>
+    <li id="admin" *ngIf="isAdmin" class="nav_item" (click)="toggleAdminMenu()">
+        <a class="nav-link" href="javascript:void(0)">ADMIN</a>
+        <ul class="admin-dropdown" [ngClass]="{'show': adminMenuOpen}">
+            <li><a routerLink="/administrarCultivos">Administrar Cultivos</a></li>
+            <li><a routerLink="/administrarUsuarios">Administrar Usuarios</a></li>
         </ul>
     </li>
 </nav>

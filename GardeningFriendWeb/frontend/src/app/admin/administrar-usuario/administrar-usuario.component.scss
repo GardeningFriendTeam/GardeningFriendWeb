@@ -1,19 +1,102 @@
 .container {
   width: 100%;
-    max-width: 1980px;
-    padding-bottom: 100px;
-    padding-top: 50px;
-    background-image: url('../../../assets/fondos/wooden-background-4.jpg');
-    background-position: center;
-    /* background-repeat: repeat-y; */
-    background-size: cover;
+  max-width: 1980px;
+  padding: 50px 0 100px;
+  background-image: url('../../../assets/fondos/wooden-background-4.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.col {
+  flex: 1 0 45%; /* Full width on small screens */
+  max-width: 45%;
+  padding: 15px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+@media (min-width: 768px) {
+  .col {
+      flex: 0 0 50%; /* Two columns on medium screens */
+      max-width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col {
+      flex: 0 0 50%; /* Two columns on large screens to allow wider cards */
+      max-width: 50%;
+  }
+}
+
+.card {
+  max-width: 400px; /* Adjusted width for longer cards */
+  width: 100%; /* Ensure it takes the full width of the column */
+  margin: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping inside the card */
+}
+
+.card-image {
+  flex: 0 0 40%; /* Adjust this to control the image size */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card-image img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.card-body {
+  font-family: 'secundaria1';
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin: 10px 0;
+  font-size: 24px;
 }
 
 .modificar {
-  font-size: 18px;
-  background-color: rgba(8,108,56,1);
+  font-size: 16px;
+  background-color: rgba(8, 108, 56, 1);
   text-align: center;
   color: #ffffff;
   border-radius: 8px;
-  border-color: rgba(8,108,56,1);
+  border: rgba(8, 108, 56, 1);;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.modificar:hover {
+  background-color: rgba(8, 108, 56, 0.8);
 }
