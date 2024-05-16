@@ -4,6 +4,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
+from .serializer import CustomUserSerializer
 
 @api_view(['POST'])
 def register_user(request):
@@ -46,4 +47,12 @@ def login(request):
             return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
     else:
         return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+
+@api_view(['GET'])
+def list_users(request):
+    if request.method == 'GET':
+        users = User.objects.all()  # Obtener todos los usuarios
+        serializer = CustomUserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
