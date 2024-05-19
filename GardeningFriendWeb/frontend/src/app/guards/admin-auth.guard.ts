@@ -17,7 +17,7 @@ import { Observable } from "rxjs";
       | Promise<boolean | UrlTree>
       | boolean
       | UrlTree {
-      if (this.authService.isLoggedIn() && this.authService.isAdmin()) {
+      if (this.authService.isLoggedIn() && this.authService.is_admin()) {
         return true;
       } else {
         return this.router.parseUrl('/access-denied');
