@@ -39,12 +39,12 @@ export class AuthService {
     return this.userSubject.value !== null;
   }
 
-  isAdmin(): boolean {
+  is_admin(): boolean {
     const userData: User | null = JSON.parse(
       localStorage.getItem('user') || '{}'
     );
 
-    return (userData && userData?.isAdmin) ?? false;
+    return (userData && userData?.is_admin) ?? false;
   }
 
   logout(): void {

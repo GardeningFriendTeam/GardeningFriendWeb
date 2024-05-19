@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavComponent implements OnInit{
  // variable flag
   toggleEffect = false;
-  isAdmin: boolean = false;
+  is_admin: boolean = false;
   private userSub!: Subscription;
   adminMenuOpen= false;
 
@@ -19,7 +19,7 @@ export class NavComponent implements OnInit{
 
   ngOnInit(): void {
     this.userSub = this.authService.userSubject.subscribe((userSubject) => {
-      this.isAdmin = userSubject?.is_admin ? true : false;
+      this.is_admin = userSubject?.is_admin ? true : false;
     });
   }
 

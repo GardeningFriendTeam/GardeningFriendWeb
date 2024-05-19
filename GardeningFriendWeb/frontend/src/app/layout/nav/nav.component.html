@@ -27,7 +27,7 @@
     <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/contacto">CONTACTO</a>
     </li>
-    <li id="admin" *ngIf="isAdmin" class="nav_item" (click)="toggleAdminMenu()">
+    <li id="admin" *ngIf="is_admin" class="nav_item" (click)="toggleAdminMenu()">
         <a class="nav-link" href="javascript:void(0)">ADMIN</a>
         <ul class="admin-dropdown" [ngClass]="{'show': adminMenuOpen}">
             <li><a routerLink="/administrarCultivos">Administrar Cultivos</a></li>

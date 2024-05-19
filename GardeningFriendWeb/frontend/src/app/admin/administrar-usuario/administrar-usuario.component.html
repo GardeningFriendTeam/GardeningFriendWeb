@@ -10,7 +10,7 @@
                         <!--<h5 class="card-title">usuario&#64;gmail.com</h5>-->
                         <h5 class="card-title">{{ user.email }}</h5>
                         <!--<p class="card-text">Rol: Usuario</p>-->
-                        <p class="card-text">Rol: {{ user.isAdmin ? 'Admin' : 'Usuario Normal' }}</p>
+                        <p class="card-text">Rol: {{ user.is_admin? 'Admin' : 'Usuario Normal' }}</p>
                         <button class="modificar">Modificar Rol</button>
                     </div>
                 </div>
