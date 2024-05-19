@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../auth/user.model';
+import { loginModel } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,9 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register/`, { username, email, password });
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login/`, { username, password })
+  login(usuario: loginModel): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login/`, { usuario })
     .pipe(
-      // Actualiza el BehaviorSubject con el usuario devuelto por el backend
       tap(user => {
         this.userSubject.next(user);
         localStorage.setItem('user', JSON.stringify(user));
@@ -48,7 +48,6 @@ export class AuthService {
   }
 
   logout(): void {
-    // Actualiza el BehaviorSubject con null, elimina el usuario del localStorage y redirige al usuario a la página de inicio de sesión
     this.userSubject.next(null);
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
