@@ -25,9 +25,10 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/register/`, { username, email, password });
   }
 
-  login(usuario: loginModel): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login/`, { usuario })
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login/`, { username, password })
     .pipe(
+      // Actualiza el BehaviorSubject con el usuario devuelto por el backend
       tap(user => {
         this.userSubject.next(user);
         localStorage.setItem('user', JSON.stringify(user));
