@@ -14,12 +14,16 @@ export class NavComponent implements OnInit{
   is_admin: boolean = false;
   private userSub!: Subscription;
   adminMenuOpen= false;
+  isAuthenticated: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.isAuthenticated = !!this.authService.userValue;
+  }
 
   ngOnInit(): void {
     this.userSub = this.authService.userSubject.subscribe((userSubject) => {
       this.is_admin = userSubject?.is_admin ? true : false;
+      this.isAuthenticated = userSubject ? true : false;
     });
   }
 
