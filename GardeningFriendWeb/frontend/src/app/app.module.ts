@@ -27,6 +27,11 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { HttpClientXsrfModule } from '@angular/common/http';
 import { AdministrarUsuarioComponent } from './admin/administrar-usuario/administrar-usuario.component';
 import { AdministrarCultivoComponent } from './admin/administrar-cultivo/administrar-cultivo.component';
+import { AgregarCategoriaCultivoComponent } from './admin/CRUD/agregar-categoria-cultivo/agregar-categoria-cultivo.component';
+import { EditarCategoriaCultivoComponent } from './admin/CRUD/editar-categoria-cultivo/editar-categoria-cultivo.component';
+import { VerCategoriaCultivoComponent } from './admin/CRUD/ver-categoria-cultivo/ver-categoria-cultivo.component';
+import { AgregarCultivoComponent } from './admin/CRUD/agregar-cultivo/agregar-cultivo.component';
+import { EditarCultivoComponent } from './admin/CRUD/editar-cultivo/editar-cultivo.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -43,6 +48,11 @@ const appRoutes: Routes = [
   // { path: 'dashboard', component: DashboardComponent },
   { path: 'administrarCultivos', component: AdministrarCultivoComponent},
   { path: 'administrarUsuarios', component: AdministrarUsuarioComponent},
+
+  { path: 'agregarCategoriaCultivo', component: AgregarCategoriaCultivoComponent},
+  { path: 'agregarCultivo', component: AgregarCultivoComponent},
+  // { path: 'editarCategoriaCultivo', component: EditarCategoriaCultivoComponent},
+  { path: 'verCategoriaCultivo', component: VerCategoriaCultivoComponent},
   { path: '**', component: HomeComponent }
   
 ];
@@ -68,7 +78,12 @@ const appRoutes: Routes = [
     ProductosComponent,
     ContactoComponent,
     AdministrarCultivoComponent,
-    AdministrarUsuarioComponent
+    AdministrarUsuarioComponent,
+    AgregarCategoriaCultivoComponent,
+    EditarCategoriaCultivoComponent,
+    VerCategoriaCultivoComponent,
+    AgregarCultivoComponent,
+    EditarCultivoComponent
   ],
   imports: [
     BrowserModule,

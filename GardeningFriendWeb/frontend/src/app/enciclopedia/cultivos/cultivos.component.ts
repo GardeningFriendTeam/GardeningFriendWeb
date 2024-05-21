@@ -74,7 +74,7 @@ export class CultivosComponent {
 
   //Comprueba si el cultivo esta en favoritos y si no lo agrega
   addToFavorito(cultivo: Cultivo) {
-    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id_cultivo === cultivo.id_cultivo);
+    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id === cultivo.id);
     if (!alreadyInFavorites) {
       this.cultivosService.addToFavorites(cultivo);
       this.alertText = 'El Cultivo fue agregado en Favoritos';

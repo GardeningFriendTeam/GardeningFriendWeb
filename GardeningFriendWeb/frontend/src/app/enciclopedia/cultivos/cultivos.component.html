@@ -2,7 +2,7 @@
 <div class="cover" [class.active]="activeCover"></div>
 
 <!-- section donde se muestran los cultivos -->
-<section *ngIf="cultivos.length > 0; else elseCultivos">
+<section *ngIf="cultivos.length > 0; else elseCultivos"> 
     <!-- div de filtros por búsqueda y categoría -->
     <div class="container-filter">
         <form [formGroup]="filterForm" class="filtro">
@@ -23,12 +23,12 @@
     </div>
     
     <!-- div con directiva ngFor que muestra los cultivo que se obtienen de una api rest -->
-    <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id_cultivo}}">
+    <div *ngFor="let cultivo of filteredCultivos | filter: searchName" class="tarjeta" id="{{cultivo.id}}">
         <div class="imagen_wrapper">
             <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
         </div>
         <div class="title">
-            <h5 id="titulo_{{cultivo.id_cultivo}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
+            <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
         </div>
         <div class="category">
             <p> <u>Categoría:</u> {{cultivo.categoria}} </p>
@@ -37,9 +37,9 @@
             <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
             <button (click)="addToFavorito(cultivo)" type="button" class="favoritos"> A FAVORITOS ★</button>
         </div>
-    </div>
-
+    </div> 
 </section>
+
 
 <!-- info de cada cultivo -->
 <div class="container-info" *ngIf="activeInfo">
@@ -56,8 +56,8 @@
         <div class="info-others">
             <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
             <p>Region: <b>{{cultivo.region}}</b></p>
-            <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
-            <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}°C</b></p>
+            <p>Estacion de siembra: <b>{{cultivo.estacion}}</b></p>
+            <p>Temperatura recomendada: <b>{{cultivo.temperatura}}°C</b></p>
         </div>
     </div>
 </div>
@@ -65,4 +65,4 @@
 <!-- El ng-template se mostrara cuando no haya cultivos -->
 <ng-template #elseCultivos>
     <p style="font-size: 24px; font-weight: bold; color: darkgreen; text-align: center; margin: 100px 0; font-family: secundaria1;">No hay ningún cultivo para sembrar.</p>
-</ng-template>
+</ng-template> 

@@ -1,87 +1,60 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Cultivo } from './../../enciclopedia/cultivos/cultivos.model';
 import { CultivosService } from '../../services/cultivos.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { CategoriaCultivo } from 'src/app/models/categoriaCultivo';
+
+
 @Component({
     selector: 'app-administrar-cultivo',
     styleUrls: ['./administrar-cultivo.component.scss'],
     templateUrl: './administrar-cultivo.component.html'
 })
-export class AdministrarCultivoComponent { 
-    activeAlert:boolean = false;
-  activeCover:boolean = false;
+export class AdministrarCultivoComponent implements OnInit{ 
   activeInfo:boolean = false;
-
-  alertText:string = '';
-  
-  cultivos: Cultivo[] = [
-    // {
-    //   id_cultivo: 1,
-    //   nombre: "Tomate",
-    //   categoria: "frutal",
-    //   descripcion: "un tomate rojo",
-    //   imagen: "./assets/cultivos/tomate.png",
-    //   region: "norte",
-    //   estacion_de_siembra: "primavera",
-    //   temperatura_recomendada: 25.0,
-    //   favorito: true,
-    //   usuario: 1
-    // }
-  ];
-
-  infoCultivos: Cultivo[] = [];
-
-  tipos = ['Todas', 'Vegetal', 'Frutal', 'Aromática'];
   filterForm: FormGroup = this.fb.group({tipo: ''});
+  cultivos: any = {};
+  categorias: any = {};
+  cultivosCat: any = {};
+  catSelec: any = {};
+  infoCultivos: Cultivo[] = [];
+  activeCover:boolean = false;  
 
-  //El ngModel junto con el pipe filter que se creo podemos buscar por nombre
-  searchName: string = '';
-
-  constructor(private cultivosService:CultivosService, private fb:FormBuilder) { }
+  constructor(private cultivosService:CultivosService, private fb:FormBuilder, private activatedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.cultivosService.listCultivos().subscribe((data: Cultivo[]) => {
-      this.cultivos = data;
-      console.log(this.cultivos);
+    let id = this.activatedRouter.snapshot.params['id'];
+    console.log(id);
+    if (id > 0) {
+      
+      this.cultivosService.detailCat(id).subscribe(
+        data => {
+          this.cultivos = data;
+          console.log(data);
+        }, err => {
+          alert("Error al cargar");
+          this.router.navigate(['/administrarCultivos']);
+        }
+      )
+    }
+    else {
+      this.cultivosService.traerCultivos().subscribe(resp => {
+        this.cultivos = resp;
+      })
+
+    }
+    this.cultivosService.categoria(id).subscribe(
+      data2 => {
+        this.catSelec = data2;
+
+      })
+    this.cultivosService.traerCategorias().subscribe(resp2 => {
+      this.categorias = resp2;
+
     })
-
-    //Por defecto se mostrara todos los cultivos
-    this.filterForm = this.fb.group({
-      tipo: ['Todas'],
-    });
-  }
-
-
-  get filteredCultivos() {
-    //Obtiene el valor de tipo
-    const tipo = this.filterForm.get('tipo')?.value;
-    //Si tipo es Todas mostrara todos los cultivos
-    if (tipo === 'Todas') {
-      return this.cultivos;
-    } else {
-      //Si no mostrara el tipo de cultivo que se haya seleccionado
-      return this.cultivos.filter(cultivo => cultivo.categoria === tipo);
-    }
-  }
-
-  //Activa o desactiva la alerta
-  showAlert(){
-    this.activeAlert = !this.activeAlert;
-    this.activeCover = !this.activeCover;
-  }
-
-  //Comprueba si el cultivo esta en favoritos y si no lo agrega
-  addToFavorito(cultivo: Cultivo) {
-    const alreadyInFavorites = this.cultivosService.getFavorites().some(fav => fav.id_cultivo === cultivo.id_cultivo);
-    if (!alreadyInFavorites) {
-      this.cultivosService.addToFavorites(cultivo);
-      this.alertText = 'El Cultivo fue agregado en Favoritos';
-    } else {
-      this.alertText = 'El Cultivo ya se encuentra en Favoritos';
-    }
-    this.activeAlert = !this.activeAlert;
-    this.activeCover = !this.activeCover;
   }
 
 
@@ -98,4 +71,18 @@ export class AdministrarCultivoComponent {
     this.activeCover = !this.activeCover;
     console.log(this.activeInfo)
   }
+
+  delete(item:any){
+    this.cultivos.forEach((cultivo: any) => {
+          if (cultivo.id == item.id) {
+            this.cultivosService.delete(item.id).subscribe(
+                res=>this.cultivosService.traerCultivos().subscribe(
+                Response=>this.cultivos=Response
+                )
+            );
+            console.log('borre el cultivo con id :'+item.id);
+          }
+        });
+  }
 }
+

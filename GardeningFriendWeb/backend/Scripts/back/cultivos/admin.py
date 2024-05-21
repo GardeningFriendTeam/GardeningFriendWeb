@@ -5,7 +5,7 @@ from .models import Cultivo
 class CultivoAdmin(admin.ModelAdmin):
     list =(
         'nombre', 
-        'usuario', 
+        # 'usuario', 
         'categoria', 
         'imagen', 
         'descripcion', 

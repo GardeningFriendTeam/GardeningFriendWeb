@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class CultivosService {
 
-  API_URL = 'http://127.0.0.1:8000/cultivos/cultivos/';
+  // API_URL = 'http://127.0.0.1:8000/cultivos/cultivos/';
+  API_URL = 'http://127.0.0.1:8000/api/';
   
   cultivoFavorito: Cultivo[] = [];
 
   addToFavorites(cultivo: Cultivo): boolean {
-    const existingFavorite = this.cultivoFavorito.find(favorite => favorite.id_cultivo === cultivo.id_cultivo);
+    const existingFavorite = this.cultivoFavorito.find(favorite => favorite.id === cultivo.id);
   
     if (existingFavorite) {
       existingFavorite.favorito = true;
@@ -32,6 +33,45 @@ export class CultivosService {
   constructor(private http:HttpClient) { }
 
   listCultivos():Observable<Cultivo[]>{
-    return this.http.get<Cultivo[]>(this.API_URL);
+    return this.http.get<Cultivo[]>(this.API_URL +"cultivos/");
   }
+
+  //alta de un cultivo
+public create(cultivo:any):Observable<any>{
+  return this.http.post(this.API_URL+'cultivos/',cultivo);
+} 
+
+public traerCategorias():Observable<any>{
+  return this.http.get(this.API_URL+"categoriaCultivo/");
+
+};
+
+public traerCultivos():Observable<any>{
+  return this.http.get(this.API_URL +"cultivos/");
+
+};
+
+public detail(Id:number): Observable<any>{
+  return this.http.get<any>(this.API_URL + 'cultivos/'+ Id);
+};
+
+public detailCat(Id:number): Observable<any>{
+  return this.http.get<any>(this.API_URL + 'cultivos?idCategoriaCultivo='+ Id);
+};
+
+public categoria(Id:number): Observable<any>{
+  return this.http.get<any>(this.API_URL + 'categoriaCultivo/'+ Id);
+};
+
+//actualizar producto
+public update(id:any,data:any): Observable<any>{
+  return this.http.put(`${this.API_URL}cultivos/${id}/`,data);
+ }
+ 
+ //eliminar producto
+ public delete(id:any):Observable<any>{
+  return this.http.delete(`${this.API_URL}cultivos/${id}/`);
+ }
+
 }
+
