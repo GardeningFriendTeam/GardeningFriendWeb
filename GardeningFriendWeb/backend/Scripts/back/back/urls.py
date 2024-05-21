@@ -20,7 +20,6 @@ from usuario.views import register_user, login, list_users
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1', include('perfil.urls')),
     path('register/', register_user, name='register'),
     path('login/', login, name='login'),
     path('cultivos/', include('cultivos.urls')),
