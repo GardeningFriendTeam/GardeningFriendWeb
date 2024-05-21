@@ -28,23 +28,28 @@ import { HttpClientXsrfModule } from '@angular/common/http';
 import { AdministrarUsuarioComponent } from './admin/administrar-usuario/administrar-usuario.component';
 import { AdministrarCultivoComponent } from './admin/administrar-cultivo/administrar-cultivo.component';
 import { CommonModule } from '@angular/common';
+import { AccessDeniedComponent } from './layout/access-denied/access-denied.component';
+import { AuthGuard } from './guards/user-auth.guard';
+import { AdminGuard } from './guards/admin-auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
   { path: 'cultivos', component: CultivosComponent },
   { path: 'consejo', component: ConsejosComponent },
   // { path: 'tienda', component: LayoutTiendaComponent, canActivate: [AuthGuard] },
-  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'favoritos', component: FavoritosComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'micuenta', component: MiCuentaComponent },
-  { path: 'asistenteIA', component: AsistenteIaComponent },
-  { path: 'tienda', component: LayoutTiendaComponent },
+  { path: 'micuenta', component: MiCuentaComponent, canActivate: [AuthGuard]},
+  { path: 'asistenteIA', component: AsistenteIaComponent, canActivate: [AuthGuard] },
+  { path: 'tienda', component: LayoutTiendaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent },
   // { path: 'dashboard', component: DashboardComponent },
-  { path: 'administrarCultivos', component: AdministrarCultivoComponent},
-  { path: 'administrarUsuarios', component: AdministrarUsuarioComponent},
+  { path: 'administrarCultivos', component: AdministrarCultivoComponent, canActivate: [AdminGuard]},
+  { path: 'administrarUsuarios', component: AdministrarUsuarioComponent, canActivate: [AdminGuard]},
+  { path: 'access-denied', component: AccessDeniedComponent},
   { path: '**', component: HomeComponent }
+
   
 ];
 
@@ -68,7 +73,8 @@ const appRoutes: Routes = [
     LayoutTiendaComponent,
     ProductosComponent,
     ContactoComponent,
-    AdministrarUsuarioComponent
+    AdministrarUsuarioComponent,
+    AccessDeniedComponent
   ],
   imports: [
     BrowserModule,
