@@ -11,7 +11,8 @@
                         <h5 class="card-title">{{ user.email }}</h5>
                         <!--<p class="card-text">Rol: Usuario</p>-->
                         <p class="card-text">Rol: {{ user.is_admin? 'Admin' : 'Usuario Normal' }}</p>
-                        <button class="modificar">Modificar Rol</button>
+                        <button class="modificar" (click)="openRoleModal(user)">Modificar Rol</button>
+                        <button class="eliminar-usuario" (click)="deleteUser(user.id)">Eliminar Usuario</button>
                     </div>
                 </div>
             </div>
@@ -19,6 +20,37 @@
         
     </div>
 </div>
+
+<!-- Modal personalizado -->
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeRoleModal()">&times;</span>
+      <div class="container-text">
+        <h1 class="text-modificar">Modificar Rol</h1>
+      </div>
+
+      <div class="conteiner-select">
+        <div class="select">
+            <label>
+                <input type="radio" [(ngModel)]="selectedRole" value="user">
+                    Usuario Normal
+                </label>
+        </div>
+        <div class="select">
+          <label>
+            <input type="radio" [(ngModel)]="selectedRole" value="admin">
+                Admin
+          </label>
+      </div>
+      </div>
+        
+
+      <div class="button-aceptar">
+        <button class="btn-aceptar" (click)="updateRole()">Aceptar</button>
+      </div>
+      
+    </div>
+  </div>
 
 
 

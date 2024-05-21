@@ -55,4 +55,61 @@ def list_users(request):
         users = CustomUser.objects.all()  # Obtener todos los usuarios
         serializer = CustomUserSerializer(users, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
 
+@api_view(['PUT'])
+def update_user(request, user_id):
+    if request.method == 'PUT':
+        try:
+            user = CustomUser.objects.get(id=user_id)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        username = request.data.get('username')
+        email = request.data.get('email')
+        is_admin = request.data.get('is_admin')
+
+        if username:
+            user.username = username
+        if email:
+            user.email = email
+        if is_admin is not None:
+            user.is_admin = is_admin
+
+        user.save()
+        return Response({'message': f'User {user.username} updated successfully'}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@api_view(['PUT'])
+def update_user_role(request, user_id):
+    if request.method == 'PUT':
+        try:
+            user = CustomUser.objects.get(id=user_id)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        is_admin = request.data.get('is_admin')
+
+        if is_admin is not None:
+            user.is_admin = is_admin
+
+        user.save()
+        return Response({'message': f'User {user.username} role updated successfully'}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@api_view(['DELETE'])
+def delete_user(request, user_id):
+    if request.method == 'DELETE':
+        try:
+            user = CustomUser.objects.get(id=user_id)
+        except CustomUser.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        user.delete()
+        return Response({'message': f'User {user_id} deleted successfully'}, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'Invalid request method'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)

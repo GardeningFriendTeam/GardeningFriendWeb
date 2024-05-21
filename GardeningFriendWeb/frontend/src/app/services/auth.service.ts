@@ -57,4 +57,15 @@ export class AuthService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/users/`);
   }
+
+  updateUserRole(userId: number, isAdmin: boolean): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/users/${userId}/update-role/`, { is_admin: isAdmin });
+  }
+
+  // Dentro de AuthService
+ deleteUser(userId: number): Observable<any> {
+   return this.http.delete(`${this.apiUrl}/users/delete/${userId}/`);
+ }
+
+
 }
