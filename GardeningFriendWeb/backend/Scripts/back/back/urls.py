@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from usuario.views import register_user, login, list_users
+from usuario.views import register_user, login, list_users, update_user, delete_user, update_user_role
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,8 @@ urlpatterns = [
     path('cultivos/', include('cultivos.urls')),
     path('Aplicacion_web/', include('Aplicacion_web.urls')),
     path('users/', list_users, name='list_users'),
+    path('users/<int:user_id>/', update_user, name='update_user'),
+    path('users/<int:user_id>/update-role/', update_user_role, name='update_user_role'),
+    path('users/delete/<int:user_id>/', delete_user, name='delete_user'),
 ]
 
