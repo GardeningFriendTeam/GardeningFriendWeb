@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, pipe, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../auth/user.model';
+import { loginModel } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,22 +40,21 @@ export class AuthService {
     return this.userSubject.value !== null;
   }
 
-  isAdmin(): boolean {
+  is_admin(): boolean {
     const userData: User | null = JSON.parse(
       localStorage.getItem('user') || '{}'
     );
 
-    return (userData && userData?.isAdmin) ?? false;
+    return (userData && userData?.is_admin) ?? false;
   }
 
   logout(): void {
-    // Actualiza el BehaviorSubject con null, elimina el usuario del localStorage y redirige al usuario a la página de inicio de sesión
     this.userSubject.next(null);
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}users/`);
+    return this.http.get<User[]>(`${this.apiUrl}/users/`);
   }
 }

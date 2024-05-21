@@ -1,29 +1,16 @@
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div *ngFor="let user of users" class="col">
             <div class="card">
                 <div class="card-content">
                     <div class="card-image">
                         <img src="/assets/iconos/icono-usuario-2.png" alt="...">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">usuario&#64;gmail.com</h5>
-                        <p class="card-text">Rol: Usuario</p>
-                        <button class="modificar">Modificar Rol</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-image">
-                        <img src="/assets/iconos/icono-usuario-2.png" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">admin&#64;gmail.com</h5>
-                        <p class="card-text">Rol: Admin</p>
+                        <!--<h5 class="card-title">usuario&#64;gmail.com</h5>-->
+                        <h5 class="card-title">{{ user.email }}</h5>
+                        <!--<p class="card-text">Rol: Usuario</p>-->
+                        <p class="card-text">Rol: {{ user.is_admin? 'Admin' : 'Usuario Normal' }}</p>
                         <button class="modificar">Modificar Rol</button>
                     </div>
                 </div>
@@ -39,8 +26,3 @@
 
 
 
-
-
-
-<!--<h5 class="card-title">{{ user.email }}</h5> -->
-<!--<p class="card-text">Rol: {{ user.isAdmin ? 'Admin' : 'Usuario Normal' }}</p> -->

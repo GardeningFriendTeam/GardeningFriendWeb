@@ -39,7 +39,7 @@
 }
 
 .card {
-  max-width: 400px; /* Adjusted width for longer cards */
+  max-width: 490px; /* Adjusted width for longer cards */
   width: 100%; /* Ensure it takes the full width of the column */
   margin: auto;
   background: #fff;
@@ -83,16 +83,17 @@
 
 .card-text {
   margin: 10px 0;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .modificar {
-  font-size: 16px;
+  width: 70%;
+  font-size: 18px;
   background-color: rgba(8, 108, 56, 1);
   text-align: center;
   color: #ffffff;
   border-radius: 8px;
-  border: rgba(8, 108, 56, 1);;
+  border-color: rgba(8, 108, 56, 1);;
   padding: 6px;
   cursor: pointer;
 }

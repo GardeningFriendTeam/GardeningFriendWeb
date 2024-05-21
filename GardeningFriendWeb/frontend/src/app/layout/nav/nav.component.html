@@ -9,25 +9,25 @@
     <li id="consejos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/consejo"> CONSEJOS</a>
     </li>
-    <li id="tienda" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+    <li id="tienda" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}" *ngIf="isAuthenticated">
         <a routerLink="/tienda">TIENDA</a>
     </li>
-    <li id="favoritos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+    <li id="favoritos" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}" *ngIf="isAuthenticated">
         <a routerLink="/favoritos">FAVORITOS</a>
     </li>
-    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+    <li id="mi-cuenta" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}" *ngIf="isAuthenticated">
         <a routerLink="/micuenta">MI CUENTA</a>
     </li>
     <!--<li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/dashboard">DASHBOARD</a> 
     </li> -->
-    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+    <li id="asistente-ia" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}" *ngIf="isAuthenticated">
         <a routerLink="/asistenteIA">ASISTENTE IA</a>
     </li>
-    <li id="dashboard" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
+    <li id="contacto" class="nav_item" [ngStyle]="{'display': toggleEffect? 'flex' : 'none'}">
         <a routerLink="/contacto">CONTACTO</a>
     </li>
-    <li id="admin" *ngIf="isAdmin" class="nav_item" (click)="toggleAdminMenu()">
+    <li id="admin" *ngIf="is_admin" class="nav_item" (click)="toggleAdminMenu()">
         <a class="nav-link" href="javascript:void(0)">ADMIN</a>
         <ul class="admin-dropdown" [ngClass]="{'show': adminMenuOpen}">
             <li><a routerLink="/administrarCultivos">Administrar Cultivos</a></li>
