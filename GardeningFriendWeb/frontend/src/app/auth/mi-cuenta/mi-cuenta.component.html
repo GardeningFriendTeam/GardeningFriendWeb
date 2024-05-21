@@ -1,22 +1,15 @@
 
         <body>
             <main>
-                <a id="volver" routerLink="/home">volver</a>
                 <!-- logo del sitio -->
                 <picture>
                     <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
-                    <h1>Mi Cuenta</h1>
+                    <h1>Perfil Usuario</h1>
                 </picture>
-                    <div >
-                        <input type="text">
-                        <label >nombre</label>
-                        <p>{{perfil.nombre}}</p>
-                    </div>
-                    <div>
-                        <input type="text">
-                        <label >Correo</label>
-                        <p>{{perfil.correo}}</p>
-                    </div>
+                <div class="info-personal">
+                    <p class="username">Username: {{ userSubject.username || "Usuario" }} <i class="fas fa-edit"></i></p>
+                    <p class="correo">Email: {{ userSubject.email }} <i class="fas fa-edit"></i></p>
+                </div>
                     <button >Actualizar</button>
             </main>
         
