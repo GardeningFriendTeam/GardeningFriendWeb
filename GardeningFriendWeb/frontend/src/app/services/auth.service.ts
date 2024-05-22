@@ -67,5 +67,14 @@ export class AuthService {
    return this.http.delete(`${this.apiUrl}/users/delete/${userId}/`);
  }
 
+ updateUser(user: User): Observable<User> {
+  return this.http.put<User>(`${this.apiUrl}/users/${user.id}/`, user)
+    .pipe(
+      tap(updatedUser => {
+        this.userSubject.next(updatedUser);
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+      })
+    );
+}
 
 }
