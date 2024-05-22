@@ -37,7 +37,7 @@ def login(request):
                 #is_admin = user.is_staff or user.is_superuser
                 return Response({
                     "username": user.username,
-                    "user":user.id,
+                    "id":user.id,
                     "email": user.email,
                     "is_admin":user.is_admin,
                 }, status=status.HTTP_200_OK)

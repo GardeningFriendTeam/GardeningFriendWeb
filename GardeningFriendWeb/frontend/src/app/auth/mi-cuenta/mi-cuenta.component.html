@@ -1,17 +1,24 @@
-
-        <body>
-            <main>
-                <!-- logo del sitio -->
-                <picture>
-                    <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
-                    <h1>Perfil Usuario</h1>
-                </picture>
-                <div class="info-personal">
-                    <p class="username">Username: {{ userSubject.username || "Usuario" }} <i class="fas fa-edit"></i></p>
-                    <p class="correo">Email: {{ userSubject.email }} <i class="fas fa-edit"></i></p>
-                </div>
-                    <button >Actualizar</button>
-            </main>
-        
-        </body>
- 
+<body>
+    <main>
+        <!-- logo del sitio -->
+        <picture>
+            <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
+            <h1>Perfil Usuario</h1>
+        </picture>
+        <div class="info-personal">
+            <p class="username">
+                Username: 
+                <span *ngIf="!isEditing">{{ userSubject.username || 'Usuario' }}</span>
+                <input *ngIf="isEditing" [(ngModel)]="updatedUsername" type="text">
+                <i class="fas fa-edit" (click)="edit('username')"></i>
+            </p>
+            <p class="correo">
+                Email: 
+                <span *ngIf="!isEditing">{{ userSubject.email }}</span>
+                <input *ngIf="isEditing" [(ngModel)]="updatedEmail" type="email">
+                <i class="fas fa-edit" (click)="edit('email')"></i>
+            </p>
+        </div>
+        <button (click)="updateUser()" *ngIf="isEditing">Actualizar</button>
+    </main>
+</body>
