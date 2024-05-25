@@ -35,7 +35,7 @@
         </div>
         <div class="botones">
             <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
-            <button (click)="addToFavorito(cultivo)" type="button" class="favoritos"> A FAVORITOS ★</button>
+            <button (click)="addToFavorito(cultivo)" *ngIf="isAuthenticated" type="button" class="favoritos"> A FAVORITOS ★</button>
         </div>
     </div>
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Cultivo } from './cultivos.model';
 import { CultivosService } from '../../services/cultivos.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cultivos',
@@ -13,6 +14,9 @@ export class CultivosComponent {
   activeAlert:boolean = false;
   activeCover:boolean = false;
   activeInfo:boolean = false;
+
+  isAuthenticated: boolean = false;
+
 
   alertText:string = '';
   
@@ -39,7 +43,11 @@ export class CultivosComponent {
   //El ngModel junto con el pipe filter que se creo podemos buscar por nombre
   searchName: string = '';
 
-  constructor(private cultivosService:CultivosService, private fb:FormBuilder) { }
+  constructor(private authService: AuthService, 
+    private cultivosService:CultivosService, 
+    private fb:FormBuilder) { 
+        this.isAuthenticated = !!this.authService.userValue;
+    }
 
   ngOnInit(): void {
     this.cultivosService.listCultivos().subscribe((data: Cultivo[]) => {
