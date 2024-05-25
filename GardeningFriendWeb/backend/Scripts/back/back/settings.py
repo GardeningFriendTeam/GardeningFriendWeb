@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'cultivos',
+    'favoritos',
     'Aplicacion_web',
     'coreapi',
 ]

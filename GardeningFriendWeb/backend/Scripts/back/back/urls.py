@@ -28,5 +28,7 @@ urlpatterns = [
     path('users/<int:user_id>/', update_user, name='update_user'),
     path('users/<int:user_id>/update-role/', update_user_role, name='update_user_role'),
     path('users/delete/<int:user_id>/', delete_user, name='delete_user'),
+    path('api/', include('favoritos.urls')),
+    
 ]
 
