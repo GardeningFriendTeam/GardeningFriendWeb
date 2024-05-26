@@ -12,7 +12,7 @@
             <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
         </div>
         <div class="category">
-            <p> <u>Categoría:</u> {{categorias.nombre}} </p>
+            <p> <u>Categoría:</u> {{cultivo.categoria}} </p>
         </div>
         <div class="botones">
             <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
@@ -37,7 +37,7 @@
             <p>{{cultivo.descripcion}}</p>
         </div>
         <div class="info-others">
-            <p >Tipo de cultivo: <b>{{categorias.nombre}}</b></p>
+            <p >Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
             <p>Region: <b>{{cultivo.region}}</b></p>
             <p>Estacion de siembra: <b>{{cultivo.estacion}}</b></p>
             <p>Temperatura recomendada: <b>{{cultivo.temperatura}}°C</b></p>
