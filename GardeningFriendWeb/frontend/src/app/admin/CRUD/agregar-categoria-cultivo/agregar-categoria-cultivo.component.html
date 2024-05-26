@@ -1,0 +1,15 @@
+<h4 class="titulo">Cargar Categoria</h4>
+
+<form method="post" (ngSubmit)="create()" class="col-6" enctype="multipart/form-data" >
+    
+<div class="mb-3 form" ngForm="form">
+    <label  class="form-label">Nombre de la Categoría</label>
+    <br>
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre">
+  </div>
+
+  
+
+  <button class="btn">Cargar</button>
+
+</form>

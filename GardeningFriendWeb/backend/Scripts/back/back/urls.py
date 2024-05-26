@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from usuario.views import register_user, login, list_users, update_user, delete_user, update_user_role
+from categoriaCultivo.views import CategoriaUpdateDelete, categoriaList
+from cultivos.views import CultivoUpdateDelete, cultivoList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +34,21 @@ urlpatterns = [
     path('users/delete/<int:user_id>/', delete_user, name='delete_user'),
     path('api/', include('favoritos.urls')),
     
+
+    path('api/', include('categoriaCultivo.urls')),
+    path('api/categoriaCultivo/<pk>/', categoriaList),
+    path('api/categoriaCultivo/update/<pk>/', categoriaList),
+    path('api/categoriaCultivo/', categoriaList),
+    path('api/categoriaCultivo/detail/<pk>/', categoriaList),
+
+    path('api/', include('cultivos.urls')),
+    path('api/cultivos/<pk>/', cultivoList),
+    path('api/cultivos/update/<pk>/', cultivoList),
+    path('api/cultivos/', cultivoList),
+    path('api/cultivos/detail/<pk>/', cultivoList)
 ]
 
+# para que cargue la foto
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

@@ -31,6 +31,11 @@ import { CommonModule } from '@angular/common';
 import { AccessDeniedComponent } from './layout/access-denied/access-denied.component';
 import { AuthGuard } from './guards/user-auth.guard';
 import { AdminGuard } from './guards/admin-auth.guard';
+import { AgregarCategoriaCultivoComponent } from './admin/CRUD/agregar-categoria-cultivo/agregar-categoria-cultivo.component';
+import { EditarCategoriaCultivoComponent } from './admin/CRUD/editar-categoria-cultivo/editar-categoria-cultivo.component';
+import { VerCategoriaCultivoComponent } from './admin/CRUD/ver-categoria-cultivo/ver-categoria-cultivo.component';
+import { AgregarCultivoComponent } from './admin/CRUD/agregar-cultivo/agregar-cultivo.component';
+import { EditarCultivoComponent } from './admin/CRUD/editar-cultivo/editar-cultivo.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
@@ -48,6 +53,11 @@ const appRoutes: Routes = [
   { path: 'administrarCultivos', component: AdministrarCultivoComponent, canActivate: [AdminGuard]},
   { path: 'administrarUsuarios', component: AdministrarUsuarioComponent, canActivate: [AdminGuard]},
   { path: 'access-denied', component: AccessDeniedComponent},
+
+  { path: 'agregarCategoriaCultivo', component: AgregarCategoriaCultivoComponent},
+  { path: 'agregarCultivo', component: AgregarCultivoComponent},
+  // { path: 'editarCategoriaCultivo', component: EditarCategoriaCultivoComponent},
+  { path: 'verCategoriaCultivo', component: VerCategoriaCultivoComponent},
   { path: '**', component: HomeComponent }
 
   
@@ -74,7 +84,14 @@ const appRoutes: Routes = [
     ProductosComponent,
     ContactoComponent,
     AdministrarUsuarioComponent,
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    AdministrarCultivoComponent,
+    AdministrarUsuarioComponent,
+    AgregarCategoriaCultivoComponent,
+    EditarCategoriaCultivoComponent,
+    VerCategoriaCultivoComponent,
+    AgregarCultivoComponent,
+    EditarCultivoComponent
   ],
   imports: [
     BrowserModule,
