@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl,FormControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl,FormControl, FormBuilder, FormGroup, ValidatorFn, Validators, EmailValidator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user.model';
 // import { Component } from '@angular/core';
@@ -42,27 +42,38 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit{
+  registerForm!: FormGroup;
   username: string = '';
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.registerForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+  }
 
   register() {
-    this.authService.register(this.username, this.email, this.password)
-      .subscribe(
-        response => {
+    if(this.registerForm.valid) {
+      const {username, email, password} = this.registerForm.value;
+      this.authService.register(this.username, this.email, this.password).subscribe(
+        (response) => {
           console.log(response);
           alert("Usuario creado exitosamente");
           // Manejar la respuesta exitosa, por ejemplo, redirigir al usuario a otra página
           this.router.navigate(['/login']); // Redirigir al usuario a la página de login
         },
-        error => {
+        (error) => {
           console.error(error);
           alert("Error al crear el usuario");
           // Manejar el error, por ejemplo, mostrar un mensaje de error al usuario
         }
       );
+    }
   }
 }

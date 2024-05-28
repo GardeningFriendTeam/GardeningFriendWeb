@@ -10,6 +10,7 @@ body {
 h1 {
     text-align: center;
     font-weight: 600;
+    font-size: 20px;
 }
 
 form {
@@ -17,6 +18,7 @@ form {
     padding: 10px 0;
     box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
     border-radius: 18px;
+    width: 20%;
 }
 
 .form {
@@ -26,11 +28,12 @@ form {
 
 form .form img{
     cursor: pointer;
+    width: 100px;
 }
 
 form .grupo {
     position: relative;
-    margin: 45px;
+    margin: 40px;
 }
 
 input {
