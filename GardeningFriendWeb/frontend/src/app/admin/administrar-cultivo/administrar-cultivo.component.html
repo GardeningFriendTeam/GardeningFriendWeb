@@ -1,5 +1,5 @@
 <!-- cover para los modales -->
-<!-- <div class="cover" [class.active]="activeCover"></div> -->
+<div class="cover" [class.active]="activeCover"></div> -->
 <a href="/agregarCultivo" class="btn btn-info">Agregar Cultivo</a>
 <!-- section donde se muestran los cultivos -->
 <section > 
@@ -12,10 +12,10 @@
             <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
         </div>
         <div class="category">
-            <p> <u>Categoría:</u> {{cultivo.categoria.nombre}} </p>
+            <p>{{cultivo.categoria.nombre}} </p>
         </div>
         <div class="botones">
-            <button (click)="showInfo(cultivo)" type="button" class="moreInfo">detalles</button>
+            <button (click)="showInfo(cultivo)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
             
             <button routerLink="/editarCultivo/{{cultivo.id}}" class="bi bi-pencil-fill editar"></button>
             <button (click)=delete(cultivo) class="bi bi-trash-fill eliminar"></button>
