@@ -17,6 +17,15 @@ form{
     border-radius: 20px;
     position: relative;
     box-shadow: 3px 3px 10px 0px rgba(66, 66, 66, 0.2);
+    & .title {
+        font-size: 1.9em;
+        color: rgb(0, 92, 0);
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
     
 }
 

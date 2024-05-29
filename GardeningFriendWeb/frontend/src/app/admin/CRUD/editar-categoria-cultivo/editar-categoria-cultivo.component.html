@@ -1,16 +1,15 @@
-
-<h4 class="titulo" *ngIf="categoriaCultivo">Editar Categoria</h4>
+<section>
 
 <form (ngSubmit)="onUpdate()" class="col-6" enctype="multipart/form-data" >
+  <p class="title" *ngIf="categoriaCultivo">Editar Categoria</p>
     
 <div class="mb-3 form" ngForm="form">
-    <label  class="form-label">Nombre de la Categoría</label>
-    <br>
-    <input type="text" class="form-control" name="nombre" [(ngModel)]="categoriaCultivo.nombre">
+    <label  class="form-label">Nombre de la Categoría
+      <input type="text" class="form-control" name="nombre" [(ngModel)]="categoriaCultivo.nombre">
+    </label>
   </div>
 
-  
-
-  <button class="btn">Actualizar</button>
+  <button class="submit">Actualizar</button>
 
 </form>
+</section>
