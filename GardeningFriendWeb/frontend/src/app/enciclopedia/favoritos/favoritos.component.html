@@ -21,7 +21,7 @@
                 <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
             </div>
             <div class="category">
-                <p> <u>Categoría:</u> {{favorito.categoria}}</p>
+                <p> <u>Categoría:</u> {{favorito.categoria.nombre}}</p>
             </div>
             <div class="botones">
                 <button (click)="showInfo(favorito)" type="button" class="moreInfo">MAS INFO</button>
