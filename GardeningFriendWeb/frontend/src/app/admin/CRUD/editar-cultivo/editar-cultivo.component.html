@@ -1,57 +1,55 @@
-<h4 class="titulo" *ngIf="cultivos">Editar Cultivo</h4>
+<section>
 
 <!-- <form method="post" (ngSubmit)="actualizar()" class="col-6" enctype="multipart/form-data"> -->
     <form (ngSubmit)="onUpdate()" class="col-6" enctype="multipart/form-data" >
-
-    <p [(ngModel)]="cultivos.id">id {{cultivos.id}}</p> 
+      <p class="title" *ngIf="cultivos">Editar Cultivo</p>
     
     <div class="mb-3" ngForm="form">
         <p name="id" (change)="guardarId($event)"></p>
 
         <label class="form-label">Nombre</label>
-        <br>
         <input type="text" class="form-control" name="nombre" (change)="guardarNombre($event)" [(ngModel)]="cultivos.nombre">
       </div>
 
       <div class="mb-3 ">
         <div class="categoria  row mb-3">
-          <label class="form-label">Categoría</label>
-          <br>
+          <label class="form-label">Categoría
+            <a class="submitCat" routerLink="/agregarCategoriaCultivo">+</a>
+          </label>
+
             <select class="form-control cat" id="catsel" name="categoria_sel" (change)="selectCategoria($event)" [(ngModel)]="cultivos.categoria">
               <option *ngFor="let cat of categorias" value={{cat.id}}> {{cat.nombre}}</option>  
             </select>
-            <a class="catb" routerLink="/agregarCategoriaCultivo"><button class="btn">+</button></a>
+            
         </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Descripción</label>
-        <br>
-        <textarea class="form-control" rows="3" name="descripcion"  (change)="guardarDescripcion($event)" [(ngModel)]="cultivos.descripcion"></textarea>
+        <label class="form-label">Descripción
+        <textarea class="form-control" rows="3" name="descripcion"  (change)="guardarDescripcion($event)" [(ngModel)]="cultivos.descripcion"></textarea></label>
       </div>
 
       <div class="mb-3">
-        <label for="formFile" class="form-label">Imagen</label>
-        <br>
+        <label for="formFile" class="form-label">Imagen
         <div >
           <img class="imagen" src="{{cultivos.imagen}}" alt="">
         </div>
         <input class="form-control" type="file" name="imagen" (change)="enviarFoto($event)" [(ngModel)]="cultivos.imagen">
+      </label>
       </div>
 
-    <label  class="form-label">Región</label>
-    <br>
+    <label  class="form-label">Región
     <input type="text" class="form-control" name="region" (change)="guardarRegion($event)" [(ngModel)]="cultivos.region">
-   <br>
+    </label>
+  
     <label  class="form-label">Estación de siembra</label>
-    <br>
     <input type="text" class="form-control" name="estacion" (change)="guardarEstacion($event)" [(ngModel)]="cultivos.estacion">
-<br>
     <label  class="form-label">Temperatura recomendada</label>
-    <br>
     <input type="text" class="form-control" name="temperatura" (change)="guardarTemperatura($event)" [(ngModel)]="cultivos.temperatura">
-  <br>
 
-  <button class="btn">Actualizar</button>
+
+  <button class="submit">Actualizar</button>
 
 </form>
+
+</section>
