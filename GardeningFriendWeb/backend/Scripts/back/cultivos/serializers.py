@@ -1,7 +1,12 @@
-from rest_framework import serializers # type: ignore
 from .models import Cultivo
+from rest_framework import serializers
+from drf_writable_nested import WritableNestedModelSerializer
+from categoriaCultivo.serializer import CategoriaSerializer
 
-class CultivoSerializer(serializers.ModelSerializer):
+
+class CultivoSerializer(WritableNestedModelSerializer, serializers.HyperlinkedModelSerializer):
+    categoria = CategoriaSerializer()
+
     class Meta:
         model = Cultivo
-        fields = '__all__'
+        fields = ['id','nombre','categoria','descripcion','imagen','region','estacion','temperatura','favorito']
