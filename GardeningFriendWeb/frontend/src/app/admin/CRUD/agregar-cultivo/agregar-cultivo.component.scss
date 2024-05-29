@@ -5,7 +5,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--verde3B);
+  background-color: #f3f3f3;
 
   & form {
     display: flex;
@@ -16,6 +16,7 @@ section {
     padding: 40px;
     border-radius: 20px;
     position: relative;
+    box-shadow: 3px 3px 10px 0px rgba(66, 66, 66, 0.2);
     & .title {
       font-size: 1.9em;
       color: rgb(0, 92, 0);
