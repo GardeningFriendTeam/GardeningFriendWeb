@@ -1,9 +1,10 @@
-<!-- cover para los modales -->
-<div class="cover" [class.active]="activeCover"></div> -->
-<a href="/agregarCultivo" class="btn btn-info">Agregar Cultivo</a>
+<div class="cover" [class.active]="activeCover"></div>
+
 <!-- section donde se muestran los cultivos -->
-<section > 
-    
+<div class="btn-add">
+    <a href="/agregarCultivo" class="bi bi-plus-circle">Agregar Cultivo</a>
+</div>
+<section> 
     <div *ngFor="let cultivo of cultivos" class="tarjeta" id="{{cultivo.id}}">
         <div class="imagen_wrapper">
             <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
@@ -21,6 +22,7 @@
             <button (click)=delete(cultivo) class="bi bi-trash-fill eliminar"></button>
         </div>
     </div> 
+   
 </section>
 
 

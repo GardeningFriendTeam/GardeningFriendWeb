@@ -18,6 +18,25 @@
   }
 }
 
+.btn-add {
+    width: max-content;
+    position:absolute;
+    margin: 40px ;
+    background-color: #237023ba;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0.4em;
+    font-family: var(--secundaria3);
+    border-radius: 10px;
+    padding: 8px 8px;
+
+    & a {
+        text-align: center;
+        text-decoration: none;
+        color: #f0f0f0;
+    }
+}
+
 section{
   width: 100%;
   padding-bottom: 100px;
@@ -172,11 +191,11 @@ section{
       &:hover{
           transform: translateX(2px);
           transform: translateY(6px);
-          box-shadow: 8px 8px 8px 0px rgba(0,0,0,0.75);
+          box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.61);
       }
       
       & .imagen_wrapper{
-          background-color: #368d36b0;
+          background-color: #1f481f;
           /* background-color: rgba(255, 255, 255, 0.226); */
           text-align: center;
           border-radius: 20px 20px 0px 0px;
