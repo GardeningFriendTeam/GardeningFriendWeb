@@ -31,10 +31,10 @@
             <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
         </div>
         <div class="category">
-            <p> <u>Categoría:</u> {{cultivo.categoria.nombre}} </p>
+            <p>{{cultivo.categoria.nombre}} </p>
         </div>
         <div class="botones">
-            <button (click)="showInfo(cultivo)" type="button" class="moreInfo"> MAS INFO</button>
+            <button (click)="showInfo(cultivo)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
             <button (click)="addToFavorito(cultivo)" *ngIf="isAuthenticated" type="button" class="favoritos"> A FAVORITOS ★</button>
         </div>
     </div> 
