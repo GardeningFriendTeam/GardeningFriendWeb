@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
     'usuario',
     'rest_framework',
     'corsheaders',
@@ -107,7 +108,7 @@ DATABASES = {
         'NAME': 'gardening',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': 'localhost',  
+        'HOST': '172.17.0.2',  
         'PORT': '3306',
     }
 }
@@ -137,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Buenos_aires'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
