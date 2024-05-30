@@ -1,0 +1,600 @@
+/* ------------------ GRID GENERAL DE TODA LA PAGINA ------------------- */
+#grid_principal {
+  width: 100%;
+  overflow-y: visible;
+  overflow-x: hidden;
+  background-image: url("../../../assets/fondos/wooden-background-4.jpg");
+}
+
+/* ------------------ CLASES PARA RESOLUCIONES RESPONSIVE ------------------- */
+/* -------MOVIL ---------*/
+/*---grid general---*/
+.grid_principal_movil {
+  height: 200vh !important;
+}
+
+/*--- modal 1 (cant)---*/
+.grid_principal_movil .lightbox .cuadro_compra {
+  height: 40%;
+  width: 85%;
+}
+
+/*--- modal 2 (caja)---*/
+.grid_principal_movil .lightbox #formas_pago_form {
+  width: 90%;
+  height: 65%;
+  grid-template-rows: 5% 15% 80%;
+}
+
+/* ------- TABLET ---------*/
+/*---grid general---*/
+.grid_principal_tablet {
+  height: 150vh !important;
+}
+
+/*--- modal 1 (cant)---*/
+.grid_principal_tablet .lightbox .cuadro_compra {
+  height: 45%;
+  width: 50%;
+}
+
+/*--- modal 2 (caja)---*/
+.grid_principal_tablet .lightbox #formas_pago_form {
+  height: 60%;
+  width: 70%;
+}
+
+/* ------- ESCRITORIO ---------*/
+/*---grid general---*/
+.grid_principal_escritorio {
+  height: 125vh !important;
+}
+
+/*--- modal 1 (cant)---*/
+.grid_principal_escritorio .lightbox .cuadro_compra {
+  width: 40%;
+  height: 70%;
+}
+
+/*--- modal 2 (caja)---*/
+.grid_principal_escritorio .lightbox #formas_pago_form {
+  width: 40%;
+  height: 95%;
+  grid-template-rows: 40px 100px auto;
+}
+
+#formas_pago_form .detalles_formulario label, p {
+  font-size: 0.8rem;
+}
+
+/* ------------------ GRID SECTION  ------------------- */
+#tienda_grid {
+  display: grid;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  grid-template-areas: "portada" "buscador" "productos";
+}
+
+/* ------------------ PORTADA ------------------- */
+#portada {
+  display: flex;
+  grid-area: portada;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  background-image: url("../../../assets/fondos/fondo-portada-jardineria.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 10px solid sandybrown;
+}
+
+#portada h3 {
+  font-size: 3rem;
+  color: var(--fuenteAlt);
+  font-family: secundaria1;
+  animation: tracking-in-expand 1000ms;
+}
+
+/* ------------------ BUSCADOR ------------------- */
+#barra_buscador {
+  display: flex;
+  grid-area: buscador;
+  flex-direction: column;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  font-family: secundaria1;
+  color: white;
+}
+
+#titulo_buscador {
+  font-weight: bold;
+  font-size: 1.25rem;
+  /* animation: tracking-in-contract 500ms; */
+}
+
+#buscar {
+  width: 75%;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.45);
+}
+
+#buscar:hover {
+  box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.7);
+  transition: 0.3s;
+}
+
+#ok_buscar {
+  background: var(--fuentePrin2);
+  color: white;
+  font-family: secundaria1;
+  font-size: 1.2rem;
+  width: 50px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: 5px;
+  border: none;
+}
+
+#ok_buscar:hover {
+  background: var(--verde2);
+  transition: 0.5s;
+}
+
+/* ------------------ ICONO CARRITO ------------------- */
+#carrito_wrapper {
+  display: inline-block;
+  position: fixed;
+  width: 45px;
+  height: 45px;
+  overflow: hidden;
+  top: 2%;
+  right: 3%;
+  z-index: 100;
+}
+
+#carrito_wrapper #icono_carrito {
+  height: 99%;
+  cursor: pointer;
+}
+
+#carrito_wrapper:hover {
+  width: 50px;
+  height: 50px;
+  transition: 0.5s;
+}
+
+/* ------------------------ PRODUCTOS ----------------------- */
+/* ------------------------GRID GENERAL----------------------- */
+#grid_productos {
+  display: grid;
+  grid-area: productos;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: minmax(150px, 700px);
+}
+
+/* ------------------------ARTICULOS----------------------- */
+.productos {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 40% 45% 15% !important;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: secundaria2;
+  margin: 20px;
+  max-height: 500px;
+  max-width: 500px;
+  box-shadow: 3px 3px 10px 5px var(--fondo_transparente);
+  border-radius: 5px;
+  color: var(--fuentePrin2);
+  margin-top: 50px;
+  background-color: white;
+}
+
+.productos:hover {
+  box-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.6);
+  transition: 500ms;
+  /* animation: slide-top 400ms; */
+  translate: 3px 3px;
+}
+
+.productos .img_wrapper {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgb(211, 208, 208);
+}
+
+.productos .img_wrapper .icono_producto {
+  height: 80%;
+  border-radius: 100%;
+  box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.7);
+  /* border: 8px solid white; */
+  box-sizing: border-box;
+}
+
+.productos .detalles_producto {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  flex-direction: column;
+  justify-content: space-evenly;
+  justify-self: center;
+  align-items: center;
+  width: 85%;
+  height: 100%;
+}
+
+.detalles_producto h4 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.detalles_producto ul {
+  line-height: 1.5rem;
+  color: var(--fuentePrin3);
+}
+
+.productos .boton_wrapper {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.boton_wrapper .boton_producto {
+  cursor: pointer;
+  color: white;
+  background: var(--fuentePrin2);
+  padding: 5px;
+  font-family: secundaria1;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton_wrapper #btn_compra {
+  margin-right: 10px;
+}
+
+.boton_wrapper .boton_producto:hover {
+  background: var(--verde2);
+  transition: 0.5s;
+}
+
+/* ------------------ VENTANA MODAL CARRITO ------------------- */
+/* ------------------ LIGHTBOX ------------------- */
+.lightbox {
+  display: flex;
+  position: absolute;
+  grid-column: 1/2;
+  grid-row: 1/4;
+  height: 200vh;
+  width: 100%;
+  z-index: 100 !important;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------ LAYOUT GENERAL ------------------- */
+.lightbox .cuadro_compra {
+  display: grid;
+  height: 50%;
+  width: 85%;
+  grid-template-columns: 100%;
+  grid-template-rows: 10% 30% 60%;
+  background: white;
+  overflow: hidden;
+  border-radius: 5px;
+  font-family: secundaria1;
+  color: var(--fuentePrin2);
+  font-size: 1.15rem;
+  box-shadow: 10px 10px 15px -2px rgba(0, 0, 0, 0.6);
+  animation: blur-in-expand 400ms;
+}
+
+/* ------------------ CERRAR ------------------- */
+.cuadro_compra .barra_cerrar {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  background: var(--verde2);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cuadro_compra .barra_cerrar img {
+  height: 30px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.cuadro_compra .barra_cerrar img:hover {
+  filter: brightness(200%);
+  transition: 500ms;
+}
+
+/* ------------------ LOGO ------------------- */
+.cuadro_compra .logo_producto {
+  display: flex;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  justify-content: center;
+  align-items: center;
+}
+
+.cuadro_compra .logo_producto img {
+  height: 75%;
+  border-radius: 100%;
+  animation: rotate-vertical-center 1000ms;
+}
+
+/* ------------------ FORMULARIO ------------------- */
+.cuadro_compra .formulario {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.cuadro_compra .formulario h3 {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.cuadro_compra .formulario #field_cantidad {
+  width: 70px;
+}
+
+.cuadro_compra .formulario ul li {
+  line-height: 1.5rem;
+}
+
+.cuadro_compra .formulario #mensaje_carrito {
+  animation: tracking-in-expand 500ms;
+  font-size: 1.1rem;
+  color: var(--verde3);
+}
+
+.cuadro_compra .formulario .botones_form {
+  font-family: secundaria1;
+  background: var(--fuentePrin2);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  width: 100%;
+  height: 35px;
+  margin-top: 10px;
+  font-size: 1.15rem;
+}
+
+.cuadro_compra .formulario .botones_form:hover {
+  transition: 0.5s;
+  background: var(--verde2);
+  cursor: pointer;
+}
+
+.cuadro_compra .formulario #detalles_pago {
+  align-items: flex-start;
+  width: 85%;
+  font-size: 1rem;
+}
+
+.detalles_formulario input, select {
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 3px solid rgb(145, 144, 144);
+}
+
+.icono_tarjeta {
+  height: 15px;
+  cursor: hover;
+  margin-left: 5px;
+  filter: opacity(75%);
+  cursor: pointer;
+}
+
+.icono_tarjeta:hover {
+  filter: opacity(100%);
+  transition: 500ms;
+}
+
+#formas_pago_form {
+  overflow-y: scroll;
+}
+
+/* ------------------  AJUSTES MODALES ejemplo (codigo y expiracion) ------------------- */
+.modal_ejemplo_wrapper {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 110;
+}
+
+.modal_ejemplo {
+  display: flex;
+  flex-direction: column;
+  width: -moz-min-content;
+  width: min-content;
+  height: -moz-min-content;
+  height: min-content;
+  justify-content: space-evenly;
+  align-self: center;
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+  animation: blur-in-expand 400ms;
+}
+
+.barra_cerrar_modal {
+  display: flex;
+  align-self: flex-start;
+  height: 10%;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.barra_cerrar_modal img {
+  height: 30px;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.icono_validacion {
+  height: 15px;
+  margin-right: 5px;
+}
+
+/* ------------------  MODAL FINAL ------------------- */
+/*  notifica al usuario si completo el formulario de compra correctamente*/
+/* ajustes contenedor padre*/
+.finalizar_compra {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 370px;
+  border-radius: 10px;
+  background: white;
+  font-family: secundaria1;
+  overflow: hidden;
+  animation: tracking-in-expand 1000ms;
+  margin-right: 10px;
+  margin-left: 10px;
+  box-shadow: 10px 10px 15px -2px rgba(0, 0, 0, 0.6);
+}
+
+/* barra para cerrar*/
+.cerrar_modal_final {
+  display: flex;
+  align-self: flex-start;
+  height: 15%;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  background: var(--verde2);
+}
+
+.cerrar_modal_final img {
+  margin-right: 10px;
+  height: 25px;
+  cursor: pointer;
+}
+
+/* contenido del modal*/
+.contenido_modal_final {
+  display: flex;
+  flex-direction: column;
+  height: 85%;
+  width: 85%;
+  justify-self: flex-end;
+  justify-content: space-evenly;
+  align-items: center;
+  align-self: center;
+}
+
+.contenido_modal_final img {
+  height: 90px;
+  filter: opacity(50%);
+}
+
+.contenido_modal_final .titulo {
+  display: flex;
+  flex-direction: row;
+}
+
+.contenido_modal_final .titulo img {
+  height: 20px !important;
+  margin-right: 10px;
+  filter: opacity(100%);
+}
+
+.contenido_modal_final h3 {
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+.contenido_modal_final p {
+  justify-self: center;
+  text-align: center;
+}
+
+#transferencia h6 {
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+}
+
+#transferencia ul {
+  font-size: 0.75rem;
+  list-style-image: url("../../../assets/iconos/card-sample.png");
+}
+
+#transferencia ul li {
+  margin-left: 10px;
+}
+
+#transferencia i {
+  font-weight: bold;
+  color: var(--verde2);
+}
+
+/* ------------------ Estilos validaciones ------------------- */
+.mensaje_error {
+  display: block;
+  font-style: italic;
+  color: red;
+  font-size: 0.75rem;
+  animation: shake-horizontal 300ms;
+}
+
+#error_formulario {
+  display: flex;
+  font-size: 0.8rem;
+  align-items: center;
+}
+
+#error_formulario img {
+  height: 30px !important;
+  filter: opacity(50%);
+  margin-right: 10px;
+}
+
+/* animacion modal */
+.shakeElement {
+  animation-name: shake-horizontal;
+  animation-duration: 500ms;
+}/*# sourceMappingURL=layout-tienda.component.css.map */

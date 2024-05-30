@@ -4,7 +4,4 @@ GardeningFriendWeb/node_modules/
 
 # Ignora los archivos relacionados a API keys
 .env
-
-GardeningFriendWeb/backend/Lib
-GardeningFriendWeb/backend/Scripts/django-admin.exe
-GardeningFriendWeb/backend/pyvenv.cfg
+GardeningFriendWeb/backend/Scripts/env

@@ -1,0 +1,228 @@
+/*------------------------ SECTION ---------------------------------*/
+section {
+  display: grid;
+  grid-area: section;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+section #introduccion {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: principal, Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding-top: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-image: url("../../assets/fondos/plantas-borde-inf.png");
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* border-bottom: 5px solid var(--verde4); */
+}
+section #introduccion h2 {
+  color: var(--verde3);
+  font-weight: bolder;
+  line-height: 150%;
+  font-size: 2.2rem;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 10px;
+  animation-name: efectoIntro;
+  animation-duration: 2s;
+}
+section #introduccion p {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  line-height: 170%;
+  animation-name: efectoIntro;
+  animation-duration: 2s;
+}
+
+/*------------------------ ARTICLES ---------------------------*/
+/* ---------------Clase para los items de fondo verde*---------------*/
+.cultivos, .consejos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--verde6);
+  text-align: center;
+}
+
+/* ---------------AJUSTES GENERALES PARA CADA SECCION------------------*/
+article {
+  margin-bottom: 15px;
+  background-image: url("../../assets/fondos/wooden-background.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+article img {
+  height: 170px;
+  margin-top: 15px;
+}
+article img:hover {
+  filter: brightness(120%);
+  transition: 0.3s ease-in-out;
+}
+
+.cultivos h3 a, .consejos h3 a {
+  font-family: secundaria3, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--fuenteAlt);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.cultivos p, .consejos p {
+  margin-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: principal2;
+  color: var(--fuenteAlt);
+  line-height: 150%;
+  font-size: 1.1rem;
+}
+
+/* ---------------Clase para los items de fondo blanco---------------*/
+.ventas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+.ventas h3 a {
+  font-family: secundaria3, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--verde7);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.ventas p {
+  margin-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
+  font-family: principal2;
+  color: var(--verde3);
+  line-height: 150%;
+  font-size: 1.2rem;
+}
+
+/*------------------------------ ANIMACIONES ---------------------------------*/
+@keyframes efectoIntro {
+  0% {
+    filter: opacity(0%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}
+/*------------------------------ MEDIA QUERIES ---------------------------------*/
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  section #introduccion {
+    padding-top: 20%;
+  }
+  section .cultivos p, .consejos p,
+  section .ventas p {
+    font-size: 1.5rem;
+  }
+}
+/* horizontal phones*/
+@media only screen and (max-height: 575.98px) and (orientation: landscape) {
+  header #logo_contenedor img {
+    width: 175px;
+  }
+  header #opciones {
+    padding-bottom: 20px;
+  }
+  section #introduccion {
+    background-image: url("../../assets/fondos/plantas-borde-inf-large.png") !important;
+    justify-content: flex-start !important;
+    padding-top: 5% !important;
+  }
+  body section #introduccion h2 {
+    font-size: 1.25rem !important;
+  }
+  section #introduccion p {
+    font-size: 0.8rem !important;
+  }
+  section article img {
+    height: 130px !important;
+  }
+  section .cultivos p, .consejos p,
+  section .ventas p {
+    font-size: 1rem !important;
+  }
+  section .cultivos h3 a, .consejos h3 a,
+  section .ventas h3 a {
+    font-size: 1.25rem !important;
+  }
+}
+/* Medium devices (portrait tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  section #introduccion {
+    justify-content: center;
+    padding-top: 0;
+    background-image: url("../../assets/fondos/plantas-borde-inf-medium-2.png");
+  }
+  section #introduccion h2 {
+    font-size: 3rem !important;
+  }
+  section #introduccion p {
+    font-size: 1.5rem;
+  }
+  section .cultivos p, .consejos p,
+  section .ventas p {
+    font-size: 1.4rem;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  section article {
+    background-repeat: repeat-x;
+    background-size: contain;
+  }
+  section #introduccion {
+    justify-content: flex-start !important;
+    /* padding-top: 8% !important; */
+  }
+  section #introduccion h2 {
+    font-size: 2.4rem !important;
+  }
+  section .cultivos p, .consejos p,
+  section .ventas p {
+    font-size: 1.3rem;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  section #introduccion {
+    padding-top: 40px;
+    background-image: url("../../assets/fondos/plantas-borde-inf-large.png");
+    justify-content: flex-start;
+  }
+  section #introduccion h2 {
+    font-size: 2.75rem !important;
+  }
+  section #introduccion p {
+    font-size: 1.5rem;
+  }
+}
+/*------------------------ CLASES PARA EVENTOS ---------------------------*//*# sourceMappingURL=home.component.css.map */

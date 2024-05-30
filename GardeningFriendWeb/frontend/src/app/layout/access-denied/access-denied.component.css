@@ -1,0 +1,58 @@
+@charset "UTF-8";
+#main {
+  height: 70vh;
+  font-family: "principal";
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px; /* Puedes ajustar esto según tus necesidades */
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column {
+  flex-basis: 100%; /* Esto hace que el contenido ocupe todo el ancho disponible */
+  padding: 20px; /* Espacio alrededor del contenido */
+  box-sizing: border-box; /* Para incluir el padding en el cálculo del tamaño total */
+}
+
+.error-display {
+  font-size: 3em; /* Ajusta esto según sea necesario */
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  font-size: 1.25em; /* Ajusta esto según sea necesario */
+  margin-top: 30px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.return-btn {
+  background-color: #56ab2f; /* Color verde de Bootstrap */
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-color: #56ab2f;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 20px;
+}/*# sourceMappingURL=access-denied.component.css.map */

@@ -5,10 +5,15 @@ export interface Productos {
     default_price: string,
     description: string,
     images: Array<string>,
-    visibilidad: boolean,
-    precio: number,
-    stock: number,
+    //metadata
+    metadata: medatadata,
+    visibilidad: boolean
+}
+
+export interface medatadata{
     categoria: string,
+    stock: number,
     peso: string,
-    dimensiones: string,
+    dimensiones : string,
+    precio: number,
 }
