@@ -71,14 +71,14 @@ export class LayoutTiendaComponent implements OnInit{
   // costo final
   // imagenes iconos validacion:
   // variables booleanas (modales finalizar compra):
-  compraRealizada:boolean = false;
-  datosPagoOk:boolean = false;
-  datosDireccion:boolean = false;
-  pagoTransferencia:boolean = false;
-  errorInputs:boolean = false;
-  noHayMedioPago:boolean = false;
+  // compraRealizada:boolean = false;
+  // datosPagoOk:boolean = false;
+  // datosDireccion:boolean = false;
+  // pagoTransferencia:boolean = false;
+  // errorInputs:boolean = false;
+  // noHayMedioPago:boolean = false;
   // propiedades API regiones:
-  provincias_options: Array<object> = [];
+  //provincias_options: Array<object> = [];
   // valores que se pasan al componente hijo:
   abrirModDetalles:boolean = false;
   nombreProductoDetalles:string = "hola";
@@ -123,8 +123,23 @@ export class LayoutTiendaComponent implements OnInit{
         this.imagenProdSeleccionado = product.images;
         this.valorUnitario = product.metadata.precio;
         this.stockProducto = product.metadata.stock;
+        // 4 - redirigiendo a enlace correspondiente
+        if(this.nombreProdSeleccionado == "Regadora"){
+          window.location.href="https://buy.stripe.com/test_7sIaI1ckzceJbuw7st";
+        } else if(this.nombreProdSeleccionado == "Pala Jardinera"){
+          window.location.href = "https://buy.stripe.com/test_bIYaI170f2E9dCEfZ0";
+        } else if(this.nombreProdSeleccionado == "Semillas Tomate"){
+          window.location.href = "https://buy.stripe.com/test_bIY9DXckz4Mh2Y09AD";
+        } else if (this.nombreProdSeleccionado = "Semillas Calabaza"){
+          window.location.href = "https://buy.stripe.com/test_28o5nHdoD2E9gOQ8wA";
+        } else if(this.nombreProdSeleccionado == "Rastrillo"){
+          window.location.href = "https://buy.stripe.com/test_28o8zT0BR1A59mocMR"
+        } else {
+          alert("el producto no esta disponible");
+        }
       }
-    });
+    })
+
   }
 
   validarCantidad(){
@@ -144,37 +159,37 @@ export class LayoutTiendaComponent implements OnInit{
 
   }
 
-  abrirMetodosPago(cantidad:number){
-  // se cierra el modal anterior y se abre uno nuevo:
-  if (cantidad>0){
-    // si el usuario selecciono al menos una unidad
-    this.cerrarModalCompra();
-    //this.abirFormasPago = true;
-    // valor de la compra realizada
-    //this.costoCompra = this.cantidadElegida * this.valorUnitario;
-    return;
-  } else{
-    // se remarca el mensaje que debe comprar al menos una unidad
-    this.remarcarMensajeCantidad = true;
-  }
-  }
+  // abrirMetodosPago(cantidad:number){
+  // // se cierra el modal anterior y se abre uno nuevo:
+  // if (cantidad>0){
+  //   // si el usuario selecciono al menos una unidad
+  //   this.cerrarModalCompra();
+  //   //this.abirFormasPago = true;
+  //   // valor de la compra realizada
+  //   //this.costoCompra = this.cantidadElegida * this.valorUnitario;
+  //   return;
+  // } else{
+  //   // se remarca el mensaje que debe comprar al menos una unidad
+  //   this.remarcarMensajeCantidad = true;
+  // }
+  // }
 
-  cerrarMetodosPago(){
-  // se modifica el stock (solo para efecto visual por ahora):
-  //this.stripeProducts[this.prodSeleccionado].stock -= this.cantidadElegida;
-  // reseteo de propiedades:
-  this.cantidadElegida = 0;
-  this.remarcarMensajeCantidad = false;
-  this.mensajeCarrito = false;
-  this.datosPagoOk = false;
-  this.datosDireccion = false;
-  this.pagoTransferencia = false;
-  this.noHayMedioPago = false;
-  this.errorInputs = false;
-  this.compraRealizada = false;
-  // se cierra modal:
-  //this.abirFormasPago = false;
-  }
+  // cerrarMetodosPago(){
+  // // se modifica el stock (solo para efecto visual por ahora):
+  // //this.stripeProducts[this.prodSeleccionado].stock -= this.cantidadElegida;
+  // // reseteo de propiedades:
+  // this.cantidadElegida = 0;
+  // this.remarcarMensajeCantidad = false;
+  // this.mensajeCarrito = false;
+  // this.datosPagoOk = false;
+  // this.datosDireccion = false;
+  // this.pagoTransferencia = false;
+  // this.noHayMedioPago = false;
+  // this.errorInputs = false;
+  // this.compraRealizada = false;
+  // // se cierra modal:
+  // //this.abirFormasPago = false;
+  // }
 
   // modalCodigo(){
   // this.mostrarEjemploCodigo = !this.mostrarEjemploCodigo;
@@ -188,17 +203,17 @@ export class LayoutTiendaComponent implements OnInit{
   //   return this.costoCompra;
   // }
 
-  cerrarValidarCompra(){
-    // se cierra el modal:
-    this.compraRealizada = false;
-    // se resetean variables de validacion:
-    //this.abirFormasPago = false;
-    this.datosPagoOk = false;
-    this.datosDireccion = false;
-    this.pagoTransferencia = false;
-    this.noHayMedioPago = false;
-    this.errorInputs = false;
-  }
+  // cerrarValidarCompra(){
+  //   // se cierra el modal:
+  //   this.compraRealizada = false;
+  //   // se resetean variables de validacion:
+  //   //this.abirFormasPago = false;
+  //   this.datosPagoOk = false;
+  //   this.datosDireccion = false;
+  //   this.pagoTransferencia = false;
+  //   this.noHayMedioPago = false;
+  //   this.errorInputs = false;
+  // }
 
   // validarExpiracion(){
   //   const today = new Date();
@@ -342,16 +357,16 @@ export class LayoutTiendaComponent implements OnInit{
   //   }
   // }
 
-  mostrarError(campo:FormControl){
-    const valorCampo = campo.value;
-    if(!campo.valid && valorCampo != ""){
-      // si el valor ingresado es inavlido se muestra el error:
-      return true;
-    } else{
-      // de lo contrario se mantiene oculto:
-      return false;
-    }
-  }
+  // mostrarError(campo:FormControl){
+  //   const valorCampo = campo.value;
+  //   if(!campo.valid && valorCampo != ""){
+  //     // si el valor ingresado es inavlido se muestra el error:
+  //     return true;
+  //   } else{
+  //     // de lo contrario se mantiene oculto:
+  //     return false;
+  //   }
+  // }
 
   // onSelectProvincia(){
   //   // se obtiene la prov seleccionada:

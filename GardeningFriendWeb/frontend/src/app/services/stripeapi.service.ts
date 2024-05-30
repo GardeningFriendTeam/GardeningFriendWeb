@@ -23,7 +23,7 @@ export class StripeapiService {
 
   // funciones para consumir datos de API
   getProducts(){
-    return this.http.get("https://api.stripe.com/v1/products", this.options);
+    return this.http.get("https://api.stripe.com/v1/products?active=true", this.options);
   }
 
   getPrices(){

@@ -1,6 +1,6 @@
-<div id="carrito_wrapper">
+<!-- <div id="carrito_wrapper">
     <img src="../../../assets/iconos/icono-ventas.png" id="icono_carrito" alt="icono_carrito" (click)="abrirCarrito()">
-</div>
+</div> -->
 
 <div id="grid_principal" [ngClass]="getScreenSize()">
     <section id="tienda_grid">
@@ -11,13 +11,13 @@
         </div>
 
         <!-- buscador -->
-        <form id="barra_buscador">
+        <!-- <form id="barra_buscador">
             <label for="search" id="titulo_buscador">Busca lo que deseas!</label> <br>
             <div id="input_wrapper">
-                <input type="text" id="buscar" name="buscar" placeholder="buscar..." [(ngModel)] = "palabraBusqueda" (keydown)="buscarProducto()">
+                <input type="text" id="buscar" name="buscar" placeholder="buscar..." [(ngModel)] = "palabraBusqueda">
                 <button type="button" id="ok_buscar" (click)="buscarProducto()">OK</button>
             </div>
-        </form>      
+        </form>       -->
 
         <!-- productos -->
         <div id="grid_productos">
@@ -47,53 +47,6 @@
                         Detalles
                     </button>
                 </div>
-            </div>
-        </div>
-
-        <!-- ventana modal (compra)-->
-        <div class="lightbox" *ngIf="abrirModal" [ngClass]="getScreenSize()">
-            <div class="cuadro_compra">
-                <!-- cerrar -->
-                <div class="barra_cerrar">
-                    <img src="../../../assets/iconos/invalid-icon.png" alt="cerrar" (click)="cerrarModalCompra()">
-                </div>
-                <!-- logo -->
-                <div class="logo_producto">
-                    <!-- imagen dinamica -->
-                    <img [src]="imagenProdSeleccionado">
-                </div>
-                <!-- formulario (añadir al carrito)-->
-                <form class="formulario">
-                    <!-- titulo -->
-                    <h3>{{nombreProdSeleccionado}}</h3>
-                    <!-- input cantidad -->
-                    <div id="cantidad_wrapper">
-                        <label for="cantidad">Cantidad: </label>
-                        <input type="number" name="cantidad" min="1" value="1" id="field_cantidad" [disabled]="limiteStock" [(ngModel)] = "cantidadElegida">
-                        <br><hr>
-                    </div>
-                    <!-- detalles producto -->
-                    <ul class="detalles_formulario">
-                        <li id="precio_unitario">Precio unitario: <b>${{valorUnitario}}</b> </li>
-                        <li id="cantidad_elegida">Cantidad Elegida: <b>{{cantidadElegida}}</b> </li>
-                        <li id="valor_comprado">Valor compra: <b>${{valorUnitario * cantidadElegida}}</b> </li>
-                        <p *ngIf="validarCantidad()"> <b>LLEGASTE AL LIMITE DEL STOCK</b> </p>
-                        <br><hr>
-                    </ul>
-                    <!-- notificacion (0 cantidad) -->
-                    <p *ngIf="cantidadElegida == 0" [ngClass]="{'shakeElement': remarcarMensajeCantidad}">
-                        <b>DEBES SELECCIONAR AL MENOS 1 UNIDAD!</b>
-                    </p>
-                    <!-- notificacion (agregado al carrito) -->
-                    <p id="mensaje_carrito" *ngIf="mensajeCarrito && cantidadElegida> 0">
-                        <b>Tu selección ha sido añadida al carrito!</b>
-                    </p>
-                    <!-- botones (comprar & carrito) -->
-                    <div class="button_wrapper">
-                        <button type="submit" id="anadir_carrito" class="botones_form" (click)="mensajeCarrito = true; agregarCarrito()">Añadir al carrito</button><br>
-                        <button type="submit" id="terminar_compra" class="botones_form" (click)="abrirMetodosPago(cantidadElegida)">Ir a la caja</button><br>
-                    </div>
-                </form>
             </div>
         </div>
 
