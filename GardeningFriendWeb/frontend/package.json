@@ -25,6 +25,7 @@
     "jwt-decode": "^4.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.11.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
