@@ -38,7 +38,7 @@
                 </div>
                 <!-- botones de compra y detalles-->
                 <div class="boton_wrapper">
-                    <button type="button" class="boton_producto" (click)="comprarProducto($event)" id="btn_compra">
+                    <button type="button" class="boton_producto" (click)="comprarProducto(product.metadata.link_pago)" id="btn_compra">
                         <img src="../../../assets/iconos/shopping-icon-20px.png" alt="icon">
                         Comprar
                     </button>
@@ -55,10 +55,6 @@
         <div class="lightbox" *ngIf="abrirModDetalles" [ngClass]="getScreenSize()">
             <app-productos [prodID]="nombreProdSeleccionado" [prodDetalles]="stripeProducts" [prodPrecios]="stripePrices" *ngIf="abrirModDetalles" (booleanProperty)="onBooleanChanged($event)"></app-productos>
         </div>
-
-        <!-- modal - carrito -->
-         <div class="lightbox" *ngIf="carrito" [ngClass]="getScreenSize()">
-            <app-carrito [seleccion]="selecCarrito" [estadoModal]="carrito" (propBooleana)="cerrarCarrito($event)" (enviarTotal)="abrirMetodosPagoCarrito($event)" ></app-carrito>
-        </div> 
+        
     </section>
 </div>

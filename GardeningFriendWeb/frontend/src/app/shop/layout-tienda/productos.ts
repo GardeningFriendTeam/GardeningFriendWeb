@@ -16,4 +16,5 @@ export interface medatadata{
     peso: string,
     dimensiones : string,
     precio: number,
+    link_pago: string
 }
