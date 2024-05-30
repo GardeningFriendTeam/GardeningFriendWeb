@@ -27,7 +27,6 @@ export class AdministrarCultivoComponent implements OnInit{
 
   ngOnInit(): void {
     let id = this.activatedRouter.snapshot.params['id'];
-    console.log(id);
     if (id > 0) {
       
       this.cultivosService.detailCat(id).subscribe(

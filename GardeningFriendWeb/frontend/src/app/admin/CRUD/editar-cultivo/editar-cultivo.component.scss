@@ -35,7 +35,9 @@ section {
       & .form label {
         position: relative;
       }
-  
+      & img {
+        width: 100%;
+      }
       & select {
           padding: 0.6em;
           width: 100%;
