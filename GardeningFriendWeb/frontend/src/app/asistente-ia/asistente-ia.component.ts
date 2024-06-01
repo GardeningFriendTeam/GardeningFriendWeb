@@ -52,16 +52,14 @@ export class AsistenteIaComponent {
         ],
         model: "mixtral-8x7b-32768",
       }).then((chatCompletion) => {
-        return chatCompletion.choices[0].message.content  
+        return chatCompletion.choices[0].message.content
       });
 
-      let reference = completion 
-      return reference
+      let result : string = completion ?? ""
+      return result
   }
   // --------------------- GROK LLM functionalities ----------------------------//
   
-
-
   onUserInput(){
      // testing
     console.log("click!")
@@ -79,9 +77,9 @@ export class AsistenteIaComponent {
     console.log(result)
     //processing response
     // executing function that displays response in a gradual like way
-    //this.write(result,0)
+    this.result = result
+    
   }
-
 
 
    // displays response
