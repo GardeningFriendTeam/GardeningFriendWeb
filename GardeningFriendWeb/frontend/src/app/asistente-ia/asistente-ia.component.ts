@@ -26,23 +26,22 @@ export class AsistenteIaComponent {
     apiKey : environment.groqApiKey,
     dangerouslyAllowBrowser: true
   })
-  // boolean flag
-  writing = false;
-  // proc. response
-  questions : Array<{ input: string; result: string}> = [];
-  // preview url image
-  imageSelected : any;
   // text-to-speak functionality
   synth = window.speechSynthesis;
   // flag dialog info
   flagDialog = false;
-
+  // loader flag
+  loaderFlag = false
    // constructor (it's needed in order to initialize the services)
   constructor(){
   }
 
   // ------------------------------- FUNCTIONALITIES ------------------------------//
+  // -------------------------- GROK LLM functionalities ----------------------------//
   async main(prompt:string) {
+    // activating flag
+    this.loaderFlag = true
+    // executing request
     const completion = await this.groq.chat.completions.create({
         messages: [
           {
@@ -54,12 +53,13 @@ export class AsistenteIaComponent {
       }).then((chatCompletion) => {
         return chatCompletion.choices[0].message.content
       });
-
+      // flag off
+      this.loaderFlag = false
+      // return statement
       let result : string = completion ?? ""
       return result
   }
-  // --------------------- GROK LLM functionalities ----------------------------//
-  
+  // -------------------------- process user's input ----------------------------//
   onUserInput(){
      // testing
     console.log("click!")
@@ -70,8 +70,6 @@ export class AsistenteIaComponent {
   }
 
   async generate(){
-    // updating flag
-    this.writing = true;
     // response request
     const result = await this.main(this.prompt)
     console.log(result)
@@ -82,28 +80,9 @@ export class AsistenteIaComponent {
   }
 
 
-   // displays response
-  write(result: string, index: number){
-    this.questions[this.questions.length -1].result = result.slice(0, index);
-    if(index < result.length){
-      setTimeout(() => {
-        this.write(result, index +1);
-      })
-    } else {
-      this.writing = false;
-      this.prompt = '';
-    }
-  }
-
-   // adjusts how fast the text is displayed
-  randomVelocity():number{
-     const velocity = Math.floor(Math.random() * 25 + 1)
-    return velocity
-  }
-
   textToSpeech(){
     // text to read
-    const utternance = new SpeechSynthesisUtterance(this.questions[0].result);
+    const utternance = new SpeechSynthesisUtterance(this.result);
     // reading function on
     this.synth.speak(utternance);
   }

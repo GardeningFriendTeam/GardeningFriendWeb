@@ -71,6 +71,17 @@ section{
             }
         }
 
+        #loader{
+            display: flex;
+            margin: 10px;
+            align-items: center;
+            p{font-weight: bold;}
+            img{
+                margin-right: 5px;
+                border-radius: 100%;
+            }
+        }
+
         #question_div{
             display: flex;
             flex-direction: column;
