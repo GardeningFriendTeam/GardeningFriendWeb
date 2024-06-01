@@ -2,10 +2,7 @@
 import { Component, ElementRef, Input, OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 // servicios:
-import { ApiRegionesService } from '../../services/api-regiones.service';
 import { StripeapiService } from 'src/app/services/stripeapi.service';
-// componente hijo:
-import { ProductosComponent } from '../productos/productos.component';
 // interfaces:
 import { Productos } from './productos';
 import { Precios } from './precios';
@@ -40,6 +37,7 @@ export class LayoutTiendaComponent implements OnInit{
   palabraBusqueda:string = "";
   // productos de prueba
   stripeProducts:Productos[] = [];
+  filteredProducts:Productos[] = []
   stripePrices:Precios[] = [];
   stripeArticles:any;
   idProduct:string = "";
@@ -63,6 +61,7 @@ export class LayoutTiendaComponent implements OnInit{
     // obtiene los datos de los productos:
     this.StripeapiService.getProducts().subscribe((response:any) =>{
       this.stripeProducts = response.data;
+      this.filteredProducts = response.data;
       console.log("productos: ", this.stripeProducts);
     });
     // obtiene los datos de los precios:
@@ -77,14 +76,17 @@ export class LayoutTiendaComponent implements OnInit{
     // combina los arrays "precios" y "productos" en uno solo:
   }
 
-  buscarProducto(){
-    this.stripeProducts.forEach(element => {
-      if(element.name.toLowerCase().includes(this.palabraBusqueda.toLowerCase())){
-        return element.visibilidad = false;
-      } else{
-        return element.visibilidad = true;
-      }
-    });
+  filtrarProductos(products: Productos[],searchTerm: string): Productos[] {
+    if (!searchTerm || searchTerm.trim() === '') {
+      return products; // Return all products if search term is empty
+    }
+    return products.filter(product => 
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  onSearchTermChange(): void {
+    this.filteredProducts = this.filtrarProductos(this.stripeProducts, this.palabraBusqueda);
   }
 
   // lleva al usuario al checkout correspondiente para terminar el pago
@@ -94,8 +96,8 @@ export class LayoutTiendaComponent implements OnInit{
 
 
   ngOnInit(){
+    // fetching data
     this.datosProductos();
-    
   }
 
 

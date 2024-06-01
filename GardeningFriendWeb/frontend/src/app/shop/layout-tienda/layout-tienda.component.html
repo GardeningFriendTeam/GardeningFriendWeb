@@ -10,18 +10,21 @@
             <h3> Tienda Virtual</h3>
         </div>
 
-        <!-- buscador -->
-        <!-- <form id="barra_buscador">
-            <label for="search" id="titulo_buscador">Busca lo que deseas!</label> <br>
-            <div id="input_wrapper">
-                <input type="text" id="buscar" name="buscar" placeholder="buscar..." [(ngModel)] = "palabraBusqueda">
-                <button type="button" id="ok_buscar" (click)="buscarProducto()">OK</button>
+        <!-- buscador wrapper -->
+        <div id="buscador_wrapper">
+            <!-- text wrapper -->
+            <div id="text_wrapper">
+                <p>Buscador</p>
             </div>
-        </form>       -->
+            <!-- input wrapper -->
+            <div id="input_wrapper">
+                <input type="text" alt="input_text" id="buscador_input" [(ngModel)]="palabraBusqueda" (ngModelChange)="onSearchTermChange()">
+            </div>
+        </div>
 
         <!-- productos -->
         <div id="grid_productos">
-            <div class="productos" *ngFor="let product of stripeProducts; let i = index" id="{{product.name}}" [hidden]="product.visibilidad">
+            <div class="productos" *ngFor="let product of filteredProducts; let i = index" id="{{product.name}}" [hidden]="product.visibilidad">
                 <!-- imagen presentacion -->
                 <div class="img_wrapper">
                     <img src="{{ product.images }}" alt="img_producto" class="icono_producto">
