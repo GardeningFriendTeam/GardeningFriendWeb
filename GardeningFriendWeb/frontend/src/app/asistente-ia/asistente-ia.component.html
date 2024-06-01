@@ -34,8 +34,8 @@
 
         <div id="wait_response">
             <p>Respuesta de la IA:</p>
-            <button id="text_to_speech">
-                <img src="../../assets/iconos/icons8-voice-50.png" alt="text_to_speech_icon" id="text_to_speech_icon" (click)="textToSpeech()">
+            <button id="text_to_speech" (click)="textToSpeech()">
+                <img [src]="iconTextToSpeech" alt="text_to_speech_icon" id="text_to_speech_icon">
             </button>
         </div>
 

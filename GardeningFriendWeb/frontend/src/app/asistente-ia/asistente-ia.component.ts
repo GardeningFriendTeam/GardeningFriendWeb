@@ -32,6 +32,11 @@ export class AsistenteIaComponent {
   flagDialog = false;
   // loader flag
   loaderFlag = false
+  // flag synth audio
+  flagStopEnabled = false
+  // icon text-to-speech
+  iconTextToSpeech = "../../assets/iconos/icons8-voice-50.png"
+
    // constructor (it's needed in order to initialize the services)
   constructor(){
   }
@@ -81,10 +86,31 @@ export class AsistenteIaComponent {
 
 
   textToSpeech(){
+    if (this.flagStopEnabled){
+      this.stopTextToSpeech()
+    } else {
+      this.speakText()
+    }
+  }
+
+  speakText(){
     // text to read
     const utternance = new SpeechSynthesisUtterance(this.result);
     // reading function on
-    this.synth.speak(utternance);
+    this.synth.speak(utternance)
+    // updating flag
+    this.flagStopEnabled = !this.flagStopEnabled 
+    // updating icon
+    this.iconTextToSpeech = "../../assets/iconos/icons8-pause-30.png"
+  }
+
+  stopTextToSpeech(){
+    // stop synth audio function
+    this.synth.cancel()
+    // updating flag
+    this.flagStopEnabled = !this.flagStopEnabled 
+    // updating icon
+    this.iconTextToSpeech = "../../assets/iconos/icons8-voice-50.png"
   }
 
 
