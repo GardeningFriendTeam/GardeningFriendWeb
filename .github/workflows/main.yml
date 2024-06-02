@@ -30,7 +30,7 @@ jobs:
           STRIPE_API_KEY_PRIVATE: ${{ secrets.STRIPEAPIKEY_PRIVATE }}
           GROQ_API_KEY: ${{ secrets.GROQAPIKEY }}
 
-      - #name: Deploy to hosting service
+      #- name: Deploy to hosting service
         # Add your deployment steps here, e.g., GitHub Pages, Firebase, AWS S3, etc.
         #run: 
           # Example for Firebase
