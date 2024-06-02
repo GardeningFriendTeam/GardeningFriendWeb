@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  max-width: 1920px;
+  padding-bottom: 100px;
+  padding-top: 50px;
+  background-image: url("../../assets/fondos/wooden-background-4.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+.container section.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  max-width: 100%;
+  width: 80%;
+  height: auto;
+  border-radius: 20px;
+  margin: 0;
+}
+.container section.contact .card {
+  height: auto;
+  max-width: 750px;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 0px 0px 20px;
+  margin: 0;
+}
+.container section.contact .card .card_txt {
+  font-family: secundaria1;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+  line-height: 2em;
+}
+.container section.contact .card .mockup {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  margin-top: 4em;
+}
+.container section.contact .card .link {
+  text-align: center;
+}
+.container section.contact .card .playstore {
+  width: 45%;
+  padding-top: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.container section.contact .card .qr {
+  background-color: rgba(54, 141, 54, 0.6901960784);
+  padding: 10px;
+  border-radius: 20px;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 4em;
+  margin-bottom: 2em;
+}
+.container section.contact .card:first-child {
+  background-color: rgba(54, 141, 54, 0.6901960784);
+  margin-left: 0;
+}
+
+/*MEDIAS QUERY*/
+@media only screen and (max-width: 992px) {
+  section.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    align-items: center;
+    background-color: #fff;
+    padding: 0;
+  }
+  section.contact .card {
+    margin: 0 auto;
+    border-radius: 10px;
+    display: none;
+  }
+  section.contact .card .card_txt {
+    font-family: secundaria1;
+    font-weight: bold;
+    font-size: 0.4em;
+    text-align: center;
+    line-height: 1em;
+  }
+  section.contact .card .mockup {
+    display: none;
+  }
+  section.contact .card:first-child {
+    display: none;
+  }
+  section.contact .text-card {
+    padding: 1em;
+  }
+}/*# sourceMappingURL=contacto.component.css.map */

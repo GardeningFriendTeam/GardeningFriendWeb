@@ -26,28 +26,23 @@
             </div>
         </div>
 
-        <div id="image_feedback_div">
-            <!-- description -->
-            <p>preguntale a la IA que opina de tu cultivo!</p>
-            <!-- enables the user to select image -->
-            <input type="file" (change)="getFile($event)" id="select_img_btn">
-            <!-- displays the selected image -->
-            <!-- <img [src]="imagePreview" *ngIf="imagePreview" alt="Selected Image" id="image_preview"> -->
+        <div id="loader" *ngIf="loaderFlag">
+            <img src="../../assets/iconos/icons8-loading.gif" alt="loading">
+            <p>Procesando Solicitud</p>
         </div>
 
+
         <div id="wait_response">
-            <p>Respuesta de la IA (puede demorar unos segundos):</p>
-            <button id="text_to_speech">
-                <img src="../../assets/iconos/icons8-voice-50.png" alt="text_to_speech_icon" id="text_to_speech_icon" (click)="textToSpeech()">
+            <p>Respuesta de la IA:</p>
+            <button id="text_to_speech" (click)="textToSpeech()">
+                <img [src]="iconTextToSpeech" alt="text_to_speech_icon" id="text_to_speech_icon">
             </button>
         </div>
 
         <div id="response_div">
             <!-- process the response once the async request is finished -->
             <p id="response_title">La respuesta se mostrara aquí</p>
-            <div *ngFor="let results of questions">
-                <p id="response_result">{{results.result}}</p>
-            </div>
+            <p id="response_result">{{result}}</p>
         </div>
 
     </div>
