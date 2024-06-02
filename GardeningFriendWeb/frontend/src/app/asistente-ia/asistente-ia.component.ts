@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SanitizeTextPipe } from './sanitize-text.pipe';
 import Groq from "groq-sdk";
-import { environment } from 'src/environment/environment';
-import { it } from 'node:test';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-asistente-ia',

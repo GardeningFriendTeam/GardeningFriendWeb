@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 // models
 import { Productos } from '../shop/layout-tienda/productos';
 import { Precios } from '../shop/layout-tienda/precios';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class StripeapiService {
   // claves para poder acceder a nuestra BD de Stripe:
   // esconder antes de llevar a main!
   private keys = {
-    public: "pk_test_51NGSLELIKQsbX3PlpdOpCvYDqW4LPNfMZscKtQfek4Dsw4ojUPcnSQKG46F3pWpVO0Ru6Mzs8vET6rGkTCkG9Coc00YDGCRwTY",
-    secret: "sk_test_51NGSLELIKQsbX3PlxTUqAxQAxnxSXBB5QyFZZ7VGdyHqkHPieoDtRMgEowZVRsTqWrAFi7voXdkmp4uxkvb8MFQ600omQ0Fzf6",
+    public: environment.stripeApiKeyPublic,
+    secret: environment.stripeApiKeyPrivate,
   }
   private options = { headers: {Authorization: `Bearer ${this.keys.secret}`}}
 

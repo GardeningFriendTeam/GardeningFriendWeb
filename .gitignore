@@ -2,6 +2,7 @@
 GardeningFriendWeb/.angular/
 GardeningFriendWeb/node_modules/
 
-# Ignora los archivos relacionados a API keys
+# Ignora los archivos relacionados a API keys y EV
 .env
 GardeningFriendWeb/backend/Scripts/env
+GardeningFriendWeb/frontend/src/environments
