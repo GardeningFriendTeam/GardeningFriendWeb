@@ -1,0 +1,38 @@
+name: Angular App
+
+on:
+  push:
+    branches:
+      - main
+      - Develop
+      - Tienda-Maximiliano
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+        env:
+          STRIPE_API_KEY_PUBLIC: ${{ secrets.STRIPEAPIKEY_PUBLIC }}
+          STRIPE_API_KEY_PRIVATE: ${{ secrets.STRIPEAPIKEY_PRIVATE }}
+          GROQ_API_KEY: ${{ secrets.GROQAPIKEY }}
+
+      - #name: Deploy to hosting service
+        # Add your deployment steps here, e.g., GitHub Pages, Firebase, AWS S3, etc.
+        #run: 
+          # Example for Firebase
+          #npm install -g firebase-tools
+          #firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
