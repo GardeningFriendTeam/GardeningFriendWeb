@@ -1,0 +1,214 @@
+.container {
+  width: 100%;
+  max-width: 1980px;
+  padding: 50px 0 100px;
+  background-image: url("../../../assets/fondos/wooden-background-4.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.col {
+  flex: 1 0 45%; /* Full width on small screens */
+  max-width: 45%;
+  padding: 15px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+@media (min-width: 768px) {
+  .col {
+    flex: 0 0 50%; /* Two columns on medium screens */
+    max-width: 50%;
+  }
+}
+@media (min-width: 1200px) {
+  .col {
+    flex: 0 0 50%; /* Two columns on large screens to allow wider cards */
+    max-width: 50%;
+  }
+}
+.card {
+  max-width: 490px; /* Adjusted width for longer cards */
+  width: 100%; /* Ensure it takes the full width of the column */
+  margin: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevent wrapping inside the card */
+}
+
+.card-image {
+  flex: 0 0 40%; /* Adjust this to control the image size */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card-image img {
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.card-body {
+  font-family: "secundaria1";
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.modificar {
+  width: 70%;
+  font-size: 18px;
+  background-color: rgb(8, 108, 56);
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8px;
+  border-color: rgb(8, 108, 56);
+  padding: 6px;
+  cursor: pointer;
+}
+
+.eliminar-usuario {
+  width: 70%;
+  font-size: 18px;
+  background-color: rgb(218, 29, 29);
+  border-color: rgb(218, 29, 29);
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.eliminar-usuario:hover {
+  background-color: rgb(255, 65, 65);
+}
+
+.modificar:hover {
+  background-color: rgba(8, 108, 56, 0.8);
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: "secundaria1";
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 20%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.container-text {
+  display: flex;
+  justify-content: center;
+}
+
+.text-modificar {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.conteiner-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  margin-top: 20px;
+}
+
+.select label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.select input[type=radio] {
+  flex: 1;
+}
+
+.button-aceptar {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-aceptar {
+  font-size: 18px;
+  background-color: rgb(8, 108, 56);
+  text-align: center;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px;
+  width: 50%;
+  border-color: rgb(8, 108, 56);
+}
+
+.btn-aceptar:hover {
+  background-color: rgba(8, 108, 56, 0.8);
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}/*# sourceMappingURL=administrar-usuario.component.css.map */
