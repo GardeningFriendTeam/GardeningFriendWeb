@@ -3,7 +3,7 @@
     <p class="title" *ngIf="cultivos">Editar Cultivo</p>
     
     <div class="mb-3" ngForm="form">
-      <p name="id"></p>
+      <p name="id" (change)="guardarId($event)"></p>
       <label class="form-label">Nombre</label>
       <input type="text" class="form-control" name="nombre" [(ngModel)]="cultivos.nombre">
     </div>
@@ -13,8 +13,8 @@
         <label class="form-label">Categoría
           <a class="submitCat" routerLink="/agregarCategoriaCultivo">+</a>
         </label>
-        <select class="form-control cat" id="catsel" name="categoria_sel" [(ngModel)]="cultivos.categoria.id">
-          <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.nombre }}</option>  
+        <select class="form-control cat" id="catsel" name="categoria_sel" (change)="selectCategoria($event)" [(ngModel)]="cultivos.categoria">
+          <option *ngFor="let cat of categorias" value={{cat.id}}> {{cat.nombre}}</option>  
         </select>
       </div>
     </div>
@@ -28,9 +28,9 @@
     <div class="mb-3">
       <label for="formFile" class="form-label">Imagen
         <div>
-          <img class="imagen" [src]="vistaPreviaUrl" alt="">
+          <img class="imagen" src={{cultivos.imagen}} alt="">
         </div>
-        <input class="form-control" type="file" name="imagen" (change)="onFileChange($event)">
+        <input class="form-control" type="file" name="imagen" (change)="enviarFoto($event)">
       </label>
     </div>
 

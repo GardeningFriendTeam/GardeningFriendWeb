@@ -10,128 +10,148 @@ import Swal from 'sweetalert2';
   templateUrl: './editar-cultivo.component.html',
   styleUrls: ['./editar-cultivo.component.scss']
 })
-export class EditarCultivoComponent implements OnInit {
-  cultivos: Cultivo = {
-    id: 0,
-    nombre: '',
-    categoria: {nombre: '' },
-    descripcion: '',
-    imagen: '',
-    region: '',
-    estacion: '',
-    temperatura: 0,
-    favorito: false
-  };
+export class EditarCultivoComponent{
+  cultivos: any = {};
   categorias: CategoriaCultivo[] = [];
-
-  // Form fields
-  nombre: string = '';
-  cat: string = '';
-  descripcion: string = '';
+  nombre: string = "";
+  descripcion: string = "";
   imagen!: File;
-  region: string = '';
-  estacion: string = '';
-  temperatura: string = '';
+  region: string = "";
+  estacion: string = "";
+  temperatura: string = "";
+  categoriaNombre?: string;
+  categoriaId: any;
+  categoriaSeleccionada!: any;
 
-  vistaPreviaUrl: any;
+  constructor(private cultivosService: CultivosService, private activatedRouter: ActivatedRoute, private router: Router){
 
-  constructor(
-    private cultivosService: CultivosService,
-    private activatedRouter: ActivatedRoute,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
     const id = this.activatedRouter.snapshot.params['id'];
+    console.log(id);
+    let datos:any= {};
     this.cultivosService.detail(id).subscribe(
-      data => {
+      data=>{
         this.cultivos = data;
-        this.setFormData(data);
-        console.log('Datos actualizados del cultivo:', data);
-
-      },
-      err => {
-        alert('Error al traer el cultivo');
+      },err =>{
+        alert("Error al traer el cultivo");
         this.router.navigate(['']);
       }
-    );
-    this.cultivosService.traerCategorias().subscribe(
-      resp2 => {
-        this.categorias = resp2;
-      }
-    );
+    )
   }
 
+  ngOnInit(): void {
+    this.cultivosService.traerCategorias().subscribe(resp2 => {
+      this.categorias = resp2;
+    })
+  }
+ 
+
+  guardarId(event: any) {
+    console.log("Ahora id:",this.cultivos.id)
+    console.log(this.cultivos.id = event.target.value)
+  }
+
+  guardarNombre(event: any) {
+    console.log(this.nombre = event.target.value)
+  }
+  selectCategoria(event: any) {
+    // Obtener el índice seleccionado del select
+    const selectedIndex = event.target.selectedIndex;
+    
+    // Obtener el objeto de la categoría seleccionada usando el índice
+    this.categoriaSeleccionada = this.categorias[selectedIndex];
+
+    // Asignar el nombre y el id de la categoría seleccionada a las variables correspondientes
+    this.categoriaNombre = this.categoriaSeleccionada.nombre; 
+    this.categoriaId = this.categoriaSeleccionada.id;
+
+    console.log(this.categoriaSeleccionada);
+  }
+
+  guardarDescripcion(event: any) {
+    console.log(this.descripcion = event.target.value)
+  }
+
+  enviarFoto(event: any) {
+    console.log(this.imagen = event.target.files[0])
+  }
+
+  guardarRegion(event: any) {
+    console.log(this.region = event.target.value)
+  }
+
+  guardarEstacion(event: any) {
+    console.log(this.estacion = event.target.value)
+  }
+
+  guardarTemperatura(event: any) {
+    console.log(this.temperatura = event.target.value)
+  }
+
+  actualizar(){
+    const cult = new FormData();
+      //produ.append('nombre', this.productos.id);
+      cult.append('nombre', this.cultivos.nombre);
+      cult.append('categoria', this.categoriaSeleccionada);
+      cult.append('descripcion', this.cultivos.descripcion);
+      if(this.imagen){
+        cult.append('imagen', this.imagen, this.imagen!.name);
+      }else {
+        cult.append('imagen', this.cultivos.imagen)
+      }
+      cult.append('region', this.cultivos.region);
+      cult.append('estacion', this.cultivos.estacion);
+      cult.append('temperatura', this.cultivos.temperatura);
+      
+      
+      console.log(this.cultivos.id)
+      this.cultivosService.update(this.cultivos.id,cult).subscribe(
+        data => this.router.navigate(['/administrarCultivo'])
+
+        ,
+        error => console.log(error)
+
+      );
+  }
   setFormData(cultivo: Cultivo): void {
     this.nombre = cultivo.nombre;
-    this.cat = cultivo.categoria.nombre ? cultivo.categoria.nombre.toString() : '';
+    this.categoriaNombre = cultivo.categoria.nombre ? cultivo.categoria.nombre.toString() : '';
     this.descripcion = cultivo.descripcion;
     this.region = cultivo.region;
     this.estacion = cultivo.estacion;
     this.temperatura = cultivo.temperatura.toString();
-    this.vistaPreviaUrl = cultivo.imagen;
   }
-
-  onFileChange(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.vistaPreviaUrl = e.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-
-  onUpdate(): void {
-    // Construir el objeto de cultivo actualizado
-    const updatedCultivo = {
-      id: this.cultivos.id,
-      nombre: this.nombre,
-      categoria: { nombre: this.cat },
-      descripcion: this.descripcion,
-      region: this.region,
-      estacion: this.estacion,
-      temperatura: parseFloat(this.temperatura),
-      favorito: this.cultivos.favorito
-    };
-  
-    // Si hay una imagen seleccionada, agregarla al objeto FormData
-    const formData = new FormData();
-    if (this.imagen) {
-      formData.append('imagen', this.imagen, this.imagen!.name);
-    }
-  
-    // Agregar el objeto de cultivo actualizado como una cadena JSON al FormData
-    formData.append('cultivo', JSON.stringify(updatedCultivo));
-
-
-    console.log('Datos actualizados del cultivo:', formData);
-  
-    const id = this.activatedRouter.snapshot.params['id'];
-    this.cultivosService.update(id, formData).subscribe(
-      data => {
-        this.router.navigate(['/administrarCultivos']);
-        Swal.fire({
-          title: "Cultivo modificado exitosamente",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500})
-        setTimeout(()=>{
+    onUpdate(): void{
+      const cult = new FormData();
+      //produ.append('nombre', this.productos.id);
+      cult.append('nombre', this.cultivos.nombre);
+      cult.append('categoria', this.categoriaSeleccionada.nombre);
+      cult.append('descripcion', this.cultivos.descripcion);
+      cult.append('imagen', this.imagen, this.imagen!.name);
+      cult.append('region', this.cultivos.region);
+      cult.append('estacion', this.cultivos.estacion);
+      cult.append('temperatura', this.cultivos.temperatura);
+      
+      const id = this.activatedRouter.snapshot.params['id'];
+      this.cultivosService.update(id, cult).subscribe(
+        cultivo => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Cultivo modificado',
+            text: 'El cultivo se ha modificado con éxito',
+          });
           this.router.navigate(['/administrarCultivos']);
-        }, 1500);
-      },
-      err => {
-        Swal.fire({
-          title: "Error al modificar el cultivo",
-          icon: "error",
-          showConfirmButton: false,
-          timer: 1500})
-        setTimeout(()=>{
-          this.router.navigate(['/administrarCultivos']);
-        }, 1500);
-        
-      }
-    );
-  }
-  
+        },
+        error => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al modificar el cultivo',
+          });
+        }
+      );
+    }
+
 }
+
+
