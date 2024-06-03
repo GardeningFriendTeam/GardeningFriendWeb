@@ -10,9 +10,7 @@
         <p>{{ alertText }}</p>
         <button (click)="showAlert()">Vale!</button>
     </div>
-    <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">
-
-        
+    <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">     
         <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id}}">
             <div class="imagen_wrapper">
                 <img [src]="favorito.imagen" alt="icono">
@@ -21,10 +19,10 @@
                 <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
             </div>
             <div class="category">
-                <p> <u>Categoría:</u> {{favorito.categoria}}</p>
+                <p>{{favorito.categoria}}</p>
             </div>
             <div class="botones">
-                <button (click)="showInfo(favorito)" type="button" class="moreInfo">MAS INFO</button>
+                <button (click)="showInfo(favorito)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
                 <button (click)="removeFavorito(i)" type="button" class="favoritos">FAVORITOS X</button>
             </div>
         </div>

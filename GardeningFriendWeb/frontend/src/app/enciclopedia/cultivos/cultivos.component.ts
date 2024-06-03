@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cultivo } from './cultivos.model';
 import { CultivosService } from '../../services/cultivos.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { CategoriaCultivo } from 'src/app/models/categoriaCultivo';
+import { CategoriaCultivoService } from 'src/app/services/categoria-cultivo.service';
 
 @Component({
   selector: 'app-cultivos',
   templateUrl: './cultivos.component.html',
   styleUrls: ['./cultivos.component.scss']
 })
-export class CultivosComponent {
+export class CultivosComponent implements OnInit {
   //Modales en false
   activeAlert:boolean = false;
   activeCover:boolean = false;
   activeInfo:boolean = false;
 
   isAuthenticated: boolean = false;
-
-
+  categorias: CategoriaCultivo[] = [];
+  
   alertText:string = '';
   
   cultivos: Cultivo[] = [
@@ -37,14 +39,15 @@ export class CultivosComponent {
 
   infoCultivos: Cultivo[] = [];
 
-  tipos = ['Todas', 'Vegetal', 'Frutal', 'Aromática'];
+  tipos: String [] = ['Todas'];
   filterForm: FormGroup = this.fb.group({tipo: ''});
 
   //El ngModel junto con el pipe filter que se creo podemos buscar por nombre
   searchName: string = '';
 
   constructor(private authService: AuthService, 
-    private cultivosService:CultivosService, 
+    private cultivosService:CultivosService,
+    private categoriaCultivoService : CategoriaCultivoService ,
     private fb:FormBuilder) { 
         this.isAuthenticated = !!this.authService.userValue;
     }
@@ -54,6 +57,12 @@ export class CultivosComponent {
       this.cultivos = data;
       console.log(this.cultivos);
     })
+
+    this.categoriaCultivoService.obtenerCategorias().subscribe((data: CategoriaCultivo[]) => {
+      this.categorias = data;
+      this.tipos = ['Todas', ...this.categorias.map(categoria => categoria.nombre)];
+      this.filterForm.patchValue({ tipo: 'Todas' });
+    });
 
     //Por defecto se mostrara todos los cultivos
     this.filterForm = this.fb.group({

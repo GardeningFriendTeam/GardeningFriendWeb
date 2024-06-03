@@ -1,41 +1,71 @@
 .contenedor{
-    width: 700px;
-    // margin: 50px 150px;
-    margin: 10px auto;
-}
-
-.titulo{
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.table{
-    margin: 20px auto;
-    width: 100%;
-}
-
-
-#edit{
-    color: greenyellow;
-}
-#borrar{
-    color: red;
-}
-
-.btn{
-    font-size: 24px;
-    text-decoration: none;
-    float: right;
-    margin-bottom: 15px;
-}
-
-h4{
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-img{
+    max-width: 800px;
+    height: 70vh;
+    margin: 1em auto;
+    & .title {
+        font-size: 3em;
+        text-transform: uppercase;
+        font-family: var(--secundaria3);   
+        text-align: center; 
+    }
+    & .btn-add {
+        width: max-content;
+        background-color: var(--verde3B);
+        // margin-right: 80px;
+        margin-top: 1em;
+        margin-bottom: 1.5em;
+        font-size: 1.2em;
+        font-weight: bold;
+        padding: 0.4em;
+        font-family: var(--secundaria3);
+        border-radius: 10px;
+        padding: 8px 8px;
+        float: right;
     
-    height:50px ;
+        & a {
+            text-align: center;
+            text-decoration: none;
+            color: #111;
+        }
+    }
+    & .table-container {
+        width: 100%;
+        margin-top: 2em;
+        background: var(--verde3B);
+        padding: 1em;
+        border-radius: 3em;
+        & table{
+            margin: 1em auto;
+            margin-left: 1em;
+            width: 100%;
+            font-size: 1.3em;
+            & th{
+                font-weight: bold !important;
+            }
+            & .ediciones{
+                text-align: center !important;
+            }
+            & tbody{
+    
+                & td {
+                
+                        & button{
+                            background-color: transparent;
+                            border: none;
+                            border-radius: 10px;
+                            padding: 8px 8px; 
+                        }
+                        & .editar{
+                            background-color: #fac941 ;
+                            color: #111;
+                        }
+                        & .borrar{
+                            background-color: red;
+                            color: #f0f0f0;
+                        }
+                    }
+            }
+    
+        }
+    }
 }

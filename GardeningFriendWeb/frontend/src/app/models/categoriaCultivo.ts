@@ -1,8 +1,9 @@
 export class CategoriaCultivo{
     public id?: number;
-    nombre?: string;
+    public nombre: string;
 
-    constructor(nombre:string){
-        this.nombre=nombre;
+    constructor(nombre: string){
+        this.id = this.id;
+        this.nombre = nombre;
     }
 }

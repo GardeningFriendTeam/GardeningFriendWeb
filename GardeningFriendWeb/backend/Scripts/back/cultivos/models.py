@@ -5,8 +5,8 @@ from categoriaCultivo.models import CategoriaCultivo
 class Cultivo(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=45)
-    # categoria = models.CharField(max_length=45)
-    categoria = models.ForeignKey(CategoriaCultivo, on_delete=models.CASCADE)
+    categoria = models.CharField(max_length=45)
+    #categoria = models.ForeignKey(CategoriaCultivo, on_delete=models.CASCADE)
     # usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     descripcion = models.TextField()
     # imagen = models.CharField(max_length=255)
@@ -23,6 +23,6 @@ class Meta:
     verbose_name_plural = 'Cultivos'
 
 def __str__(self):
-    if self.nombre==None:
+    if self.nombre is None:
         return "ERROR-CULTIVOS NOMBRE IS NULL"
     return self.nombre
