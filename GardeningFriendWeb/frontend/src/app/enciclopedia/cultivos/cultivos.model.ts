@@ -1,7 +1,7 @@
 import { CategoriaCultivo } from "src/app/models/categoriaCultivo";
 
 export interface Cultivo{
-    id: number,
+    id?: number,
     nombre: string,
     categoria: CategoriaCultivo,
     descripcion: string,

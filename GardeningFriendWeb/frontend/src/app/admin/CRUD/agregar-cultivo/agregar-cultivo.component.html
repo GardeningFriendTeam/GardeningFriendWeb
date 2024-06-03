@@ -15,7 +15,7 @@
     <div class="input-group">
       <select class="form-control" id="catsel" name="categoria_sel" (change)="selectCategoria($event)">
         <option value="">Seleccione una categoría</option>
-        <option *ngFor="let cat of categorias" [value]="cat.nombre">{{cat.nombre}}</option>
+        <option *ngFor="let cat of categorias" [value]="cat">{{cat.nombre}}</option>
       </select>
     </div>
   </label> 
@@ -46,7 +46,7 @@
 
   <div class="flex">
     <label class="">Temperatura recomendada
-    <input type="text" class="form-control input" name="temperatura" (input)="guardarTemperatura($event)">
+    <input type="number" class="form-control input" name="temperatura" (input)="guardarTemperatura($event)">
     </label>
   </div>
 

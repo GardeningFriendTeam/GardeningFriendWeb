@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CultivosService } from 'src/app/services/cultivos.service';
 import { CategoriaCultivo } from 'src/app/models/categoriaCultivo';
+import { Cultivo } from 'src/app/enciclopedia/cultivos/cultivos.model';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,12 +13,14 @@ import Swal from 'sweetalert2';
 export class AgregarCultivoComponent {
   categorias: CategoriaCultivo[] = [];
   nombre: string = "";
-  categoriaNombre?: string; // Guardar el nombre de la categoría seleccionada
+  categoriaNombre?: string;
+  categoriaId: any;
+  categoriaSeleccionada!: any;
   descripcion: string = "";
-  imagen: File | null = null;
+  imagen!: File;
   region: string = "";
   estacion: string = "";
-  temperatura: number | null = null;
+  temperatura: any;
   favorito: boolean = false;
 
   constructor(private cultivoService: CultivosService, private router: Router) {}
@@ -33,15 +36,25 @@ export class AgregarCultivoComponent {
   }
 
   selectCategoria(event: any) {
-    this.categoriaNombre = event.target.value; // Guardar el nombre de la categoría
-  }
+    // Obtener el índice seleccionado del select
+    const selectedIndex = event.target.selectedIndex;
+    
+    // Obtener el objeto de la categoría seleccionada usando el índice
+    this.categoriaSeleccionada = this.categorias[selectedIndex];
+
+    // Asignar el nombre y el id de la categoría seleccionada a las variables correspondientes
+    this.categoriaNombre = this.categoriaSeleccionada.nombre; 
+    this.categoriaId = this.categoriaSeleccionada.id;
+
+    console.log(this.categoriaSeleccionada);
+}
 
   guardarDescripcion(event: any) {
     this.descripcion = event.target.value;
   }
 
   enviarFoto(event: any) {
-    this.imagen = event.target.files[0] || null;
+    this.imagen = event.target.files[0];
   }
 
   guardarRegion(event: any) {
@@ -53,25 +66,33 @@ export class AgregarCultivoComponent {
   }
 
   guardarTemperatura(event: any) {
-    this.temperatura = event.target.value !== "" ? parseFloat(event.target.value) : null;
+      this.temperatura = event.target.value !== "" ? parseFloat(event.target.value) : null;
   }
-
+  
   create() {
-    if (!this.categoriaNombre) {
-      console.log('Categoría no seleccionada');
-      return;
-    }
-    const cult = new FormData();
-    cult.append('nombre', this.nombre);
-    cult.append('categoria', JSON.stringify({ nombre: this.categoriaNombre }));
-    cult.append('descripcion', this.descripcion);
-    cult.append('imagen', this.imagen || "");
-    cult.append('region', this.region);
-    cult.append('estacion', this.estacion);
-    cult.append('temperatura', this.temperatura !== null ? this.temperatura.toString() : "");
-    cult.append('favorito', this.favorito.toString());
+    const cultivoNuevo = {
+      nombre: this.nombre,
+      categoria: {
+        nombre: this.categoriaSeleccionada.nombre
+      },
+      descripcion: this.descripcion,
+      region: this.region,
+      estacion: this.estacion,
+      temperatura: this.temperatura || 0,
+      favorito: this.favorito
+    };
 
-    this.cultivoService.create(cult).subscribe(
+    const formData = new FormData();
+    formData.append('imagen', this.imagen, this.imagen.name);
+    formData.append('nombre', this.nombre);
+    formData.append('categoria', JSON.stringify(cultivoNuevo.categoria));
+    formData.append('descripcion', this.descripcion);
+    formData.append('region', this.region);
+    formData.append('estacion', this.estacion);
+    formData.append('temperatura', JSON.stringify(this.temperatura));
+    formData.append('favorito', JSON.stringify(cultivoNuevo.favorito));
+  
+    this.cultivoService.create(formData).subscribe(
       cultivo => {
         Swal.fire({
           icon: 'success',
