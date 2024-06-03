@@ -1,0 +1,29 @@
+/* -------------------- FOOTER ------------------------*/
+footer {
+  display: flex;
+  flex-direction: column;
+  grid-area: footer;
+  height: 100%;
+  width: 100%;
+  background: var(--fondo_footer);
+  font-family: Principal, Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.3rem;
+  color: var(--fuenteAlt);
+  justify-content: space-evenly;
+  align-items: center;
+  height: 200px;
+}
+footer #contenedor_isologo img {
+  height: 80px;
+}
+footer #contacto {
+  border-bottom: 2px solid white;
+}
+footer #contacto img {
+  height: 20px;
+  margin-left: 10px;
+}
+footer #descripcion_footer {
+  font-size: 0.8rem;
+  text-align: center;
+}/*# sourceMappingURL=footer.component.css.map */

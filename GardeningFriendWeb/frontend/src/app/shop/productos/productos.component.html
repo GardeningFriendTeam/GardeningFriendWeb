@@ -11,10 +11,10 @@
         <ul>
             <!-- se cargan los datos desde la API -->
             <li>Nombre: <b>{{this.prodSeleccionado.name}}</b> </li>
-            <li>Categoría: <b>{{this.prodSeleccionado.categoria}}</b> </li>
-            <li>Peso: <b> {{this.prodSeleccionado.peso}} </b> </li>
-            <li>Dimensión: <b>{{this.prodSeleccionado.dimensiones}}</b> </li>
-            <li>Stock: <b> {{this.prodSeleccionado.stock}} </b> </li>
+            <li>Categoría: <b>{{this.prodSeleccionado.metadata.categoria}}</b> </li>
+            <li>Peso: <b> {{this.prodSeleccionado.metadata.peso}} </b> </li>
+            <li>Dimensión: <b>{{this.prodSeleccionado.metadata.dimensiones}}</b> </li>
+            <li>Stock: <b> {{this.prodSeleccionado.metadata.stock}} </b> </li>
         </ul>
     </div>
     <!-- boton cerrar -->
