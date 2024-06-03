@@ -19,7 +19,7 @@
                 <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
             </div>
             <div class="category">
-                <p>{{favorito.categoria.nombre}}</p>
+                <p>{{favorito.categoria}}</p>
             </div>
             <div class="botones">
                 <button (click)="showInfo(favorito)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
@@ -51,7 +51,7 @@
             <p>{{cultivo.descripcion}}</p>
         </div>
         <div class="info-others">
-            <p>Tipo de cultivo: <b>{{cultivo.categoria.nombre}}</b></p>
+            <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
             <p>Region: <b>{{cultivo.region}}</b></p>
             <p>Estacion de siembra: <b>{{cultivo.estacion}}</b></p>
             <p>Temperatura recomendada: <b>{{cultivo.temperatura}}°C</b></p>

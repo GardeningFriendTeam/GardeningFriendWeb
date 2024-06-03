@@ -40,7 +40,7 @@ export class AgregarCultivoComponent {
     const selectedIndex = event.target.selectedIndex;
     
     // Obtener el objeto de la categoría seleccionada usando el índice
-    this.categoriaSeleccionada = this.categorias[selectedIndex];
+    this.categoriaSeleccionada = this.categorias[selectedIndex - 1];
 
     // Asignar el nombre y el id de la categoría seleccionada a las variables correspondientes
     this.categoriaNombre = this.categoriaSeleccionada.nombre; 
@@ -85,7 +85,7 @@ export class AgregarCultivoComponent {
     const formData = new FormData();
     formData.append('imagen', this.imagen, this.imagen.name);
     formData.append('nombre', this.nombre);
-    formData.append('categoria', JSON.stringify(cultivoNuevo.categoria));
+    formData.append('categoria', this.categoriaSeleccionada.nombre);
     formData.append('descripcion', this.descripcion);
     formData.append('region', this.region);
     formData.append('estacion', this.estacion);

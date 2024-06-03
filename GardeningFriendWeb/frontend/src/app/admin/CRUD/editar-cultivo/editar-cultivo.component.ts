@@ -31,6 +31,8 @@ export class EditarCultivoComponent{
     this.cultivosService.detail(id).subscribe(
       data=>{
         this.cultivos = data;
+        this.categoriaSeleccionada = this.cultivos.categoria;
+        console.log(this.categoriaSeleccionada)
       },err =>{
         alert("Error al traer el cultivo");
         this.router.navigate(['']);
@@ -41,9 +43,10 @@ export class EditarCultivoComponent{
   ngOnInit(): void {
     this.cultivosService.traerCategorias().subscribe(resp2 => {
       this.categorias = resp2;
+      this.categoriaSeleccionada = this.categorias.find(cat => cat.id === this.cultivos.categoria.id);
     })
   }
- 
+
 
   guardarId(event: any) {
     console.log("Ahora id:",this.cultivos.id)
@@ -58,7 +61,7 @@ export class EditarCultivoComponent{
     const selectedIndex = event.target.selectedIndex;
     
     // Obtener el objeto de la categoría seleccionada usando el índice
-    this.categoriaSeleccionada = this.categorias[selectedIndex];
+    this.categoriaSeleccionada = this.categorias[selectedIndex - 1];
 
     // Asignar el nombre y el id de la categoría seleccionada a las variables correspondientes
     this.categoriaNombre = this.categoriaSeleccionada.nombre; 
@@ -95,8 +98,6 @@ export class EditarCultivoComponent{
       cult.append('descripcion', this.cultivos.descripcion);
       if(this.imagen){
         cult.append('imagen', this.imagen, this.imagen!.name);
-      }else {
-        cult.append('imagen', this.cultivos.imagen)
       }
       cult.append('region', this.cultivos.region);
       cult.append('estacion', this.cultivos.estacion);
@@ -112,14 +113,7 @@ export class EditarCultivoComponent{
 
       );
   }
-  setFormData(cultivo: Cultivo): void {
-    this.nombre = cultivo.nombre;
-    this.categoriaNombre = cultivo.categoria.nombre ? cultivo.categoria.nombre.toString() : '';
-    this.descripcion = cultivo.descripcion;
-    this.region = cultivo.region;
-    this.estacion = cultivo.estacion;
-    this.temperatura = cultivo.temperatura.toString();
-  }
+  
     onUpdate(): void{
       const cult = new FormData();
       //produ.append('nombre', this.productos.id);

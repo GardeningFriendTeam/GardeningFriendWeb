@@ -79,7 +79,7 @@ export class CultivosComponent implements OnInit {
       return this.cultivos;
     } else {
       //Si no mostrara el tipo de cultivo que se haya seleccionado
-      return this.cultivos.filter(cultivo => cultivo.categoria.nombre === tipo);
+      return this.cultivos.filter(cultivo => cultivo.categoria === tipo);
     }
   }
 
