@@ -1,4 +1,3 @@
-
 body {
     font-family: 'principal';
     background: linear-gradient(to right, #56ab2f, #a8e063);
@@ -11,6 +10,7 @@ body {
 h1 {
     text-align: center;
     font-weight: 600;
+    font-size: 20px;
 }
 
 form {
@@ -18,6 +18,7 @@ form {
     padding: 10px 0;
     box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
     border-radius: 18px;
+    width: 20%;
 }
 
 .form {
@@ -27,11 +28,12 @@ form {
 
 form .form img{
     cursor: pointer;
+    width: 100px;
 }
 
 form .grupo {
     position: relative;
-    margin: 45px;
+    margin: 40px;
 }
 
 input {
@@ -132,11 +134,27 @@ img {
     padding-top: 20px;
 }
 
-/* validacion 
-.ng-valid:not(form).ng-touched {
-    border-left: 5px solid green;
+input[name='username'] {
+    &.ng-valid.ng-touched {
+        border-left: 4px solid rgb(23, 177, 23)
+    }
+
+    &.ng-invalid.ng-touched {
+        border-left: 4px solid rgb(192, 53, 53)
+    }
 }
 
-.ng-invalid:not(form).ng-touched {
-    border-left: 5px solid red;
-}*/
+input[name='password'] {
+    &.ng-valid.ng-touched {
+        border-left: 4px solid rgb(23, 177, 23)
+    }
+
+    &.ng-invalid.ng-touched {
+        border-left: 4px solid rgb(192, 53, 53)
+    }
+}
+
+.alert.text-danger {
+    color: red; 
+    margin-top: 10px;
+}

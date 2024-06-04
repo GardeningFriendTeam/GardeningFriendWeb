@@ -1,0 +1,83 @@
+/* Ajustes generales */
+.modal_detalles {
+  display: grid;
+  height: 500px;
+  width: 300px;
+  grid-template-columns: 100%;
+  grid-template-rows: 50px auto 70px;
+  grid-template-areas: "titulo" "contenido" "boton";
+  overflow: hidden;
+  background: white;
+  border-radius: 5px;
+  font-family: secundaria1;
+  box-shadow: var(--sombra1);
+  animation: blur-in-expand 500ms;
+}
+
+.titulo_wrapper {
+  display: flex;
+  grid-area: titulo;
+  background: var(--verde3);
+  width: 100%;
+  height: 100%;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.descripcion_detalles {
+  display: flex;
+  flex-direction: column;
+  grid-area: contenido;
+  width: 100%;
+  height: 100%;
+}
+
+.descripcion_detalles #logo_wrapper {
+  display: flex;
+  align-self: flex-start;
+  width: 100%;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.descripcion_detalles #logo_wrapper img {
+  height: 80%;
+}
+
+.descripcion_detalles ul {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 20px;
+  line-height: 2rem;
+  list-style-image: url("../../../assets/iconos/plant-icon.png");
+}
+
+.btn_wrapper {
+  display: flex;
+  grid-area: boton;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_wrapper button {
+  font-family: secundaria1;
+  color: white;
+  background: rgb(50, 50, 50);
+  border-radius: 3px;
+  padding: 10px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.btn_wrapper button:hover {
+  background: var(--verde3);
+  transition: 0.5s;
+}/*# sourceMappingURL=productos.component.css.map */

@@ -11,14 +11,19 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavComponent implements OnInit{
  // variable flag
   toggleEffect = false;
-  isAdmin: boolean = false;
+  is_admin: boolean = false;
   private userSub!: Subscription;
+  adminMenuOpen= false;
+  isAuthenticated: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.isAuthenticated = !!this.authService.userValue;
+  }
 
   ngOnInit(): void {
     this.userSub = this.authService.userSubject.subscribe((userSubject) => {
-      this.isAdmin = userSubject?.is_admin ? true : false;
+      this.is_admin = userSubject?.is_admin ? true : false;
+      this.isAuthenticated = userSubject ? true : false;
     });
   }
 
@@ -29,6 +34,10 @@ export class NavComponent implements OnInit{
  // funcion para cambiar el estado de la v. flag
   desplegarMenu() {
     this.toggleEffect = !this.toggleEffect;
+  }
+
+  toggleAdminMenu() {
+    this.adminMenuOpen = !this.adminMenuOpen;
   }
 
   goToAdministrarCultivos() {

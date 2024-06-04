@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'perfil',
+    'drf_yasg',
     'usuario',
     'rest_framework',
     'corsheaders',
     'cultivos',
+    'favoritos',
     'Aplicacion_web',
     'coreapi',
+    'categoriaCultivo'
 ]
 
 MIDDLEWARE = [
@@ -103,10 +105,10 @@ WSGI_APPLICATION = 'back.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gardeningfriend',
+        'NAME': 'gardening',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  
+        'PASSWORD': 'root',
+        'HOST': '172.17.0.2',  
         'PORT': '3306',
     }
 }
@@ -136,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Buenos_aires'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -147,6 +149,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# para que la imagen cargue
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT = os.path.join(os.path.dirname(
+    os.path.dirname(__file__)), 'static', 'static-only')
+
+STATICFILES_DIRS = [
+    # BASE_DIR / 'photos',
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static'),
+]
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(os.path.dirname(__file__)),
+                 'static', 'templates'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

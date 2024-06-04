@@ -1,0 +1,126 @@
+section {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+  
+    & form {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      position: relative;
+      box-shadow: 3px 3px 10px 0px rgba(66, 66, 66, 0.2);
+      & .title {
+        font-size: 1.9em;
+        color: rgb(0, 92, 0);
+        font-weight: 600;
+        letter-spacing: -1px;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      & .flex {
+        display: flex;
+        width: 100%;
+        gap: 6px;
+      }
+      & .form label {
+        position: relative;
+      }
+      & img {
+        width: 100%;
+      }
+      & select {
+          padding: 0.6em;
+          width: 100%;
+          background-color: transparent;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+          padding: 5px 5px 10px 5px;
+      }
+      & input {
+          width: 100%;
+          padding: 5px 5px 10px 5px;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+        }
+  
+      & textarea{
+          width: 100%;
+          min-height: 100px;
+          resize: none;
+          overflow: hidden;
+          overflow-wrap: break-word;
+          padding: 5px 5px 10px 5px;
+          outline: 0;
+          border: 1px solid rgba(105, 105, 105, 0.397);
+          border-radius: 10px;
+      }
+      & .submit {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: rgb(3, 122, 3);
+        padding: 10px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 16px;
+        transform: 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        & :hover {
+          background-color: rgb(0, 92, 0);
+        }
+      }
+      & .submitCat {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: rgb(3, 122, 3);
+        padding: 0 2px;
+        border-radius: 30%;
+        color: #fff;
+        font-size: 1.2em;
+        transform: 0.3s ease;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      & input[type="file"]{
+        padding-right: 0;
+        border: none;
+      }
+    
+      & input[type="file"]::file-selector-button {
+        border: none;
+        background-color: var(--verde3B);
+        height: 100%;
+        padding: 0.8em 0.6em;
+        border-radius: 0.2em;
+      }
+  
+      @keyframes pulse {
+        from {
+          transform: scale(0.9);
+          opacity: 1;
+        }
+  
+        to {
+          transform: scale(1.8);
+          opacity: 0;
+        }
+      }
+    }
+    
+    
+    
+  }

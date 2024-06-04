@@ -27,23 +27,39 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { HttpClientXsrfModule } from '@angular/common/http';
 import { AdministrarUsuarioComponent } from './admin/administrar-usuario/administrar-usuario.component';
 import { AdministrarCultivoComponent } from './admin/administrar-cultivo/administrar-cultivo.component';
+import { CommonModule } from '@angular/common';
+import { AccessDeniedComponent } from './layout/access-denied/access-denied.component';
+import { AuthGuard } from './guards/user-auth.guard';
+import { AdminGuard } from './guards/admin-auth.guard';
+import { AgregarCategoriaCultivoComponent } from './admin/CRUD/agregar-categoria-cultivo/agregar-categoria-cultivo.component';
+import { EditarCategoriaCultivoComponent } from './admin/CRUD/editar-categoria-cultivo/editar-categoria-cultivo.component';
+import { VerCategoriaCultivoComponent } from './admin/CRUD/ver-categoria-cultivo/ver-categoria-cultivo.component';
+import { AgregarCultivoComponent } from './admin/CRUD/agregar-cultivo/agregar-cultivo.component';
+import { EditarCultivoComponent } from './admin/CRUD/editar-cultivo/editar-cultivo.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },//el canActivate va en las rutas que requieren autenticacion
   { path: 'cultivos', component: CultivosComponent },
   { path: 'consejo', component: ConsejosComponent },
   // { path: 'tienda', component: LayoutTiendaComponent, canActivate: [AuthGuard] },
-  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'favoritos', component: FavoritosComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'micuenta', component: MiCuentaComponent },
-  { path: 'asistenteIA', component: AsistenteIaComponent },
-  { path: 'tienda', component: LayoutTiendaComponent },
+  { path: 'micuenta', component: MiCuentaComponent, canActivate: [AuthGuard]},
+  { path: 'asistenteIA', component: AsistenteIaComponent, canActivate: [AuthGuard] },
+  { path: 'tienda', component: LayoutTiendaComponent, canActivate: [AuthGuard]},
   { path: 'contacto', component: ContactoComponent },
   // { path: 'dashboard', component: DashboardComponent },
-  { path: 'administrarCultivos', component: AdministrarCultivoComponent},
-  { path: 'administrarUsuarios', component: AdministrarUsuarioComponent},
+  { path: 'administrarCultivos', component: AdministrarCultivoComponent, canActivate: [AdminGuard]},
+  { path: 'administrarUsuarios', component: AdministrarUsuarioComponent, canActivate: [AdminGuard]},
+  { path: 'access-denied', component: AccessDeniedComponent},
+
+  { path: 'agregarCategoriaCultivo', component: AgregarCategoriaCultivoComponent},
+  { path: 'agregarCultivo', component: AgregarCultivoComponent},
+  // { path: 'editarCategoriaCultivo', component: EditarCategoriaCultivoComponent},
+  { path: 'verCategoriaCultivo', component: VerCategoriaCultivoComponent},
   { path: '**', component: HomeComponent }
+
   
 ];
 
@@ -66,7 +82,16 @@ const appRoutes: Routes = [
     CarritoComponent,
     LayoutTiendaComponent,
     ProductosComponent,
-    ContactoComponent
+    ContactoComponent,
+    AdministrarUsuarioComponent,
+    AccessDeniedComponent,
+    AdministrarCultivoComponent,
+    AdministrarUsuarioComponent,
+    AgregarCategoriaCultivoComponent,
+    EditarCategoriaCultivoComponent,
+    VerCategoriaCultivoComponent,
+    AgregarCultivoComponent,
+    EditarCultivoComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +99,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
+    CommonModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'csrftoken', // El nombre de la cookie que Django usa para el token CSRF
       headerName: 'X-CSRFToken', // El nombre del encabezado que se enviará con el token CSRF

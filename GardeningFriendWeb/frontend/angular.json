@@ -30,6 +30,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
             "scripts": [
@@ -49,7 +50,21 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             },
             "development": {
               "buildOptimizer": false,
@@ -69,6 +84,9 @@
               "browserTarget": "GardeningFriendWeb:build:production"
             },
             "development": {
+              "browserTarget": "GardeningFriendWeb:build:development"
+            },
+            "staging": {
               "browserTarget": "GardeningFriendWeb:build:development"
             }
           },

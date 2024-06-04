@@ -1,0 +1,57 @@
+<div class="cover" [class.active]="activeCover"></div>
+
+<!-- section donde se muestran los cultivos -->
+<div class="row">
+    <div class="btn-add">
+        <a href="/agregarCultivo" class="bi bi-plus-circle">Agregar Cultivo</a>
+    </div>
+    <section> 
+        <div *ngFor="let cultivo of cultivos" class="tarjeta" id="{{cultivo.id}}">
+            <div class="imagen_wrapper">
+                <img [src]="cultivo.imagen" alt="{{cultivo.nombre}}">
+            </div>
+            <div class="title">
+                <h5 id="titulo_{{cultivo.id}}" class="titulos">{{cultivo.nombre | uppercase}}</h5>
+            </div>
+            <div class="category">
+                <p>{{cultivo.categoria}} </p>
+            </div>
+            <div class="botones">
+                <button (click)="showInfo(cultivo)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
+                
+                <button routerLink="/editarCultivo/{{cultivo.id}}" class="bi bi-pencil-fill editar"></button>
+                <button (click)=delete(cultivo) class="bi bi-trash-fill eliminar"></button>
+            </div>
+        </div> 
+       
+    </section>
+    
+    
+    <!-- info de cada cultivo -->
+    <div class="container-info" *ngIf="activeInfo">
+        <span class="close" (click)="toggleInfo()">Close</span>
+        <div *ngFor="let cultivo of infoCultivos" class="info-cultivo">
+            <div class="info-header">
+                <img [src]="cultivo.imagen">
+                <p>{{cultivo.nombre}}</p>
+            </div>
+            <div class="info-descripcion">
+                <h6>Información:</h6>
+                <p>{{cultivo.descripcion}}</p>
+            </div>
+            <div class="info-others">
+                <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
+                <p>Region: <b>{{cultivo.region}}</b></p>
+                <p>Estacion de siembra: <b>{{cultivo.estacion}}</b></p>
+                <p>Temperatura recomendada: <b>{{cultivo.temperatura}}°C</b></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- El ng-template se mostrara cuando no haya cultivos -->
+    <ng-template #elseCultivos>
+        <p style="font-size: 24px; font-weight: bold; color: darkgreen; text-align: center; margin: 100px 0; font-family: secundaria1;">No hay ningún cultivo para sembrar.</p>
+    </ng-template> 
+
+    
+</div>

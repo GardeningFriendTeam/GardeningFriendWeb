@@ -10,21 +10,19 @@
         <p>{{ alertText }}</p>
         <button (click)="showAlert()">Vale!</button>
     </div>
-    <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">
-
-        
-        <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id_cultivo}}">
+    <section *ngIf="cultivosToFavorito.length > 0; else elseFavorite">     
+        <div *ngFor="let favorito of cultivosToFavorito; let i = index" class="tarjeta" id="{{favorito.id}}">
             <div class="imagen_wrapper">
                 <img [src]="favorito.imagen" alt="icono">
             </div>
             <div class="title">
-                <h5 id="titulo_{{favorito.id_cultivo}}" class="titulos"> {{favorito.nombre}} </h5>
+                <h5 id="titulo_{{favorito.id}}" class="titulos"> {{favorito.nombre}} </h5>
             </div>
             <div class="category">
-                <p> <u>Categoría:</u> {{favorito.categoria}}</p>
+                <p>{{favorito.categoria}}</p>
             </div>
             <div class="botones">
-                <button (click)="showInfo(favorito)" type="button" class="moreInfo">MAS INFO</button>
+                <button (click)="showInfo(favorito)" type="button" class="moreInfo bi bi-info-circle-fill"></button>
                 <button (click)="removeFavorito(i)" type="button" class="favoritos">FAVORITOS X</button>
             </div>
         </div>
@@ -55,8 +53,8 @@
         <div class="info-others">
             <p>Tipo de cultivo: <b>{{cultivo.categoria}}</b></p>
             <p>Region: <b>{{cultivo.region}}</b></p>
-            <p>Estacion de siembra: <b>{{cultivo.estacion_de_siembra}}</b></p>
-            <p>Temperatura recomendada: <b>{{cultivo.temperatura_recomendada}}°C</b></p>
+            <p>Estacion de siembra: <b>{{cultivo.estacion}}</b></p>
+            <p>Temperatura recomendada: <b>{{cultivo.temperatura}}°C</b></p>
         </div>
     </div>
 </div>

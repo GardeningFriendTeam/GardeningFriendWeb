@@ -14,7 +14,7 @@ export interface singupModel {
   }
   
   export interface loginModel {
-    email: string;
+    username: string;
     password: string;
   }
   
@@ -27,4 +27,3 @@ export interface singupModel {
       public is_admin?: boolean
     ) {}
   }
-  

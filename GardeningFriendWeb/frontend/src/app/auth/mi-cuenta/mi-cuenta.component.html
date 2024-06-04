@@ -1,24 +1,24 @@
-
-        <body>
-            <main>
-                <a id="volver" routerLink="/home">volver</a>
-                <!-- logo del sitio -->
-                <picture>
-                    <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
-                    <h1>Mi Cuenta</h1>
-                </picture>
-                    <div >
-                        <input type="text">
-                        <label >nombre</label>
-                        <p>{{perfil.nombre}}</p>
-                    </div>
-                    <div>
-                        <input type="text">
-                        <label >Correo</label>
-                        <p>{{perfil.correo}}</p>
-                    </div>
-                    <button >Actualizar</button>
-            </main>
-        
-        </body>
- 
+<body>
+    <main>
+        <!-- logo del sitio -->
+        <picture>
+            <img routerLink="/home" src="../../../assets/logos/isologo.png" alt="logo gardenigfriend">
+            <h1>Perfil Usuario</h1>
+        </picture>
+        <div class="info-personal">
+            <p class="username">
+                Username: 
+                <span *ngIf="!isEditing">{{ userSubject.username || 'Usuario' }}</span>
+                <input *ngIf="isEditing" [(ngModel)]="updatedUsername" type="text">
+                <i class="fas fa-edit" (click)="edit('username')"></i>
+            </p>
+            <p class="correo">
+                Email: 
+                <span *ngIf="!isEditing">{{ userSubject.email }}</span>
+                <input *ngIf="isEditing" [(ngModel)]="updatedEmail" type="email">
+                <i class="fas fa-edit" (click)="edit('email')"></i>
+            </p>
+        </div>
+        <button (click)="updateUser()" *ngIf="isEditing">Actualizar</button>
+    </main>
+</body>

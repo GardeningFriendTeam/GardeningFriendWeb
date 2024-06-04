@@ -5,7 +5,7 @@ export interface User {
     email: string;
     birth_date:string;
     password:string;
-    isAdmin: boolean;
+    is_admin: boolean;
     token?: string;
     // // Agregar las propiedades necesarias
 }  

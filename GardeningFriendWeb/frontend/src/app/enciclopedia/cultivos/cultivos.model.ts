@@ -1,12 +1,14 @@
+import { CategoriaCultivo } from "src/app/models/categoriaCultivo";
+
 export interface Cultivo{
-    id_cultivo: number,
+    id?: number,
     nombre: string,
-    categoria: string,
+    categoria: CategoriaCultivo,
     descripcion: string,
     imagen: string,
     region: string,
-    estacion_de_siembra: string,
-    temperatura_recomendada: number,
+    estacion: string,
+    temperatura: number,
     favorito: boolean,
-    usuario: number,
+    // usuario: number,
 }

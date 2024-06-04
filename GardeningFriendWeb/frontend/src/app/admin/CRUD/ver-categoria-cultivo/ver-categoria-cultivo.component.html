@@ -1,0 +1,36 @@
+<div class="contenedor">
+<div>
+  <h4 class="title">Categorías</h4>
+  
+
+
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        
+        <th scope="row" class="ediciones">Editar</th>
+        <th scope="row" class="ediciones">Eliminar</th>
+      </tr>
+    </thead>
+    <br>
+    <tbody  *ngFor="let item of miCat" >
+      <tr>
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.nombre}}</td>
+        
+        <td class="ediciones"><button routerLink="/editarCategoriaCultivo/{{item.id}}" class="bi bi-pencil-fill editar"></button></td>
+        <td class="ediciones"><button (click)=delete(item) class="bi bi-trash-fill borrar"></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="btn-add">
+  <a href="/agregarCategoriaCultivo" class="bi bi-plus-circle">Agregar Categoria</a>
+</div>
+</div>
+</div>
+  <!-- <a routerLink="/agregar-productos" class="btn btn-info">Volver</a> -->

@@ -1,44 +1,60 @@
 <div class="container">
-    <div class="row row-cols-2 row-cols-md-3 justify-content-center">
-        <!--<div class="col" *ngFor="let user of uses">r -->
-            <div class="col" >
-            <div class="card" style="max-width: 400px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4 text-center">
-                        <img src="/assets/iconos/icono-usuario-2.png" class="img-fluid rounded-start" alt="...">
+    <div class="row">
+        <div *ngFor="let user of users" class="col">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-image">
+                        <img src="/assets/iconos/icono-usuario-2.png" alt="...">
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <!--<h5 class="card-title">{{ user.email }}</h5> -->
-                            <h5 class="card-title">usuario@gmail.com</h5>
-                            <!--<p class="card-text">Rol: {{ user.isAdmin ? 'Admin' : 'Usuario Normal' }}</p> -->
-                            <p class="card-text">Rol: Usuario</p>
-                            <button class="modificar">Modificar Rol</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col" >
-            <div class="card" style="max-width: 400px;">
-                <div class="row g-0 align-items-center">
-                    <div class="col-md-4 text-center">
-                        <img src="/assets/iconos/icono-usuario-2.png" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <!--<h5 class="card-title">{{ user.email }}</h5> -->
-                            <h5 class="card-title">admin@gmail.com</h5>
-                            <!--<p class="card-text">Rol: {{ user.isAdmin ? 'Admin' : 'Usuario Normal' }}</p> -->
-                            <p class="card-text">Rol: Admin</p>
-                            <button class="modificar">Modificar Rol</button>
-                        </div>
+                    <div class="card-body">
+                        <!--<h5 class="card-title">usuario&#64;gmail.com</h5>-->
+                        <h5 class="card-title">{{ user.email }}</h5>
+                        <!--<p class="card-text">Rol: Usuario</p>-->
+                        <p class="card-text">Rol: {{ user.is_admin? 'Admin' : 'Usuario Normal' }}</p>
+                        <button class="modificar" (click)="openRoleModal(user)">Modificar Rol</button>
+                        <button class="eliminar-usuario" (click)="deleteUser(user.id)">Eliminar Usuario</button>
                     </div>
                 </div>
             </div>
         </div>
         
-
     </div>
 </div>
+
+<!-- Modal personalizado -->
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+      <span class="close" (click)="closeRoleModal()">&times;</span>
+      <div class="container-text">
+        <h1 class="text-modificar">Modificar Rol</h1>
+      </div>
+
+      <div class="conteiner-select">
+        <div class="select">
+            <label>
+                <input type="radio" [(ngModel)]="selectedRole" value="user">
+                    Usuario Normal
+                </label>
+        </div>
+        <div class="select">
+          <label>
+            <input type="radio" [(ngModel)]="selectedRole" value="admin">
+                Admin
+          </label>
+      </div>
+      </div>
+        
+
+      <div class="button-aceptar">
+        <button class="btn-aceptar" (click)="updateRole()">Aceptar</button>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
