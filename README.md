@@ -19,12 +19,12 @@ Estos archivos también estan en la carpeta "documentacion" en la rama main.
 
 ## <img width="35" height="35" src="https://img.icons8.com/fluency/48/info.png" alt="info"/> Información del proyecto:
 
-Gardening Friend es una applicación que cuenta con una versión web y movil.
-El proposito de esta app es ayudar a quienes buscan iniciarse en el mundo de los cultivos y la jardineria organica pero no tienen los conocimientos necesarios.
-Nuestro proyecto es el perfecto punto de partida ya que proveemos información y recursos faciles de comprender.
-Estas son las secciones y funcionalidades de nuestro proyecto web:
+Gardening Friend es una aplicación que cuenta con una versión web y movil.
+El proposito de nuestro proyecto a quienes buscan iniciarse en el mundo de los cultivos y la jardineria organica pero no tienen los conocimientos necesarios.
+Nuestro proyecto es el perfecto punto de partida, ya que proveemos información y recursos faciles de comprender.
+Estas son las secciones y funcionalidades de nuestro sitio web:
 
-![Diseño - proyecto web - actualizado](https://github.com/GardeningFriendTeam/GardeningFriendWeb/assets/72700320/43e10bf8-30b9-4e72-9065-d0911ad0d277)
+![emprededurismo - muestra web](https://github.com/GardeningFriendTeam/GardeningFriendWeb/assets/72700320/589d713c-e29f-4570-8640-89a134aadcd4)
 
 [Click aquí para ver la versión previa del proyecto, realizada el año pasado](https://github.com/SoledadQuiroz/FullStack-ProyectoIntegrador)
 
